@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>CTP</title>
+	<meta name="description" content="" />
+	
+	<script src="js/swfobject.js"></script>
+	<script>
+		function getFlashMovieObject(movieName) {
+			if (window.document[movieName])  {
+			  return window.document[movieName];
+			}
+			if (navigator.appName.indexOf("Microsoft Internet")==-1) {
+				if (document.embeds && document.embeds[movieName]) {
+					return document.embeds[movieName]; 
+				}
+			} else  {
+				return document.getElementById(movieName);
+			}
+		}
+		function getImage() {
+			alert("Image: " + getFlashMovieObject("altContent").getImage());
+		}
+		var flashvars = {
+			debug: "true",
+			language: "en",
+			categoryUrl: "xml/clipart.xml",
+			exportedImage: "images/Sunset.jpg"
+		};
+		var params = {
+			menu: "false",
+			scale: "noScale",
+			allowFullscreen: "true",
+			allowScriptAccess: "always",
+			bgcolor: "",
+			wmode: "window"
+		};
+		swfobject.embedSWF(
+			"drawingboard_en.swf", 
+			"altContent", "733", "446", "11.2.0", 
+			"expressInstall.swf", 
+			flashvars, params);
+	</script>
+	<style>
+		body { margin:0; }
+	</style>
+</head>
+<body bgcolor="#C0C0C0">
+	<div id="altContent">
+		<h1>CTP</h1>
+		<p><a href="http://www.adobe.com/go/getflashplayer">Get Adobe Flash player</a></p>
+	</div>
+	<div>
+		<input type="button" value="Submit" onclick="JavaScript:getImage()" />
+	</div>
+</body>
+</html>
