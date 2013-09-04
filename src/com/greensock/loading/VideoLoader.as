@@ -1,6 +1,6 @@
 /**
- * VERSION: 1.92
- * DATE: 2012-08-08
+ * VERSION: 1.921
+ * DATE: 2012-08-09
  * AS3
  * UPDATES AND DOCS AT: http://www.greensock.com/loadermax/
  **/
@@ -920,14 +920,16 @@ function errorHandler(event:LoaderEvent):void {
 				var prevBufferMode:Boolean = _bufferMode;
 				_bufferMode = false; //make sure bufferMode is false so that when we check progress, it gives us the data we need.
 				_cacheIsDirty = true;
-				var loadRemaining:Number = (1 / this.progress) * this.loadTime;
+				var prog:Number = this.progress;
 				_bufferMode = prevBufferMode;
 				_cacheIsDirty = true;
-				var revisedBufferTime:Number = videoRemaining * (1 - (videoRemaining / loadRemaining)) * 0.9; //90% of the estimated time because typically you'd want the video to start playing again sooner and the 10% might be made up while it's playing anyway.
-				if (revisedBufferTime < _ns.bufferTime) {
+				if (prog == 1) {
 					//sometimes NetStream dispatches a "NetStream.Buffer.Empty" NetStatusEvent right before it finishes playing in which case we can deduce that the buffer isn't really empty.
 					return;
-				} else if (this.autoAdjustBuffer && loadRemaining > videoRemaining) {
+				}
+				var loadRemaining:Number = (1 / prog) * this.loadTime;
+				var revisedBufferTime:Number = videoRemaining * (1 - (videoRemaining / loadRemaining)) * 0.9; //90% of the estimated time because typically you'd want the video to start playing again sooner and the 10% might be made up while it's playing anyway.
+				if (this.autoAdjustBuffer && loadRemaining > videoRemaining) {
 					_ns.bufferTime = revisedBufferTime;
 				}
 				_bufferFull = false;

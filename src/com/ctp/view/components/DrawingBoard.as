@@ -11,7 +11,7 @@ package com.ctp.view.components {
 	
 	import com.ctp.view.components.drawingboard.ConfirmBox;
 	import com.ctp.view.components.drawingboard.paint.BrushBoard;
-	import com.ctp.view.components.drawingboard.PopupWindow;
+	//import com.ctp.view.components.drawingboard.PopupWindow;
 	import com.ctp.view.components.drawingboard.resizing.ImageResizing;
 	import com.ctp.view.components.drawingboard.resizing.ObjectResizing;
 	import com.ctp.view.components.drawingboard.resizing.ShapeResizing;
@@ -29,6 +29,7 @@ package com.ctp.view.components {
 	
 	import com.dynamicflash.util.Base64;
 	import com.greensock.plugins.AutoAlphaPlugin;
+	import com.greensock.TweenMax;
 	import com.greensock.plugins.TweenPlugin;
 	import com.pyco.external.JSBridge;
 	import flash.display.BitmapData;
@@ -41,6 +42,13 @@ package com.ctp.view.components {
 	
 	import com.ctp.view.components.submitinspire.UploadInspirePhoto;
 	
+	
+	import com.greensock.loading.*;
+	import com.greensock.events.LoaderEvent;
+	import com.greensock.loading.display.*;
+	
+	import code.tool.RollTool;
+	
 	//import com.ctp.view.events.UploadPhotoEvent;
 	
 	/**
@@ -50,39 +58,54 @@ package com.ctp.view.components {
 	public class DrawingBoard extends Sprite {
 		
 		public var toolBarMovie: ToolBar = new ToolBar();
-		public var boardMovie: Sprite = new Sprite();
+		//public var boardMovie: Sprite = new Sprite();
 		public var contentMovie: Sprite = new Sprite();
 		public var brushMovie: BrushBoard = new BrushBoard();
 		public var confirmMovie: ConfirmBox;
 		//public var versionMovie: VersionUI = new VersionUI();
-		public var popupMovie: PopupWindow = new PopupWindow();
+		
+		//public var popupMovie: PopupWindow = new PopupWindow();
 		private var selectedObject: ObjectResizing;
 		
 		private var numCusDis:Number = -314;
+		//-- submission --//
+		private var strDrawPic:String = "";
+		private var strUserTalent:String = "";
+		private var strUserInspie:String = "";
+		private var strDrawName:String = "";
+		private var strDrawDesc:String = "";
+		
+		//-- user profile --//
+		private var strHeadPic:String = "";
+		private var strTypeNum:String = "";
+		private var strUserName:String = "";
+		
+		private var intPercentage:int;
+		
 		
 		public function DrawingBoard() {
 			TweenPlugin.activate([AutoAlphaPlugin]);
 			
 			//versionMovie.versionText.text = "v 1.3";
-			
+			//图片集合
 			toolBarMovie.addEventListener(ClipartEvent.ADD_IMAGE, addClipartImageHandler);
 			toolBarMovie.addEventListener(ClipartEvent.ADD_IMAGE_AT_CENTER, addClipartImageHandler);
-			
+			//图片
 			toolBarMovie.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
 			
 			//笔刷+橡皮擦
 			toolBarMovie.addEventListener(BrushEvent.ENABLE, brushEnableHandler);
 			toolBarMovie.addEventListener(BrushEvent.DISABLE, brushEnableHandler);
-			
+			//文字
 			toolBarMovie.addEventListener(FontTypeEvent.CHANGE, fontTypeChangeHandler);
 			toolBarMovie.addEventListener(FontTypeEvent.ADD_TEXT, addTextHandler);
 			
+			
+			//？
 			toolBarMovie.addEventListener(ToggleButtonBase.TOGGLE_BUTTON_CLICK, toggleButtonClickHandler);
 			
-			toolBarMovie.addEventListener(ShapeEvent.ADD_SHAPE, addShapeHandler);
-			toolBarMovie.addEventListener(ShapeEvent.ADD_SHAPE_AT_CENTER, addShapeHandler);
-			toolBarMovie.addEventListener(ShapeEvent.CHANGE_COLOR, changeColorShapeHandler);
 			
+			//-- send-to-back --// 层级关系
 			toolBarMovie.addEventListener(ManagaEvent.SEND_TO_BACK, manageHandler);
 			toolBarMovie.addEventListener(ManagaEvent.BRING_TO_FRONT, manageHandler);
 			toolBarMovie.addEventListener(ManagaEvent.CLEAR_ALL, manageHandler);
@@ -96,14 +119,18 @@ package com.ctp.view.components {
 				addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			}
 			
-			getImage();
+			//js event
+			//showStudentPopup(null);
 			//JSBridge.addCallback("getImage", getImage);
 			//JSBridge.addCallback("showStudentPopup", showStudentPopup);
 			//showStudentPopup("INITIALIZING: Adobe Flex Compiler SHell (fcsh)");
+			
 		}
 		
 		private function addedToStageHandler(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			//this.visible = false;
+			//this.alpha = 0;
 			init();
 		}
 		
@@ -111,20 +138,27 @@ package com.ctp.view.components {
 		private function init(): void {
 			
 			AppData.parameters = stage.loaderInfo.parameters;
-			AppData.parameters.debug = "true";
+			//AppData.parameters.debug = "true";
+			
 			//AppData.parameters.exportedImage = "images/Sunset.jpg";
-			//vv.text = AppData.parameters.debug;
-			//vv.text = "";
 			
-			//-- --//
-			//if (AppData.parameters.exportedImage) {
-				//addImageByUrl(AppData.parameters.exportedImage, ObjectType.IMAGE);
-			//}
+			//-- loading --//
+			
+			var StrBgUrl:String = AppData.parameters.bgImage ? AppData.parameters.bgImage : "images/bg.jpg";
+			//var CloudBgUrl:String = AppData.parameters.cloudbgImage ? AppData.parameters.cloudbgImage : "images/cloud.png";
+			if (StrBgUrl) {
+				var queue:LoaderMax = new LoaderMax({name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler});
+					queue.append( new ImageLoader(StrBgUrl, { name:"bg", container:this, alpha:0 } ) );
+					//queue.append( new ImageLoader(CloudBgUrl, { name:"cloudbg", container:this, alpha:0 } ) );
+					
+					queue.append( new SWFLoader("images/cloud.swf", {name:"cloudbg",container:this,alpha:0}) );
+				queue.load();
+			}
 			
 			
-			boardMovie.x = -176;
-			boardMovie.y = -367;
-			addChild(boardMovie);
+			//boardMovie.x = -176;
+			//boardMovie.y = -367;
+			//addChild(boardMovie);
 			//board
 			boardMovie.addChild(contentMovie);
 			brushMovie.toolBarMovie = toolBarMovie;
@@ -135,11 +169,11 @@ package com.ctp.view.components {
 			//scbot.x = boardMovie.x;
 			//scbot.y = boardMovie.y;
 			
-			
 			toolBarMovie.x = -327.65;
 			toolBarMovie.y = -378.4;
-			
-			addChild(toolBarMovie);
+			//this.setChildIndex(toolBarMovie, 2);
+			//stage.setChildIndex(toolBarMovie, 2);
+			toolFrame.addChild(toolBarMovie);
 			
 			trace("init");
 			//addChild(confirmMovie);
@@ -151,37 +185,50 @@ package com.ctp.view.components {
 			ConfirmBox.instance.y = -200;
 			ConfirmBox.instance.yesButton.addEventListener(MouseEvent.CLICK, yesButtonClickHandler);
 			
-			//versionMovie.x = stage.stageWidth;
-			//versionMovie.y = stage.stageHeight;
-			if (AppData.parameters.debug != "false") {
-				//addChild(versionMovie);
-			}
 			
 			stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
+			//add by rick
+			btnSubmission.addEventListener(MouseEvent.CLICK, getImage);
+			
+			RollTool.setRoll(btnSubmission);
+			RollTool.setRoll(btnInspire);
+			RollTool.setRoll(btnTalent);
+			RollTool.setRoll(btnGallery);
+			
+		}
+		
+		private function errorHandler(event:LoaderEvent):void {
+			trace("error");
+		}
+		
+		private function completeHandler(event:LoaderEvent):void {
+			TweenMax.to(mcLoading, .3, { alpha:0, onComplete:function() {
+				removeChild(mcLoading);
+				
+				} } );
+			
+			var image:ContentDisplay = LoaderMax.getContent("bg");
+				bgFrame.addChild(image);
+			
+			var cloudImage:ContentDisplay = LoaderMax.getContent("cloudbg");
+				cloudImage.x = -547.5;
+				cloudImage.y = -513;
+				ChooseMc.addChild(cloudImage);
+				
+				TweenMax.to(image, 0.5, { alpha:1 } );
+				TweenMax.to(cloudImage, 0.5, { alpha:1 } );
 		}
 		
 		
-		private function changeColorShapeHandler(e:ShapeEvent):void {
-			if (selectedObject && selectedObject.type == ObjectType.SHAPE) {
-				selectedObject.color = toolBarMovie.shapesMenuMovie.colorSliderMovie.color;
-			}
+		private function progressHandler(event:LoaderEvent):void {
+			intPercentage = Math.round(event.target.progress * 100);
+			mcLoading.percentText.text = intPercentage + "%";
+			mcLoading.percentMovie.gotoAndStop(intPercentage);
 		}
 		
-		private function addShapeHandler(e:ShapeEvent):void {
-			var shapeResizing: ShapeResizing = new ShapeResizing();
-			shapeResizing.setShape(toolBarMovie.getShape());
-			if (e.type == ShapeEvent.ADD_SHAPE_AT_CENTER) {
-				shapeResizing.x = ObjectResizing.MAX_WIDTH / 2 + numCusDis;
-				shapeResizing.y = ObjectResizing.MAX_HEIGHT / 2;
-			} else {
-				shapeResizing.x = stage.mouseX;
-				shapeResizing.y = stage.mouseY;
-			}
-			initObjectResizing(shapeResizing);
-			selectedObject = shapeResizing;
-		}
 		
 		private function toggleButtonClickHandler(e:Event):void {
+			trace("toggleButtonClickHandler")
 			stageClickHandler(null);
 		}
 		
@@ -208,10 +255,6 @@ package com.ctp.view.components {
 					ConfirmBox.instance.show(ManagaEvent.CLEAR_ALL);
 					break;
 			}
-		}
-		
-		public function showStudentPopup(html: String):void {
-			popupMovie.show(html, this);
 		}
 		
 		
@@ -259,16 +302,30 @@ package com.ctp.view.components {
 			}
 		}
 		
-		public function getImage():String {
+		public function getImage(e:Event):String {
 			selectedObject = null;
+			
 			stageClickHandler(null);
+			
+			
+			
+			
+			
+			if (strDrawName == "") {
+				//ConfirmBox.instance.show("Image");
+				
+				errorMc.txtErrorMsg.text = "请输入姓名"; 
+				
+				return "";
+			}
+			
 			
 			var bmd: BitmapData = new BitmapData(stage.stageWidth, stage.stageHeight, false, 0xFFFFFF);
 			bmd.draw(boardMovie);
 			
 			//-- test --//
-			//var bit:Bitmap = new Bitmap(bmd);
-			//addChild(bit);
+			var bit:Bitmap = new Bitmap(bmd);
+			addChild(bit);
 			
 			for (var i:int = 0; i < bmd.width; i++) {
 				for (var j:int = 0; j < bmd.height; j++) {

@@ -9,6 +9,7 @@ package com.ctp.view.components.drawingboard {
 	import flash.events.MouseEvent;
 	import flash.display.Stage;
 	import flash.display.DisplayObject;
+	import code.tool.RollTool;
 	
 	/**
 	 * ...
@@ -19,11 +20,7 @@ package com.ctp.view.components.drawingboard {
 		
 		private static var _instance:ConfirmBox;
 		private var _stage:Sprite;
-		
-		//private var content:DisplayObject;
-		
-		
-		
+
 		public function ConfirmBox(singleton:Singleton) {
 			//--- init ---//
 			if (singleton == null){
@@ -33,10 +30,12 @@ package com.ctp.view.components.drawingboard {
 		
 		public function init():void {
 			
-			
 			visible = false;
 			alpha = 0;
 			_stage.addChild(this);
+			
+			RollTool.setRoll(noButton);
+			RollTool.setRoll(yesButton);
 			
 			noButton.addEventListener(MouseEvent.CLICK, noButtonClickHandler);
 			yesButton.addEventListener(MouseEvent.CLICK, noButtonClickHandler);
@@ -55,7 +54,6 @@ package com.ctp.view.components.drawingboard {
 		public function initStage($stage:Sprite):void 
 		{
 			_stage = $stage;
-			
 			init();
 		}
 		
@@ -76,9 +74,7 @@ package com.ctp.view.components.drawingboard {
 		}
 		
 		public function show(message: String): void {
-			//trace(ConfirmBox.instance);
 			messageMovie.gotoAndPlay(message);
-			//trace(messageMovie);
 			if (message == ManagaEvent.CLEAR_ALL) {
 				yesButton.y = noButton.y = 37;
 			} else {

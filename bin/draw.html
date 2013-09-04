@@ -25,7 +25,8 @@
 				debug: "true",
 				language: "cn",
 				categoryUrl: "xml/clipart.xml",
-				exportedImage: "images/Sunset.jpg"
+				bgImage: "images/bg.jpg",
+				url:"draw.swf"
 			};
 			var params = {};
 			params.quality = "high";
@@ -45,7 +46,7 @@
 			swfobject.createCSS("html", "height:100%; background-color: #ffffff;");
 			swfobject.createCSS("body", "margin:0; padding:0; height:100%;min-height:1200px;");
 			swfobject.embedSWF(
-				"draw.swf", "flashContent",
+				"loading.swf", "flashContent",
 				"100%", "100%",
 				swfVersionStr, xiSwfUrlStr,
 				flashvars, params, attributes);
