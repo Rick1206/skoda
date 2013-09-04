@@ -29,7 +29,7 @@ package com.ctp.view.components.drawingboard.resizing {
 		public static const MAX_WIDTH		: uint = 640;
 		public static const MAX_HEIGHT		: uint = 446;
 		
-		private var _type						: String = "";
+		private var _type					: String = "";
 		
 		protected var contentPadding		: uint = 6;
 		protected var minWidth				: uint = 64;

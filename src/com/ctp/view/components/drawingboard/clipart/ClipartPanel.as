@@ -43,14 +43,17 @@ package com.ctp.view.components.drawingboard.clipart {
 			while (contentMovie.numChildren) {
 				contentMovie.removeChildAt(0);
 			}
+			
 			//scrollbarMovie.reInit();
+			
 			errorText.text = "";
 			errorText.visible = true;
 			items = [];
 			current = -1;
 			loadingMovie.play();
 			loadingMovie.visible = true;
-			//loadXML();
+			
+			loadXML();
 		}
 		
 		private function loadXML():void {
@@ -61,6 +64,7 @@ package com.ctp.view.components.drawingboard.clipart {
 			var loader: URLLoader = new URLLoader();
 			loader.addEventListener(Event.COMPLETE, loadXMLCompleteHandler);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			//trace("xml :" + AppData.parameters.categoryUrl);
 			loader.load(new URLRequest(AppData.parameters.categoryUrl ? AppData.parameters.categoryUrl : "xml/clipart.xml"));
 		}
 		

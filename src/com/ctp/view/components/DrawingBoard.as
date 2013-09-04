@@ -1,6 +1,7 @@
 package com.ctp.view.components {
 	
 	import com.adobe.images.JPGEncoder;
+	import flash.display.Bitmap;
 	//class
 	import com.ctp.model.AppData;
 	//Brush type
@@ -55,8 +56,9 @@ package com.ctp.view.components {
 		public var confirmMovie: ConfirmBox;
 		//public var versionMovie: VersionUI = new VersionUI();
 		public var popupMovie: PopupWindow = new PopupWindow();
-		
 		private var selectedObject: ObjectResizing;
+		
+		private var numCusDis:Number = -314;
 		
 		public function DrawingBoard() {
 			TweenPlugin.activate([AutoAlphaPlugin]);
@@ -94,10 +96,70 @@ package com.ctp.view.components {
 				addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			}
 			
+			getImage();
 			//JSBridge.addCallback("getImage", getImage);
 			//JSBridge.addCallback("showStudentPopup", showStudentPopup);
 			//showStudentPopup("INITIALIZING: Adobe Flex Compiler SHell (fcsh)");
 		}
+		
+		private function addedToStageHandler(e:Event):void {
+			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			init();
+		}
+		
+		//--- init ---//
+		private function init(): void {
+			
+			AppData.parameters = stage.loaderInfo.parameters;
+			AppData.parameters.debug = "true";
+			//AppData.parameters.exportedImage = "images/Sunset.jpg";
+			//vv.text = AppData.parameters.debug;
+			//vv.text = "";
+			
+			//-- --//
+			//if (AppData.parameters.exportedImage) {
+				//addImageByUrl(AppData.parameters.exportedImage, ObjectType.IMAGE);
+			//}
+			
+			
+			boardMovie.x = -176;
+			boardMovie.y = -367;
+			addChild(boardMovie);
+			//board
+			boardMovie.addChild(contentMovie);
+			brushMovie.toolBarMovie = toolBarMovie;
+			contentMovie.addChild(brushMovie);
+			
+			//contentMovie.x = -490;
+			//testing shape
+			//scbot.x = boardMovie.x;
+			//scbot.y = boardMovie.y;
+			
+			
+			toolBarMovie.x = -327.65;
+			toolBarMovie.y = -378.4;
+			
+			addChild(toolBarMovie);
+			
+			trace("init");
+			//addChild(confirmMovie);
+			//trace(this.stage.);
+			
+			ConfirmBox.instance.initStage(this);
+			//what about objecresizing
+			ConfirmBox.instance.x = 165;
+			ConfirmBox.instance.y = -200;
+			ConfirmBox.instance.yesButton.addEventListener(MouseEvent.CLICK, yesButtonClickHandler);
+			
+			//versionMovie.x = stage.stageWidth;
+			//versionMovie.y = stage.stageHeight;
+			if (AppData.parameters.debug != "false") {
+				//addChild(versionMovie);
+			}
+			
+			stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
+		}
+		
 		
 		private function changeColorShapeHandler(e:ShapeEvent):void {
 			if (selectedObject && selectedObject.type == ObjectType.SHAPE) {
@@ -109,7 +171,7 @@ package com.ctp.view.components {
 			var shapeResizing: ShapeResizing = new ShapeResizing();
 			shapeResizing.setShape(toolBarMovie.getShape());
 			if (e.type == ShapeEvent.ADD_SHAPE_AT_CENTER) {
-				shapeResizing.x = ObjectResizing.MAX_WIDTH / 2;
+				shapeResizing.x = ObjectResizing.MAX_WIDTH / 2 + numCusDis;
 				shapeResizing.y = ObjectResizing.MAX_HEIGHT / 2;
 			} else {
 				shapeResizing.x = stage.mouseX;
@@ -152,61 +214,6 @@ package com.ctp.view.components {
 			popupMovie.show(html, this);
 		}
 		
-		private function addedToStageHandler(e:Event):void {
-			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
-			init();
-		}
-		
-		private function init(): void {
-			
-			AppData.parameters = stage.loaderInfo.parameters;
-			AppData.parameters.debug = "true";
-			//AppData.parameters.exportedImage = "images/Sunset.jpg";
-			//vv.text = AppData.parameters.debug;
-			vv.text = "";
-			
-			//-- --//
-			//if (AppData.parameters.exportedImage) {
-				//addImageByUrl(AppData.parameters.exportedImage, ObjectType.IMAGE);
-			//}
-			
-			brushMovie.toolBarMovie = toolBarMovie;
-			addChild(boardMovie);
-			boardMovie.x = -176;
-			boardMovie.y = -367;
-			
-			//contentMovie.x = -490;
-			//testing shape
-			//scbot.x = boardMovie.x;
-			//scbot.y = boardMovie.y;
-			
-			boardMovie.addChild(contentMovie);
-			contentMovie.addChild(brushMovie);
-			
-			
-			toolBarMovie.x = -327.65;
-			toolBarMovie.y = -378.4;
-			
-			addChild(toolBarMovie);
-			
-			trace("init");
-			//addChild(confirmMovie);
-			//trace(this.stage.);
-			
-			ConfirmBox.instance.initStage(this);
-			//what about objecresizing
-			ConfirmBox.instance.x = 165;
-			ConfirmBox.instance.y = -200;
-			ConfirmBox.instance.yesButton.addEventListener(MouseEvent.CLICK, yesButtonClickHandler);
-			
-			//versionMovie.x = stage.stageWidth;
-			//versionMovie.y = stage.stageHeight;
-			if (AppData.parameters.debug != "false") {
-				//addChild(versionMovie);
-			}
-			
-			stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
-		}
 		
 		private function addTextHandler(e:FontTypeEvent):void {
 			if (toolBarMovie.buttonGroupMovie.typeMovie.toggled == false) {
@@ -255,8 +262,14 @@ package com.ctp.view.components {
 		public function getImage():String {
 			selectedObject = null;
 			stageClickHandler(null);
+			
 			var bmd: BitmapData = new BitmapData(stage.stageWidth, stage.stageHeight, false, 0xFFFFFF);
 			bmd.draw(boardMovie);
+			
+			//-- test --//
+			//var bit:Bitmap = new Bitmap(bmd);
+			//addChild(bit);
+			
 			for (var i:int = 0; i < bmd.width; i++) {
 				for (var j:int = 0; j < bmd.height; j++) {
 					if (bmd.getPixel(i,j) != 0xFFFFFF) {

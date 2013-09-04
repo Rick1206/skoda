@@ -52,7 +52,6 @@
 		public var uploadPhotoMovie: UploadPhotoPopup = new UploadPhotoPopup();
 		public var clipartMovie: ClipartPanel = new ClipartPanel();
 		
-		
 		//public var clearToolMovie:ClearButton = new ClearButton();
 		//public 
 		public var currentTool: * = null;
@@ -73,10 +72,7 @@
 			buttonGroupMovie.addEventListener(ToggleButtonBase.TOGGLE_BUTTON_CLICK, toggleButtonClickHandler);
 			
 			
-			
-			
 			typeToolMovie.addEventListener(FontTypeEvent.CHANGE, fontTypeChangeHandler);
-			
 			
 			
 			brushToolMovie.addEventListener(BrushEvent.CHANGE, brushChangeHandler);
@@ -179,7 +175,13 @@
 			
 			addChild(typeToolMovie);
 			
+			uploadPhotoMovie.x = 158;
+			uploadPhotoMovie.y = -122.85;
 			addChild(uploadPhotoMovie);
+			
+			
+			clipartMovie.x = -345.7;
+			clipartMovie.y = 34.3;
 			addChild(clipartMovie);
 			addChild(shapesMenuMovie);
 			
