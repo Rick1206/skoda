@@ -2,6 +2,7 @@ package com.ctp.view.components {
 	
 	import com.adobe.images.JPGEncoder;
 	import flash.display.Bitmap;
+	import flash.display.MovieClip;
 	//class
 	import com.ctp.model.AppData;
 	//Brush type
@@ -48,7 +49,7 @@ package com.ctp.view.components {
 	import com.greensock.loading.display.*;
 	
 	import code.tool.RollTool;
-	
+	import code.events.QuesEvent;
 	//import com.ctp.view.events.UploadPhotoEvent;
 	
 	/**
@@ -82,6 +83,7 @@ package com.ctp.view.components {
 		
 		private var intPercentage:int;
 		
+		private var mcChoSwf:MovieClip;
 		
 		public function DrawingBoard() {
 			TweenPlugin.activate([AutoAlphaPlugin]);
@@ -145,13 +147,13 @@ package com.ctp.view.components {
 			//-- loading --//
 			
 			var StrBgUrl:String = AppData.parameters.bgImage ? AppData.parameters.bgImage : "images/bg.jpg";
+			
 			//var CloudBgUrl:String = AppData.parameters.cloudbgImage ? AppData.parameters.cloudbgImage : "images/cloud.png";
 			if (StrBgUrl) {
 				var queue:LoaderMax = new LoaderMax({name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler});
 					queue.append( new ImageLoader(StrBgUrl, { name:"bg", container:this, alpha:0 } ) );
 					//queue.append( new ImageLoader(CloudBgUrl, { name:"cloudbg", container:this, alpha:0 } ) );
-					
-					queue.append( new SWFLoader("images/cloud.swf", {name:"cloudbg",container:this,alpha:0}) );
+					queue.append( new SWFLoader("cloud.swf", {name:"cloud",container:this,alpha:0}) );
 				queue.load();
 			}
 			
@@ -195,6 +197,22 @@ package com.ctp.view.components {
 			RollTool.setRoll(btnTalent);
 			RollTool.setRoll(btnGallery);
 			
+			btnTalent.addEventListener(MouseEvent.CLICK, onShowChooseHandler);
+			btnInspire.addEventListener(MouseEvent.CLICK, onShowChooseHandler);
+		}
+		
+		private function onShowChooseHandler(e:MouseEvent):void 
+		{
+			switch(e.currentTarget.name) {
+				case "btnInspire":
+					TweenMax.to(ChooseMc, 0.5, { autoAlpha:1 } );
+					mcChoSwf.show("inspire");
+					break;
+				case "btnTalent":
+					TweenMax.to(ChooseMc, 0.5, { autoAlpha:1 } );
+					mcChoSwf.show("talent");
+					break;
+			}
 		}
 		
 		private function errorHandler(event:LoaderEvent):void {
@@ -210,13 +228,21 @@ package com.ctp.view.components {
 			var image:ContentDisplay = LoaderMax.getContent("bg");
 				bgFrame.addChild(image);
 			
-			var cloudImage:ContentDisplay = LoaderMax.getContent("cloudbg");
-				cloudImage.x = -547.5;
-				cloudImage.y = -513;
-				ChooseMc.addChild(cloudImage);
+			var cloudSwf:ContentDisplay = LoaderMax.getContent("cloud");
+				mcChoSwf = cloudSwf.rawContent as MovieClip;	
+				mcChoSwf.x = -547.5;
+				mcChoSwf.y = -513;
+				ChooseMc.addChild(mcChoSwf);
+				
+				mcChoSwf.addEventListener(QuesEvent.UPLOAD, onUploadUserInfoHanlder);
 				
 				TweenMax.to(image, 0.5, { alpha:1 } );
-				TweenMax.to(cloudImage, 0.5, { alpha:1 } );
+				TweenMax.to(mcChoSwf, 0.5, { alpha:1 } );
+		}
+		
+		private function onUploadUserInfoHanlder(e:QuesEvent):void 
+		{
+			TweenMax.to(ChooseMc, 0.5, { autoAlpha:0 } );
 		}
 		
 		
