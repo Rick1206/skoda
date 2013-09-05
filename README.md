@@ -1,4 +1,0 @@
-skoda
-=====
-
-skoda
