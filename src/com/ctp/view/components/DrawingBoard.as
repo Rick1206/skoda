@@ -180,7 +180,7 @@ package com.ctp.view.components {
 			//stage.setChildIndex(toolBarMovie, 2);
 			toolFrame.addChild(toolBarMovie);
 			
-			trace("init");
+			//trace("init");
 			//addChild(confirmMovie);
 			//trace(this.stage.);
 			
@@ -400,7 +400,7 @@ package com.ctp.view.components {
 		}
 		
 		private function stageClickHandler(e:MouseEvent):void {
-			trace(3);
+			//trace(3);
 			//if (errorMc.visible) {
 				//errorMc.visible = false;
 			//}

@@ -36,8 +36,13 @@
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			inspireMc.visible = false;
-			inspireMc.alpha = 0;
+			//inspireMc.visible = false;
+			//inspireMc.alpha = 0;
+			
+			
+			talentMc.visible = false;
+			talentMc.alpha = 0;
+			
 			
 			btnTArr = [talentMc.c1, talentMc.c2, talentMc.c3];
 			
@@ -192,8 +197,8 @@
 			else
 			{
 				
-				TweenMax.to(talentMc, .3, {autoAlpha: 0});
-				TweenMax.to(inspireMc, .3, {autoAlpha: 1});
+				TweenMax.to(talentMc, .3, {autoAlpha: 1});
+				TweenMax.to(inspireMc, .3, {autoAlpha: 0});
 				
 				boolEnable = true;
 			}

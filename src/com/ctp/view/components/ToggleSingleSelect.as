@@ -13,7 +13,7 @@ package com.ctp.view.components {
 		public var defaultButton: ToggleButtonBase;
 		
 		public function ToggleSingleSelect() {
-			
+			super("x");
 		}
 		
 		override protected function childClickHandler(e:MouseEvent):void {

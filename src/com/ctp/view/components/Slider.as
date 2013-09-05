@@ -3,7 +3,7 @@ package com.ctp.view.components {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
-	
+	import code.tool.RollTool;
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -17,11 +17,16 @@ package com.ctp.view.components {
 		private var sliderBounds:Rectangle;
 		
 		public function Slider() {
-			sliderBounds = new Rectangle(-82, handleMovie.y, 160);
+			sliderBounds = new Rectangle(-82, handleMovie.y, 140);
 			
-			handleMovie.buttonMode = true;
+			//handleMovie.buttonMode = true;
 			handleMovie.tabEnabled = false;
+			
 			handleMovie.alpha = 0;
+			
+			RollTool.setRoll(handleMovie);
+			
+			RollTool.setRoll(sliderMovie);
 			
 			handleMovie.addEventListener(MouseEvent.MOUSE_DOWN, handleMovieMouseDownHandler);
 		}

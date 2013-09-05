@@ -15,12 +15,18 @@ package com.ctp.view.components {
 		public var isShowing: Boolean = false;
 		public var stageClicked: Boolean = false;
 		
-		public function ToggleMultiButton() {
+		public function ToggleMultiButton(str:String = "y") {
+			//trace(str);
 			var arr: Array = [];
 			for (var i:int = 0; i < numChildren; i++) {
 				arr.push(getChildAt(i));
 			}
-			arr.sortOn("y", Array.NUMERIC | Array.CASEINSENSITIVE);
+			if (str == "x") {
+				arr.sortOn(str,18);
+			}else {
+				arr.sortOn(str, Array.NUMERIC | Array.CASEINSENSITIVE);
+			}
+			
 			for (var j:int = 0; j < arr.length; j++) {
 				arr[j].visible = (j == arr.length - 1);
 				arr[j].toggled = !arr[j].visible;
