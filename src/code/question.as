@@ -43,8 +43,8 @@
 			
 			for (var i:int = 0; i < btnTArr.length; i++)
 			{
-				btnTArr[i].addEventListener(MouseEvent.ROLL_OVER, onRollHandle);
-				btnTArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandle);
+				btnTArr[i].addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+				btnTArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 				btnTArr[i].addEventListener(MouseEvent.CLICK, onClickHandler);
 				
 				RollTool.setRoll(btnTArr[i]);
@@ -123,7 +123,7 @@
 						TweenMax.to(btnTArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 1}});
 						TweenMax.to(btnTArr[i].content, .3, { colorTransform: { tint: 0xffffff, tintAmount: 1 }} );
 						
-						btnTArr[i].removeEventListener(MouseEvent.ROLL_OUT, onRollHandle);
+						btnTArr[i].removeEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnTArr[i].btn.gotoAndStop(2);
 					}
 					else
@@ -131,7 +131,7 @@
 						TweenMax.to(btnTArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 0}});
 						TweenMax.to(btnTArr[i].content, .3, { colorTransform: { tint: 0xffffff, tintAmount:0 }} );
 						
-						btnTArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandle);
+						btnTArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnTArr[i].btn.gotoAndStop(1);
 					}
 				}
@@ -200,7 +200,7 @@
 		
 		}
 		
-		public static function onRollHandle(e:MouseEvent):void
+		private function onRollHandler(e:MouseEvent):void
 		{
 			var mc:MovieClip = e.currentTarget as MovieClip;
 			switch (e.type)

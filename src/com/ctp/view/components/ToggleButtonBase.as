@@ -2,7 +2,7 @@ package com.ctp.view.components {
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
+	import code.tool.RollTool;
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -18,9 +18,9 @@ package com.ctp.view.components {
 		}
 		
 		protected function init():void {
-			buttonMode = true;
+			//buttonMode = true;
 			tabEnabled = false;
-			
+			RollTool.setRoll(this);
 			gotoAndStop("on");
 			
 			addEventListener(MouseEvent.CLICK, clickHandler);

@@ -3,6 +3,7 @@ package com.ctp.view.components {
 	import com.adobe.images.JPGEncoder;
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
+	import flash.net.URLRequest;
 	//class
 	import com.ctp.model.AppData;
 	//Brush type
@@ -40,6 +41,7 @@ package com.ctp.view.components {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
+	import flash.net.navigateToURL;
 	
 	import com.ctp.view.components.submitinspire.UploadInspirePhoto;
 	
@@ -189,6 +191,7 @@ package com.ctp.view.components {
 			
 			
 			stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
+			
 			//add by rick
 			btnSubmission.addEventListener(MouseEvent.CLICK, getImage);
 			
@@ -199,6 +202,17 @@ package com.ctp.view.components {
 			
 			btnTalent.addEventListener(MouseEvent.CLICK, onShowChooseHandler);
 			btnInspire.addEventListener(MouseEvent.CLICK, onShowChooseHandler);
+			btnGallery.addEventListener(MouseEvent.CLICK, onGotoGalleryHandler);
+			
+			//errorMc.visible = false;
+			//-- debug mode --//
+			ChooseMc.visible = false;
+			errorMc.visible = false;
+		}
+		
+		private function onGotoGalleryHandler(e:MouseEvent):void 
+		{
+			navigateToURL(new URLRequest("htpp://www.baidu.com"), "_blank");
 		}
 		
 		private function onShowChooseHandler(e:MouseEvent):void 
@@ -333,15 +347,13 @@ package com.ctp.view.components {
 			
 			stageClickHandler(null);
 			
-			
-			
-			
-			
 			if (strDrawName == "") {
 				//ConfirmBox.instance.show("Image");
-				
-				errorMc.txtErrorMsg.text = "请输入姓名"; 
-				
+				errorMc.gotoAndStop(1);
+				//"你还没选择挑战题目哦，快挑选一个吧！"
+				//"你还没选择达人类型哦，这就选一个吧！"
+				//"你的主意还没有名字哦，快起个名字吧！"
+				//"你还没描述你的主意哦，说两句吧！"
 				return "";
 			}
 			
@@ -387,6 +399,16 @@ package com.ctp.view.components {
 		}
 		
 		private function stageClickHandler(e:MouseEvent):void {
+			trace(3);
+			//if (errorMc.visible) {
+				//errorMc.visible = false;
+			//}
+			
+			if (!userProfileMc.hitTestPoint(stage.mouseX, stage.mouseY)) {
+				userProfileMc.close();
+			}
+			
+			
 			if (ConfirmBox.instance.visible || brushMovie.painEnabled) {
 				return;
 			}
