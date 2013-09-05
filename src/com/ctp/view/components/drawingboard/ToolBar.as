@@ -17,7 +17,7 @@
 	import com.ctp.view.events.ClipartEvent;
 	import com.ctp.view.events.FontTypeEvent;
 	import com.ctp.view.events.ManagaEvent;
-	import com.ctp.view.events.ShapeEvent;
+	//import com.ctp.view.events.ShapeEvent;
 	import com.ctp.view.events.UploadPhotoEvent;
 	import com.greensock.TweenLite;
 	//call js interface
@@ -48,12 +48,12 @@
 		
 		//public var paintBucketToolMovie: PaintBucketTool = new PaintBucketTool();
 		
-		public var shapesMenuMovie: ShapesMenu = new ShapesMenu();
+		//public var shapesMenuMovie: ShapesMenu = new ShapesMenu();
 		public var uploadPhotoMovie: UploadPhotoPopup = new UploadPhotoPopup();
 		public var clipartMovie: ClipartPanel = new ClipartPanel();
 		
 		//public var clearToolMovie:ClearButton = new ClearButton();
-		//public 
+		
 		public var currentTool: * = null;
 		
 		public var fontTypeData: FontTypeInfo = new FontTypeInfo();
@@ -81,14 +81,10 @@
 			
 			eraserToolMovie.addEventListener(BrushEvent.CHANGE, eraserClickHandler);
 			
-			//paintBucketToolMovie.addEventListener(BrushEvent.CHANGE, paintChangeHandler);
 			
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE, addClipartImageHandler);
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE_AT_CENTER, addClipartImageHandler);
 			
-			//shapesMenuMovie.addEventListener(ShapeEvent.ADD_SHAPE, addShapeHandler);
-			//shapesMenuMovie.addEventListener(ShapeEvent.ADD_SHAPE_AT_CENTER, addShapeHandler);
-			//shapesMenuMovie.addEventListener(ShapeEvent.CHANGE_COLOR, changeColorShapeHandler);
 			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			
@@ -98,22 +94,22 @@
 			//penTool[buttonGroupMovie.penMovie.paintMovie] = paintBucketToolMovie;
 		}
 		
-		private function changeColorShapeHandler(e:ShapeEvent):void {
-			dispatchEvent(e);
-		}
-		
-		private function addShapeHandler(e:ShapeEvent):void {
-			dispatchEvent(e);
-		}
+		//private function changeColorShapeHandler(e:ShapeEvent):void {
+			//dispatchEvent(e);
+		//}
+		//
+		//private function addShapeHandler(e:ShapeEvent):void {
+			//dispatchEvent(e);
+		//}
 
 		private function uploadPhotoCompleteHandler(e:UploadPhotoEvent):void {
 			closeSubTool();
 			dispatchEvent(e);
 		}
 		
-		public function getShape(): MovieClip {
-			return shapesMenuMovie.getShape();
-		}
+		//public function getShape(): MovieClip {
+			//return shapesMenuMovie.getShape();
+		//}
 		
 		public function getTextBounds(): Rectangle {
 			return typeToolMovie.selectedBounds;
@@ -183,7 +179,7 @@
 			clipartMovie.x = -345.7;
 			clipartMovie.y = 34.3;
 			addChild(clipartMovie);
-			addChild(shapesMenuMovie);
+			//addChild(shapesMenuMovie);
 			
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, stageMouseDownHandler);
 		}
@@ -205,7 +201,7 @@
 				return;
 			}
 			TweenLite.to(currentTool, 0.2, { autoAlpha: 0, overwrite: true } );
-			if (currentTool == clipartMovie || currentTool == uploadPhotoMovie || currentTool == shapesMenuMovie) {
+			if (currentTool == clipartMovie || currentTool == uploadPhotoMovie ) {
 				buttonGroupMovie.reset();
 			}
 			currentTool = null;
@@ -222,9 +218,9 @@
 			return false;
 		}
 		
-		public function get shapesMenuOpening(): Boolean {
-			return currentTool == shapesMenuMovie;
-		}
+		//public function get shapesMenuOpening(): Boolean {
+			//return currentTool == shapesMenuMovie;
+		//}
 		
 		public function get manageToolSelected(): Boolean {
 			return buttonGroupMovie.toggledButton == buttonGroupMovie.manageMovie;
@@ -237,9 +233,9 @@
 			}
 			var needToReturn: Boolean = false;
 			switch (buttonGroupMovie.toggledButton) {
-				case buttonGroupMovie.shapeMovie:
-					selectedTool = shapesMenuMovie;
-					break;
+				//case buttonGroupMovie.shapeMovie:
+					//selectedTool = shapesMenuMovie;
+					//break;
 				case buttonGroupMovie.eraserMovie:
 					selectedTool = eraserToolMovie;
 					break;

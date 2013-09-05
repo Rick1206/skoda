@@ -1,67 +1,121 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW" xml:lang="zh-TW">
-	<head>
-		<title>draw</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<script type="text/javascript" src="swfobject.js"></script>
-		<style type="text/css" media="screen">
-			#wrap{
-				text-align:center;
-				margin: 0 auto;
-				min-width:980px;
-				height:1200px;
-				width:100%;
-			}
-			
-		</style>
-		<script type="text/javascript">
-			<!-- Adobe 建議開發人員使用 SWFObject2 進行 Flash Player 的偵測。 -->
-			<!-- 如需詳細資訊，請參閱 Google code (http://code.google.com/p/swfobject/) 中的 SWFObject 頁面。 -->
-			<!-- 亦可從 Adobe Developer Connection 之下的 "偵測 Flash Player 版本，並以 SWFObject 2 內嵌 SWF 檔案" 取得資訊 -->
-			<!-- 設定所需 Flash Player 版本的最小值，或若不偵測版本的話，可設定為 0 -->
-			var swfVersionStr = "10.0.3";
-			<!-- xiSwfUrlStr 可用來定義快捷安裝程式 SWF。 -->
-			var xiSwfUrlStr = "";
-			var flashvars = {
-				debug: "true",
-				language: "cn",
-				categoryUrl: "xml/clipart.xml",
-				bgImage: "images/bg.jpg",
-				url:"draw.swf"
-			};
-			var params = {};
-			params.quality = "high";
-			params.bgcolor = "#ffffff";
-			params.play = "true";
-			params.loop = "true";
-			params.wmode = "window";
-			params.scale = "showall";
-			params.menu = "true";
-			params.devicefont = "false";
-			params.salign = "";
-			params.allowscriptaccess = "sameDomain";
-			var attributes = {};
-			attributes.id = "draw";
-			attributes.name = "draw";
-			attributes.align = "middle";
-			swfobject.createCSS("html", "height:100%; background-color: #ffffff;");
-			swfobject.createCSS("body", "margin:0; padding:0; height:100%; min-height:1200px;");
-			swfobject.embedSWF(
-				"loading.swf", "flashContent",
-				"100%", "100%",
-				swfVersionStr, xiSwfUrlStr,
-				flashvars, params, attributes);
-		</script>
-	</head>
-	<body>
-		<div id="wrap">
-		<!-- 若有足夠的 JavaScript 和 Flash 外掛程式支援可用，針對 Flash內容，SWFObject 的動態嵌入方法會取代替用的 HTML 內容。 -->
-		<div id="flashContent">
-			<a href="http://www.adobe.com/go/getflash">
-				<img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="取得 Adobe Flash 播放程式" />
-			</a>
-			<p>此頁面需要 Flash Player 9.0.124 版或更新版本。</p>
-		</div>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+<head>
+  <title>Skoda-html</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link rel="stylesheet" href="asserts/css/lfportal.css">
+  <link rel="stylesheet" href="asserts/css/style.css">
+  <!--[if lt IE 9]><script type="text/javascript" src="asserts/js/lib/html5.js"></script><![endif]-->
+  <script type="text/javascript" src="asserts/js/lib/jquery.min.js"></script>
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<article class="all">
+<header>
+  <div class="wrap">
+    <div class="fn-left"><span class="text-sc"></span></div>
+    <div class="logo-skoda"><a href="#"></a></div>
+  </div>
+</header>
+<section id="page" class="">
+  <div class="hd" style="position: absolute;top: 70px;width: 100%;z-index: 10;">
+<nav class="nav-bar">
+  <div class="logo-clever"><a href="./index.html"></a></div>
+  <div class="nav">
+    <ul class="nav-list">
+      <li><a href="./idea.html"><span class="font-nav-a1" rel="达人招聘"></span></a></li>
+      <li><a href=""><span class="font-nav-a2" rel="达人榜"></span></a></li>
+      <li><a href=""><span class="font-nav-a3" rel="活动详情"></span></a></li>
+      <li><a href=""><span class="font-nav-a4" rel="新鲜资讯"></span></a></li>
+      
+      <li><a href=""><span class="font-nav-a5" rel="登录"></span></a></li>
+      
+
+    </ul>
+  </div>
+</nav></div>
+  <div class="bd">
+    <div class="" style="height: 1200px;">
+      <!-- 若有足夠的 JavaScript 和 Flash 外掛程式支援可用，針對 Flash內容，SWFObject 的動態嵌入方法會取代替用的 HTML 內容。 -->
+      <div id="flashContent">
+        <a href="http://www.adobe.com/go/getflash">
+          <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="取得 Adobe Flash 播放程式" />
+        </a>
+        <p>此頁面需要 Flash Player 9.0.124 版或更新版本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-corner"></div>
+  <div class="wrap">
+    <div class="clearfix">
+      <div class="follow"><wb:follow-button uid="2954472480" type="red_2" width="136" height="24" ></wb:follow-button></div>
+      <div class="douban">
+        <a href="http://site.douban.com/191862/" target="_blank"><img src="asserts/images/douban.jpg" alt="推荐到豆瓣" /></a>
+      </div>
+      <div class="share">
+        <a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
+<div class="share-bar">
+  <a href="#" target="_blank"><span class="icon-tsina"></span></a>
+  <a href="#" target="_blank"><span class="icon-kaixin001"></span></a>
+  <a href="#" target="_blank"><span class="icon-douban"></span></a>
+  <a href="#" target="_blank"><span class="icon-renren"></span></a>
+  <a href="#" target="_blank"><span class="icon-tqq"></span></a>
+</div>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>2013 版权 | 沪ICP备08000392号-2</span> |
+      <a href="#" target="_blank">服务条款</a> |
+      <a href="#" target="_blank">常见问题</a> |
+      <a href="Mailto:info@congmingzhuyi.com">info@congmingzhuyi.com</a>
+    </div>
+    <div class="logo2"></div>
+  </div>
+</footer>
+</article>
+<script type="text/javascript" src="asserts/js/swfobject.js"></script>
+<script type="text/javascript">
+//  <!-- Adobe 建議開發人員使用 SWFObject2 進行 Flash Player 的偵測。 -->
+//  <!-- 如需詳細資訊，請參閱 Google code (http://code.google.com/p/swfobject/) 中的 SWFObject 頁面。 -->
+//  <!-- 亦可從 Adobe Developer Connection 之下的 "偵測 Flash Player 版本，並以 SWFObject 2 內嵌 SWF 檔案" 取得資訊 -->
+//  <!-- 設定所需 Flash Player 版本的最小值，或若不偵測版本的話，可設定為 0 -->
+  var swfVersionStr = "10.0.3";
+//  <!-- xiSwfUrlStr 可用來定義快捷安裝程式 SWF。 -->
+  var xiSwfUrlStr = "";
+  var flashvars = {
+    debug: "true",
+    language: "cn",
+    categoryUrl: "asserts/xml/clipart.xml",
+    bgImage: "asserts/images/bg.jpg",
+    url:"asserts/swf/draw.swf",
+	cloudSwf:"asserts/swf/cloud.swf"
+  };
+  var params = {};
+  params.quality = "high";
+  params.bgcolor = "#ffffff";
+  params.play = "true";
+  params.loop = "true";
+  params.wmode = "window";
+  params.scale = "showall";
+  params.menu = "true";
+  params.devicefont = "false";
+  params.salign = "";
+  params.allowscriptaccess = "sameDomain";
+  var attributes = {};
+  attributes.id = "draw";
+  attributes.name = "draw";
+  attributes.align = "middle";
+  swfobject.embedSWF(
+      "asserts/swf/loading.swf", "flashContent",
+      "100%", "100%",
+      swfVersionStr, xiSwfUrlStr,
+      flashvars, params, attributes);
+</script>
+<script type="text/javascript" src="asserts/js/skoda.js"></script>
+</body>
 </html>

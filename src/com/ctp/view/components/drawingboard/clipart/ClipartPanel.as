@@ -65,7 +65,7 @@ package com.ctp.view.components.drawingboard.clipart {
 			loader.addEventListener(Event.COMPLETE, loadXMLCompleteHandler);
 			loader.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
 			//trace("xml :" + AppData.parameters.categoryUrl);
-			loader.load(new URLRequest(AppData.parameters.categoryUrl ? AppData.parameters.categoryUrl : "xml/clipart.xml"));
+			loader.load(new URLRequest(AppData.parameters.categoryUrl ? AppData.parameters.categoryUrl : "../xml/clipart.xml"));
 		}
 		
 		private function loadXMLCompleteHandler(e:Event):void {
@@ -138,8 +138,10 @@ package com.ctp.view.components.drawingboard.clipart {
 			if (distanceX >= 3 && distanceY >= 3) {
 				isDragging = true;
 				stage.removeEventListener(MouseEvent.MOUSE_MOVE, mouseMoveHandler);
-				dragItem.x = stage.mouseX - (dragItem.width / 2);
-				dragItem.y = stage.mouseY - (dragItem.height / 2);
+				
+				dragItem.x = this.mouseX - (dragItem.width / 2);
+				dragItem.y = this.mouseY - (dragItem.height / 2);
+				
 				addChild(dragItem);
 				dragItem.startDrag();
 			}

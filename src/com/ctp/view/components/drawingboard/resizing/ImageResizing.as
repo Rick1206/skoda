@@ -50,10 +50,13 @@ package com.ctp.view.components.drawingboard.resizing {
 				bm.width = defaultWidth;
 				bm.scaleY = bm.scaleX;
 			}
+			
 			bm.x = -bm.width / 2;
 			bm.y = -bm.height / 2;
+			
 			contentMovie.loadingMovie.stop();
 			contentMovie.removeChild(contentMovie.loadingMovie);
+			
 			contentMovie.addChild(bm);
 			renderTransformTool();
 			isShowingTool = true;

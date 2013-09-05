@@ -16,7 +16,7 @@ package com.ctp.view.components {
 	//import com.ctp.view.components.drawingboard.PopupWindow;
 	import com.ctp.view.components.drawingboard.resizing.ImageResizing;
 	import com.ctp.view.components.drawingboard.resizing.ObjectResizing;
-	import com.ctp.view.components.drawingboard.resizing.ShapeResizing;
+	//import com.ctp.view.components.drawingboard.resizing.ShapeResizing;
 	import com.ctp.view.components.drawingboard.resizing.TextResizing;
 	import com.ctp.view.components.drawingboard.ToolBar;
 	import com.ctp.view.components.drawingboard.VersionUI;
@@ -26,7 +26,7 @@ package com.ctp.view.components {
 	import com.ctp.view.events.FontTypeEvent;
 	import com.ctp.view.events.ManagaEvent;
 	import com.ctp.view.events.ObjectResizingEvent;
-	import com.ctp.view.events.ShapeEvent;
+	//import com.ctp.view.events.ShapeEvent;
 	import com.ctp.view.events.UploadPhotoEvent;
 	
 	import com.dynamicflash.util.Base64;
@@ -148,14 +148,15 @@ package com.ctp.view.components {
 			
 			//-- loading --//
 			
-			var StrBgUrl:String = AppData.parameters.bgImage ? AppData.parameters.bgImage : "images/bg.jpg";
+			var StrBgUrl:String = AppData.parameters.bgImage ? AppData.parameters.bgImage : "../images/bg.jpg";
 			
-			//var CloudBgUrl:String = AppData.parameters.cloudbgImage ? AppData.parameters.cloudbgImage : "images/cloud.png";
+			var CloudSwf:String = AppData.parameters.cloudSwf ? AppData.parameters.cloudSwf : "cloud.swf";
+			
 			if (StrBgUrl) {
 				var queue:LoaderMax = new LoaderMax({name:"mainQueue", onProgress:progressHandler, onComplete:completeHandler, onError:errorHandler});
 					queue.append( new ImageLoader(StrBgUrl, { name:"bg", container:this, alpha:0 } ) );
 					//queue.append( new ImageLoader(CloudBgUrl, { name:"cloudbg", container:this, alpha:0 } ) );
-					queue.append( new SWFLoader("cloud.swf", {name:"cloud",container:this,alpha:0}) );
+					queue.append( new SWFLoader(CloudSwf, {name:"cloud",container:this,alpha:0}) );
 				queue.load();
 			}
 			
@@ -206,8 +207,8 @@ package com.ctp.view.components {
 			
 			//errorMc.visible = false;
 			//-- debug mode --//
-			ChooseMc.visible = false;
-			errorMc.visible = false;
+			//ChooseMc.visible = false;
+			//errorMc.visible = false;
 		}
 		
 		private function onGotoGalleryHandler(e:MouseEvent):void 
@@ -412,9 +413,11 @@ package com.ctp.view.components {
 			if (ConfirmBox.instance.visible || brushMovie.painEnabled) {
 				return;
 			}
-			if (toolBarMovie.shapesMenuOpening && selectedObject && selectedObject.type == ObjectType.SHAPE) {
-				return;
-			}
+			
+			//if (toolBarMovie.shapesMenuOpening && selectedObject && selectedObject.type == ObjectType.SHAPE) {
+				//return;
+			//}
+			
 			//判断 是否 触碰
 			if (e == null || toolBarMovie.buttonGroupMovie.hitTestPoint(stage.mouseX, stage.mouseY)) {
 				resetSelectStates();
@@ -477,22 +480,24 @@ package com.ctp.view.components {
 			
 			if (type == ObjectType.CLIPART) {
 				if (isCenter) {
-					imageResizing.x = stage.stageWidth / 2;
-					imageResizing.y = stage.stageHeight / 2;
+					imageResizing.x = ObjectResizing.MAX_WIDTH / 2;
+					imageResizing.y = ObjectResizing.MAX_HEIGHT / 2;
 				} else {
-					imageResizing.x = stage.mouseX;
-					imageResizing.y = stage.mouseY;
+					imageResizing.x = this.mouseX - boardMovie.x;
+					imageResizing.y = this.mouseY - boardMovie.y;
 				}
 			
 			} else {
-				imageResizing.defaultWidth = stage.stageWidth;
-				imageResizing.x = stage.stageWidth / 2;
-				imageResizing.y = stage.stageHeight / 2;
+				imageResizing.defaultWidth = 660;
+				
+				imageResizing.x = ObjectResizing.MAX_WIDTH/2;
+				imageResizing.y = ObjectResizing.MAX_HEIGHT/2;
 			}
-			
-			imageResizing.load(imageUrl);
+
+			imageResizing.load(imageUrl);			
 			initObjectResizing(imageResizing);
 			selectedObject = imageResizing;
+			
 		}
 		
 		private function initObjectResizing(objResizing: ObjectResizing): void {
@@ -504,7 +509,9 @@ package com.ctp.view.components {
 			//objResizing.addEventListener(MouseEvent.RIGHT_CLICK, objectResizingRightClickHandler, false, 0, true);
 			
 			contentMovie.addChild(objResizing);
+			
 			resetSelectStates();
+			
 			objResizing.showTool();
 		}
 		
