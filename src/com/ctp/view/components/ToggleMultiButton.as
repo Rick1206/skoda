@@ -53,7 +53,7 @@ package com.ctp.view.components {
 			dispatchEvent(new Event(ToggleButtonBase.TOGGLE_BUTTON_CLICK));
 		}
 		
-		override protected function init():void {
+		override protected function init(e:Event=null):void {
 			addEventListener(MouseEvent.CLICK, clickHandler);
 		}
 		

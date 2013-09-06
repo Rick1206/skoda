@@ -9,6 +9,8 @@ package com.ctp.view.events {
 		
 		public static const COMPLETE: String = "uploadPhotoComplete";
 		
+		private var _ptype:String;
+		
 		public function UploadPhotoEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false) { 
 			super(type, bubbles, cancelable);
 			
@@ -20,6 +22,16 @@ package com.ctp.view.events {
 		
 		public override function toString():String { 
 			return formatToString("UploadPhotoEvent", "type", "bubbles", "cancelable", "eventPhase"); 
+		}
+		
+		public function get ptype():String 
+		{
+			return _ptype;
+		}
+		
+		public function set ptype(value:String):void 
+		{
+			_ptype = value;
 		}
 		
 	}

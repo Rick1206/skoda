@@ -208,7 +208,10 @@ package com.ctp.view.components {
 			//errorMc.visible = false;
 			//-- debug mode --//
 			//ChooseMc.visible = false;
-			//errorMc.visible = false;
+			errorMc.visible = false;
+			errorMc.alpha = 0;
+			
+			//userProfileMc.close();
 		}
 		
 		private function onGotoGalleryHandler(e:MouseEvent):void 
@@ -348,14 +351,42 @@ package com.ctp.view.components {
 			
 			stageClickHandler(null);
 			
+			strDrawName = txtDrawName.text;
+			strDrawDesc = txtDrawDesc.text;
+			
+			//"你还没选择挑战题目哦，快挑选一个吧！"
+			//"你还没选择达人类型哦，这就选一个吧！"
+			
+			//"你的主意还没有名字哦，快起个名字吧！"
+			//"你还没描述你的主意哦，说两句吧！"
+			
+			
 			if (strDrawName == "") {
-				//ConfirmBox.instance.show("Image");
-				errorMc.gotoAndStop(1);
-				//"你还没选择挑战题目哦，快挑选一个吧！"
-				//"你还没选择达人类型哦，这就选一个吧！"
-				//"你的主意还没有名字哦，快起个名字吧！"
-				//"你还没描述你的主意哦，说两句吧！"
+				
+				errorMc.gotoAndStop(3);
+				
+				TweenMax.to(errorMc, .3, { autoAlpha:1 , onComplete:function() {
+				
+					TweenMax.to(errorMc, .3, { autoAlpha:0,delay:1.5 } );
+					
+					}} );
+				
+	
 				return "";
+			}
+			
+			if (strDrawDesc == "") {
+				
+				errorMc.gotoAndStop(4);
+				
+				TweenMax.to(errorMc, .3, { autoAlpha:1 , onComplete:function() {
+				
+					TweenMax.to(errorMc, .3, { autoAlpha:0,delay:1.5 } );
+					
+					}} );
+					
+					return "";
+				
 			}
 			
 			
@@ -364,7 +395,11 @@ package com.ctp.view.components {
 			
 			//-- test --//
 			var bit:Bitmap = new Bitmap(bmd);
+			bit.x = -500;
+			bit.y = -500;
+			
 			addChild(bit);
+			
 			
 			for (var i:int = 0; i < bmd.width; i++) {
 				for (var j:int = 0; j < bmd.height; j++) {

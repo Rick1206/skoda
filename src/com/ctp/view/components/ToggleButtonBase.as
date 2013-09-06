@@ -14,16 +14,32 @@ package com.ctp.view.components {
 		protected var _toggled: Boolean = false;
 		
 		public function ToggleButtonBase() {
-			init();
+			if (stage) {
+				
+			}else {
+				addEventListener(Event.ADDED_TO_STAGE, init);
+			}
 		}
 		
-		protected function init():void {
-			//buttonMode = true;
+		protected function init(e:Event=null):void {
 			tabEnabled = false;
 			RollTool.setRoll(this);
 			gotoAndStop("on");
-			
 			addEventListener(MouseEvent.CLICK, clickHandler);
+			addEventListener(MouseEvent.ROLL_OUT, onRollStatusHandler);
+			addEventListener(MouseEvent.ROLL_OVER, onRollStatusHandler);
+		}
+		
+		private function onRollStatusHandler(e:MouseEvent):void 
+		{
+			switch(e.type) {
+				case "rollOut":
+					gotoAndStop("on");
+					break;
+				case "rollOver":
+					gotoAndStop("off");
+					break;
+			}
 		}
 		
 		protected function clickHandler(e:MouseEvent):void {
@@ -38,8 +54,10 @@ package com.ctp.view.components {
 			_toggled = value;
 			if (toggled) {
 				gotoAndStop("off");
+				removeEventListener(MouseEvent.ROLL_OUT, onRollStatusHandler);
 			} else {
 				gotoAndStop("on");
+				addEventListener(MouseEvent.ROLL_OUT, onRollStatusHandler);
 			}
 		}
 		

@@ -23,7 +23,7 @@
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			mainContent.x = stage.stageWidth/2; 
-			mainContent.y = stage.stageHeight / 2;
+			//mainContent.y = stage.stageHeight/2;
 			stage.addEventListener(Event.RESIZE, updateStage);
 		}
 		

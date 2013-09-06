@@ -20,12 +20,13 @@ package com.ctp.view.components.photo
 		
 		public var dotMovie:MovieClip;
 		public var messageMovie:MovieClip;
-		public var browseButton:SimpleButton;
-		public var uploadPhotoButton:SimpleButton;
+		public var browseButton:MovieClip;
+		public var uploadPhotoButton:MovieClip;
 		public var filenameText:TextField;
 		
 		protected var fileRef:FileReference;
 		protected var typeFilter:Array = [];
+		
 		protected var colorTransform:ColorTransform = new ColorTransform();
 		
 		public function UploadPanel()
@@ -50,12 +51,12 @@ package com.ctp.view.components.photo
 			
 			RollTool.setRoll(browseButton);
 			RollTool.setRoll(uploadPhotoButton);
-			
-			RollTool.setRoll(uploadPhotoButton);
+			RollTool.setRoll(closeButton);
 		}
 		
 		private function browseButtonClickHandler(e:MouseEvent):void
 		{
+			e.stopImmediatePropagation();
 			var fileReference:FileReference = new FileReference();
 			fileReference.addEventListener(Event.SELECT, fileRefSelectHandler);
 			fileReference.browse(typeFilter);
@@ -98,3 +99,4 @@ package com.ctp.view.components.photo
 	}
 
 }
+

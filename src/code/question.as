@@ -60,9 +60,10 @@
 			for (i = 0; i < btnIArr.length; i++)
 			{
 				
-				//btnArr[key].addEventListener(MouseEvent.ROLL_OVER, onRollHandle);
-				//btnArr[key].addEventListener(MouseEvent.ROLL_OUT, onRollHandle);
+				btnIArr[i].addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+				btnIArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 				btnIArr[i].addEventListener(MouseEvent.CLICK, onClickHandler);
+				btnIArr[i].content.gotoAndStop(i + 1);
 				
 				RollTool.setRoll(btnIArr[i]);
 				

@@ -49,7 +49,7 @@
 		//public var paintBucketToolMovie: PaintBucketTool = new PaintBucketTool();
 		
 		//public var shapesMenuMovie: ShapesMenu = new ShapesMenu();
-		public var uploadPhotoMovie: UploadPhotoPopup = new UploadPhotoPopup();
+		//public var uploadPhotoMovie: UploadPhotoPopup = new UploadPhotoPopup();
 		public var clipartMovie: ClipartPanel = new ClipartPanel();
 		
 		//public var clearToolMovie:ClearButton = new ClearButton();
@@ -65,26 +65,21 @@
 		
 		public function ToolBar() {
 			
-			uploadPhotoMovie.closeButton.addEventListener(MouseEvent.CLICK, closeSubTool);
-			
-			uploadPhotoMovie.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
+			//uploadPhotoMovie.closeButton.addEventListener(MouseEvent.CLICK, closeSubTool);
+			//uploadPhotoMovie.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
 			
 			buttonGroupMovie.addEventListener(ToggleButtonBase.TOGGLE_BUTTON_CLICK, toggleButtonClickHandler);
-			
-			
+		
 			typeToolMovie.addEventListener(FontTypeEvent.CHANGE, fontTypeChangeHandler);
-			
-			
+				
 			brushToolMovie.addEventListener(BrushEvent.CHANGE, brushChangeHandler);
 			
 			airBrushToolMovie.addEventListener(BrushEvent.CHANGE, airBrushChangeHandler);
 			
 			eraserToolMovie.addEventListener(BrushEvent.CHANGE, eraserClickHandler);
 			
-			
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE, addClipartImageHandler);
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE_AT_CENTER, addClipartImageHandler);
-			
 			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			
@@ -103,8 +98,10 @@
 		//}
 
 		private function uploadPhotoCompleteHandler(e:UploadPhotoEvent):void {
-			closeSubTool();
-			dispatchEvent(e);
+			if (e.ptype == "draw") {
+				closeSubTool();
+				dispatchEvent(e);
+			}
 		}
 		
 		//public function getShape(): MovieClip {
@@ -116,7 +113,8 @@
 		}
 		
 		public function getUploadedPhoto(): Bitmap {
-			return uploadPhotoMovie.uploadedPhoto;
+			//return uploadPhotoMovie.uploadedPhoto;
+			return UploadPhotoPopup.instance.uploadedPhoto;
 		}
 		
 		public function getClipartImageUrl(): String {
@@ -159,8 +157,8 @@
 			addChild(brushToolMovie);
 			addChild(airBrushToolMovie);
 			
-			eraserToolMovie.x  = 222.85;
-			eraserToolMovie.y  = 78.45;
+			eraserToolMovie.x  = 151;
+			eraserToolMovie.y  = 61;
 			addChild(eraserToolMovie);
 			
 			//addChild(paintBucketToolMovie);
@@ -171,10 +169,17 @@
 			
 			addChild(typeToolMovie);
 			
-			uploadPhotoMovie.x = 158;
-			uploadPhotoMovie.y = -122.85;
-			addChild(uploadPhotoMovie);
+			//uploadPhotoMovie.x = 158;
+			//uploadPhotoMovie.y = -122.85;
+			//addChild(uploadPhotoMovie);
 			
+			UploadPhotoPopup.instance.initStage(this);
+			UploadPhotoPopup.instance.type = "draw";
+			UploadPhotoPopup.instance.x = 158;
+			UploadPhotoPopup.instance.y = -122.85;
+			
+			UploadPhotoPopup.instance.closeButton.addEventListener(MouseEvent.CLICK, closeSubTool);
+			UploadPhotoPopup.instance.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
 			
 			clipartMovie.x = -345.7;
 			clipartMovie.y = 34.3;
@@ -197,13 +202,17 @@
 		}
 		
 		public function closeSubTool(e: Event = null): void {
+			
 			if (currentTool == null) {
 				return;
 			}
+			
 			TweenLite.to(currentTool, 0.2, { autoAlpha: 0, overwrite: true } );
-			if (currentTool == clipartMovie || currentTool == uploadPhotoMovie ) {
+			
+			if (currentTool == clipartMovie || currentTool == UploadPhotoPopup.instance ) {
 				buttonGroupMovie.reset();
 			}
+			
 			currentTool = null;
 		}
 		
@@ -248,8 +257,8 @@
 					typeToolMovie.data = fontTypeData;
 					break;
 				case buttonGroupMovie.uploadImageMovie:
-					selectedTool = uploadPhotoMovie;
-					uploadPhotoMovie.reset();
+					selectedTool = UploadPhotoPopup.instance;
+					UploadPhotoPopup.instance.reset();
 					break;
 				case buttonGroupMovie.clipartMovie:
 					selectedTool = clipartMovie;

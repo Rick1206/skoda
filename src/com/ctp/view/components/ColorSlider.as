@@ -19,7 +19,7 @@ package com.ctp.view.components {
 		//public var frameColorMovie: MovieClip;
 		public var fillColorMovie: MovieClip;
 		public var colorMovie: MovieClip;
-		public var handleMovie: MovieClip;
+		//public var handleMovie: MovieClip;
 		public var whiteMovie: MovieClip;
 		public var blackMovie: MovieClip;
 		public var contentMovie: MovieClip;
@@ -32,20 +32,21 @@ package com.ctp.view.components {
 		public function ColorSlider() {
 			colorTransform = new ColorTransform();
 			colorMovie = contentMovie.colorMovie;
-			handleMovie = contentMovie.handleMovie;
+			//handleMovie = contentMovie.handleMovie;
 			whiteMovie = contentMovie.whiteMovie;
 			blackMovie = contentMovie.blackMovie;
 			
 			colorBmpData = new BitmapData(colorMovie.width, colorMovie.height,false);
 			colorBmpData.draw(colorMovie);
+			
 			//var bm:Bitmap = new Bitmap(colorBmpData);
 			//bm.y = 20;
 			//addChild(bm);
 			
-			bounds = new Rectangle(handleMovie.x,0,149,0);
-			handleMovie.buttonMode = true;
-			handleMovie.tabEnabled = false;
-			handleMovie.addEventListener(MouseEvent.MOUSE_DOWN, handleMovieMouseDownHandler);
+			bounds = new Rectangle(0,0,149,0);
+			//handleMovie.buttonMode = true;
+			//handleMovie.tabEnabled = false;
+			//handleMovie.addEventListener(MouseEvent.MOUSE_DOWN, handleMovieMouseDownHandler);
 			
 			RollTool.setRoll(colorMovie);
 			
@@ -78,12 +79,14 @@ package com.ctp.view.components {
 		}
 		
 		private function frameColorMovieClickHandler(e:MouseEvent):void {
+			
 			//frameColorMovie.toggled = !frameColorMovie.toggled;
 			//if (frameColorMovie.toggled) {
 				//TweenLite.to(contentMovie, 0.2, { autoAlpha: 1, scaleY: 1 } );
 			//} else {
 				//TweenLite.to(contentMovie, 0.2, { autoAlpha: 0, height: 1 } );
 			//}
+			
 		}
 		
 		//public function get toggled(): Boolean {
@@ -115,13 +118,13 @@ package com.ctp.view.components {
 		}
 		
 		private function stageColorMouseMoveHandler(e:MouseEvent):void {
-			handleMovie.y = bounds.y + colorMovie.mouseY - 2;
-			if (handleMovie.y < bounds.y) {
-				handleMovie.y = bounds.y;
-			} else if (handleMovie.y > bounds.y + bounds.height) {
-				handleMovie.y = bounds.y + bounds.height;
-			}
-			enterFrameHandler(null);
+			//handleMovie.y = bounds.y + colorMovie.mouseY - 2;
+			//if (handleMovie.y < bounds.y) {
+				//handleMovie.y = bounds.y;
+			//} else if (handleMovie.y > bounds.y + bounds.height) {
+				//handleMovie.y = bounds.y + bounds.height;
+			//}
+			//enterFrameHandler(null);
 		}
 		
 		private function colorMovieClickHandler(e:MouseEvent):void {
@@ -137,14 +140,14 @@ package com.ctp.view.components {
 			}
 		}
 		
-		private function handleMovieMouseDownHandler(e:MouseEvent):void {
-			stage.addEventListener(Event.MOUSE_LEAVE, mouseLeaveHandler);
-			stage.addEventListener(MouseEvent.MOUSE_UP, mouseLeaveHandler);
-			
-			handleMovie.startDrag(false, bounds);
-			addEventListener(Event.ENTER_FRAME, enterFrameHandler);
-		}
-		
+		//private function handleMovieMouseDownHandler(e:MouseEvent):void {
+			//stage.addEventListener(Event.MOUSE_LEAVE, mouseLeaveHandler);
+			//stage.addEventListener(MouseEvent.MOUSE_UP, mouseLeaveHandler);
+			//
+			//handleMovie.startDrag(false, bounds);
+			//addEventListener(Event.ENTER_FRAME, enterFrameHandler);
+		//}
+		//
 		private function enterFrameHandler(e:Event):void {
 			color = colorBmpData.getPixel32(int(this.mouseX - 37.7),int(colorBmpData.height / 2));
 			
@@ -163,7 +166,7 @@ package com.ctp.view.components {
 			stage.removeEventListener(MouseEvent.MOUSE_UP, mouseLeaveHandler);
 			removeEventListener(Event.ENTER_FRAME, enterFrameHandler);
 			
-			handleMovie.stopDrag();
+			//handleMovie.stopDrag();
 		}
 		
 	}

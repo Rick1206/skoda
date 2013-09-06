@@ -8,7 +8,7 @@
 	
 	public class userProfile extends MovieClip
 	{
-		private var strStatus:String = "expand";
+		private var strStatus:String = "close";
 		
 		public function userProfile()
 		{
@@ -26,23 +26,25 @@
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			RollTool.setRoll(boardMc);
-			boardMc.addEventListener(MouseEvent.CLICK, onClickHandler);
-		
+			RollTool.setRoll(content.boardMc);
+			
+			content.boardMc.addEventListener(MouseEvent.CLICK, onClickHandler);
+			
 		}
 		
 		private function onClickHandler(e:MouseEvent):void
 		{
 			if (strStatus == "close")
 			{
-				this.bg.gotoAndPlay("expand");
+				this.content.gotoAndPlay("expand");
+				
 				strStatus = "expand";
 			}
 		}
 		
 		public function open()
 		{
-			this.bg.gotoAndPlay("expand");
+			this.content.gotoAndPlay("expand");
 			strStatus = "expand";
 		}
 		
@@ -50,7 +52,7 @@
 		{
 			if (strStatus == "expand")
 			{
-				this.bg.gotoAndPlay("close");
+				this.content.gotoAndPlay("close");
 				strStatus = "close";
 			}
 		}
