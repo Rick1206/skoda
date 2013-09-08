@@ -1,4 +1,5 @@
-package com.ctp.view.components.drawingboard.resizing {
+package com.ctp.view.components.drawingboard.resizing
+{
 	//object-type
 	import com.ctp.model.constant.ObjectType;
 	//why
@@ -17,51 +18,61 @@ package com.ctp.view.components.drawingboard.resizing {
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	
 	import flash.ui.Keyboard;
+	
+	import code.tool.RollTool;
 	
 	/**
 	 * ...
 	 * @author tram.nguyen
 	 */
 	
-	public class ObjectResizing extends ResizingUI {
+	public class ObjectResizing extends ResizingUI
+	{
 		
-		public static const MAX_WIDTH		: uint = 640;
-		public static const MAX_HEIGHT		: uint = 446;
+		public static const MAX_WIDTH:uint = 640;
+		public static const MAX_HEIGHT:uint = 446;
 		
-		private var _type					: String = "";
+		private var _type:String = "";
 		
-		protected var contentPadding		: uint = 6;
-		protected var minWidth				: uint = 64;
-		protected var minHeight				: uint = 110;
+		protected var contentPadding:uint = 6;
+		protected var minWidth:uint = 64;
+		protected var minHeight:uint = 110;
 		
-		private var mouseDownPosX			: Number;
-		private var mouseDownPosY			: Number;
+		private var mouseDownPosX:Number;
+		private var mouseDownPosY:Number;
 		
-		private var selectedDot				: Sprite;
-		private var selectedRot				: SimpleButton;
-		private var startRotation			: Number;
-		private var oldRotation				: Number;
-		private var keepDot					: Sprite;
-		private var oldX					: Number;
-		private var oldY					: Number;
+		private var selectedDot:Sprite;
+		private var selectedRot:SimpleButton;
+		private var startRotation:Number;
+		private var oldRotation:Number;
+		private var keepDot:Sprite;
+		private var oldX:Number;
+		private var oldY:Number;
 		
-		protected var isShowingTool			: Boolean = false;
-		protected var _color					: uint;
+		protected var isShowingTool:Boolean = false;
+		protected var _color:uint;
 		
-		public function ObjectResizing() {
+		public function ObjectResizing()
+		{
 			borderMovie.mouseEnabled = false;
 			showTool(false);
 			contentMovie.addEventListener(MouseEvent.MOUSE_DOWN, contentMovieMouseDownHandler, false, 0, true);
 			deleteButton.addEventListener(MouseEvent.MOUSE_DOWN, contentMovieMouseDownHandler, false, 0, true);
 			deleteButton.addEventListener(MouseEvent.CLICK, deleteButtonClickHandler, false, 0, true);
+			
+			RollTool.setRoll(deleteButton);
+			
 			var i:int;
-			for (i = 1; i <= 8; i++) {
-				var dotMovie: MovieClip = getChildByName("dot" + i) as MovieClip;
+			for (i = 1; i <= 8; i++)
+			{
+				var dotMovie:MovieClip = getChildByName("dot" + i) as MovieClip;
 				dotMovie.buttonMode = true;
 				dotMovie.addEventListener(MouseEvent.MOUSE_DOWN, dotMouseDownHandler, false, 0, true);
 			}
-			for (i = 1; i <= 4; i++) {
+			for (i = 1; i <= 4; i++)
+			{
 				getChildByName("rot" + i).addEventListener(MouseEvent.MOUSE_DOWN, rotationMouseDownHandler, false, 0, true);
 			}
 			
@@ -69,27 +80,34 @@ package com.ctp.view.components.drawingboard.resizing {
 			addEventListener(Event.REMOVED_FROM_STAGE, removeFromStageHandler);
 		}
 		
-		public function setTextFormat(data: FontTypeInfo): void {
-			
+		public function setTextFormat(data:FontTypeInfo):void
+		{
+		
 		}
 		
-		private function removeFromStageHandler(e:Event):void {
+		private function removeFromStageHandler(e:Event):void
+		{
+			
 			removeEventListener(Event.REMOVED_FROM_STAGE, removeFromStageHandler);
 			stage.removeEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 		}
 		
-		private function addedToStageHandler(e:Event):void {
+		private function addedToStageHandler(e:Event):void
+		{
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 		}
 		
-		private function keyDownHandler(e:KeyboardEvent):void {
-			if (borderMovie.visible && e.keyCode == Keyboard.DELETE) {
+		private function keyDownHandler(e:KeyboardEvent):void
+		{
+			if (borderMovie.visible && e.keyCode == Keyboard.DELETE)
+			{
 				dispatchEvent(new ObjectResizingEvent(ObjectResizingEvent.DELETE));
 			}
 		}
 		
-		private function calculateAngle(stageX:Number, stageY:Number):Number {
+		private function calculateAngle(stageX:Number, stageY:Number):Number
+		{
 			var p:Point = parent.globalToLocal(new Point(stageX, stageY));
 			
 			var p1:Point = this.localToGlobal(new Point(deleteButton.x, deleteButton.y));
@@ -98,29 +116,39 @@ package com.ctp.view.components.drawingboard.resizing {
 			p.x -= p1.x;
 			p.y -= p1.y;
 			
-			if (p.x == 0) {
-				if (p.y > 0) {
+			if (p.x == 0)
+			{
+				if (p.y > 0)
+				{
 					return 90;
-				} else {
+				}
+				else
+				{
 					return 270;
 				}
-			} else {
+			}
+			else
+			{
 				var rad:Number = Math.atan(p.y / p.x);
 				rad = rad * 180 / Math.PI;
 				
-				if ((p.x <= 0 && p.y >= 0) || (p.x <= 0 && p.y <= 0)) {
+				if ((p.x <= 0 && p.y >= 0) || (p.x <= 0 && p.y <= 0))
+				{
 					rad = 180 + rad;
-				} else if (p.x >=0 && p.y <=0) {
+				}
+				else if (p.x >= 0 && p.y <= 0)
+				{
 					rad = 360 + rad;
 				}
 				
 				return rad;
 			}
 			
-			return 0;			
+			return 0;
 		}
 		
-		private function rotationMouseDownHandler(e:MouseEvent):void {
+		private function rotationMouseDownHandler(e:MouseEvent):void
+		{
 			selectedRot = e.currentTarget as SimpleButton;
 			startRotation = calculateAngle(e.stageX, e.stageY);
 			oldRotation = this.rotation;
@@ -129,35 +157,39 @@ package com.ctp.view.components.drawingboard.resizing {
 			stage.addEventListener(Event.MOUSE_LEAVE, stageRotateMouseUpHandler);
 		}
 		
-		private function stageRotateMouseMoveHandler(e:MouseEvent):void {
+		private function stageRotateMouseMoveHandler(e:MouseEvent):void
+		{
 			var newRotation:Number = calculateAngle(e.stageX, e.stageY);
 			this.rotation = oldRotation + (newRotation - startRotation);
 			e.updateAfterEvent();
 		}
 		
-		private function stageRotateMouseUpHandler(e:Event):void {
+		private function stageRotateMouseUpHandler(e:Event):void
+		{
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, stageRotateMouseMoveHandler);
 			stage.removeEventListener(MouseEvent.MOUSE_UP, stageRotateMouseUpHandler);
 			stage.removeEventListener(Event.MOUSE_LEAVE, stageRotateMouseUpHandler);
 		}
 		
-		protected function dotMouseDownHandler(e:MouseEvent):void {
+		protected function dotMouseDownHandler(e:MouseEvent):void
+		{
 			selectedDot = e.currentTarget as Sprite;
-			switch (selectedDot) {
-				case dot1:
-				case dot2:
+			switch (selectedDot)
+			{
+				case dot1: 
+				case dot2: 
 					keepDot = dot5;
 					break;
-				case dot3:
+				case dot3: 
 					keepDot = dot7;
 					break;
-				case dot4:
-				case dot5:
-				case dot6:
+				case dot4: 
+				case dot5: 
+				case dot6: 
 					keepDot = dot1;
 					break;
-				case dot7:
-				case dot8:
+				case dot7: 
+				case dot8: 
 					keepDot = dot3;
 					break;
 			}
@@ -172,54 +204,60 @@ package com.ctp.view.components.drawingboard.resizing {
 			stage.addEventListener(Event.MOUSE_LEAVE, stageScaleMouseUpHandler);
 		}
 		
-		private function stageScaleMouseUpHandler(e:Event):void {
+		private function stageScaleMouseUpHandler(e:Event):void
+		{
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, stageScaleMouseMoveHandler);
 			stage.removeEventListener(MouseEvent.MOUSE_UP, stageScaleMouseUpHandler);
 			stage.removeEventListener(Event.MOUSE_LEAVE, stageScaleMouseUpHandler);
 		}
 		
-		private function stageScaleMouseMoveHandler(e:MouseEvent):void {
-			var newWidth: Number = getWidth();
-			var newHeight: Number = getHeight();
-			var distanceX: Number = 0;
-			var distanceY: Number = 0;
-			switch (selectedDot) {
-				case dot1:
+		private function stageScaleMouseMoveHandler(e:MouseEvent):void
+		{
+			var newWidth:Number = getWidth();
+			var newHeight:Number = getHeight();
+			var distanceX:Number = 0;
+			var distanceY:Number = 0;
+			switch (selectedDot)
+			{
+				case dot1: 
 					distanceX = selectedDot.x - this.mouseX;
 					distanceY = selectedDot.y - this.mouseY;
 					break;
-				case dot2:
+				case dot2: 
 					distanceY = selectedDot.y - this.mouseY;
 					break;
-				case dot3:
+				case dot3: 
 					distanceX = this.mouseX - selectedDot.x;
 					distanceY = selectedDot.y - this.mouseY;
 					break;
-				case dot4:
+				case dot4: 
 					distanceX = this.mouseX - selectedDot.x;
 					break;
-				case dot5:
+				case dot5: 
 					distanceX = this.mouseX - selectedDot.x;
 					distanceY = this.mouseY - selectedDot.y;
 					break;
-				case dot6:
+				case dot6: 
 					distanceY = this.mouseY - selectedDot.y;
 					break;
-				case dot7:
+				case dot7: 
 					distanceX = selectedDot.x - this.mouseX;
 					distanceY = this.mouseY - selectedDot.y;
 					break;
-				case dot8:
+				case dot8: 
 					distanceX = selectedDot.x - this.mouseX;
 					break;
 			}
-			if (distanceX != 0 && newWidth + distanceX < minWidth) {
+			if (distanceX != 0 && newWidth + distanceX < minWidth)
+			{
 				distanceX = 0;
 			}
-			if (distanceY != 0 && newHeight + distanceY < minHeight) {
+			if (distanceY != 0 && newHeight + distanceY < minHeight)
+			{
 				distanceY = 0;
 			}
-			if (distanceX == 0 && distanceY == 0) {
+			if (distanceX == 0 && distanceY == 0)
+			{
 				return;
 			}
 			
@@ -227,7 +265,7 @@ package com.ctp.view.components.drawingboard.resizing {
 			setHeight(newHeight + distanceY);
 			renderTransformTool();
 			
-			var p: Point = new Point(keepDot.x, keepDot.y);
+			var p:Point = new Point(keepDot.x, keepDot.y);
 			p = localToGlobal(p);
 			this.x -= p.x - mouseDownPosX;
 			this.y -= p.y - mouseDownPosY;
@@ -235,10 +273,11 @@ package com.ctp.view.components.drawingboard.resizing {
 			e.updateAfterEvent();
 		}
 		
-		public function renderTransformTool(): void {
+		public function renderTransformTool():void
+		{
 			borderMovie.width = getWidth() + contentPadding;
 			borderMovie.height = getHeight() + contentPadding;
-			var bounds: Rectangle = borderMovie.getBounds(this);
+			var bounds:Rectangle = borderMovie.getBounds(this);
 			dot1.x = bounds.x;
 			dot1.y = bounds.y;
 			dot2.x = int(bounds.x + (bounds.width / 2));
@@ -265,16 +304,21 @@ package com.ctp.view.components.drawingboard.resizing {
 			rot4.y = dot7.y;
 		}
 		
-		protected function deleteButtonClickHandler(e:MouseEvent):void {
-			if (mouseDownPosX == stage.mouseX && mouseDownPosY == stage.mouseY) {
+		protected function deleteButtonClickHandler(e:MouseEvent):void
+		{
+			if (mouseDownPosX == stage.mouseX && mouseDownPosY == stage.mouseY)
+			{
 				dispatchEvent(new ObjectResizingEvent(ObjectResizingEvent.DELETE));
 			}
 		}
 		
-		protected function contentMovieMouseDownHandler(e:MouseEvent):void {
+		protected function contentMovieMouseDownHandler(e:MouseEvent):void
+		{
+			
 			mouseDownPosX = stage.mouseX;
 			mouseDownPosY = stage.mouseY;
-			if (borderMovie.visible == false) {
+			if (borderMovie.visible == false)
+			{
 				stage.addEventListener(MouseEvent.MOUSE_UP, stageObjectMouseUpHandler);
 				return;
 			}
@@ -285,89 +329,135 @@ package com.ctp.view.components.drawingboard.resizing {
 			oldY = this.y;
 		}
 		
-		private function stageObjectMouseUpHandler(e:MouseEvent):void {
+		private function stageObjectMouseUpHandler(e:MouseEvent):void
+		{
+			
 			stage.removeEventListener(MouseEvent.MOUSE_UP, stageObjectMouseUpHandler);
-			if (stage.mouseX == mouseDownPosX && stage.mouseY == mouseDownPosY) {
+			if (stage.mouseX == mouseDownPosX && stage.mouseY == mouseDownPosY)
+			{
 				dispatchEvent(new ObjectResizingEvent(ObjectResizingEvent.CLICK));
 			}
 		}
 		
-		private function stageMouseMoveHandler(e:MouseEvent):void {
-			if (stage.mouseX < 0 || stage.mouseX > stage.stageWidth || stage.mouseY < 0 || stage.mouseY > stage.stageHeight) {
+		private function stageMouseMoveHandler(e:MouseEvent):void
+		{
+			
+			var _w:Number = (this.width / 2) - 20;
+			var _h:Number = (this.height / 2) - 20;
+			
+			if (this.x < -_w)
+			{
+				this.x = -_w+5;
+				stageMouseUpHandler(null);
+				return;
+			}
+			else if (this.x > 624 + _w)
+			{
+				this.x = 624 + _w - 5;
+				stageMouseUpHandler(null);
+				return;
+			}
+			else if (this.y < -_h)
+			{
+				this.y = -_h+5;
+				stageMouseUpHandler(null);
+				return;
+			}
+			else if (this.y > 624+_h)
+			{
+				this.y = 624 + _h - 15;
 				stageMouseUpHandler(null);
 				return;
 			}
 			
-			this.x = oldX + stage.mouseX  - mouseDownPosX;
+			this.x = oldX + stage.mouseX - mouseDownPosX;
 			this.y = oldY + stage.mouseY - mouseDownPosY;
+			
 			e.updateAfterEvent();
+		
 		}
 		
-		private function stageMouseUpHandler(e:MouseEvent):void {
+		private function stageMouseUpHandler(e:MouseEvent):void
+		{
+			
 			stage.removeEventListener(MouseEvent.MOUSE_MOVE, stageMouseMoveHandler);
 			stage.removeEventListener(MouseEvent.MOUSE_UP, stageMouseUpHandler);
 			stage.removeEventListener(Event.MOUSE_LEAVE, stageMouseUpHandler);
-			if (this.hitTestPoint(stage.mouseX, stage.mouseY)) {
+			if (this.hitTestPoint(stage.mouseX, stage.mouseY))
+			{
 				dispatchEvent(new ObjectResizingEvent(ObjectResizingEvent.CLICK));
 			}
 		}
 		
-		public function showTool(flag: Boolean = true): void {
-			if (isShowingTool == flag) {
+		public function showTool(flag:Boolean = true):void
+		{
+			if (isShowingTool == flag)
+			{
 				return;
 			}
 			isShowingTool = flag;
-			for (var i:int = 0; i < this.numChildren; i++) {
-				if (this.getChildAt(i) != contentMovie ) {
+			for (var i:int = 0; i < this.numChildren; i++)
+			{
+				if (this.getChildAt(i) != contentMovie)
+				{
 					this.getChildAt(i).visible = flag;
 					this.getChildAt(i)["mouseEnabled"] = flag;
 				}
 			}
 		}
 		
-		public function setWidth(value: Number): void {
-			
+		public function setWidth(value:Number):void
+		{
+		
 		}
 		
-		public function setHeight(value: Number): void {
-			
+		public function setHeight(value:Number):void
+		{
+		
 		}
 		
-		public function getWidth(): Number {
+		public function getWidth():Number
+		{
 			return 0;
 		}
 		
-		public function getHeight(): Number {
+		public function getHeight():Number
+		{
 			return 0;
 		}
 		
-		public function get type():String {
+		public function get type():String
+		{
 			return _type;
 		}
 		
-		public function set type(value:String):void {
+		public function set type(value:String):void
+		{
 			_type = value;
-			switch(value) {
-				case ObjectType.CLIPART:
+			switch (value)
+			{
+				case ObjectType.CLIPART: 
 					JSBridge.call("trackClipart");
 					break;
-				case ObjectType.IMAGE:
+				case ObjectType.IMAGE: 
 					JSBridge.call("trackUpload");
 					break;
-				case ObjectType.TEXT:
+				case ObjectType.TEXT: 
 					JSBridge.call("trackTextbox");
 					break;
 			}
 		}
 		
-		public function get color():uint {
+		public function get color():uint
+		{
 			return _color;
 		}
 		
-		public function set color(value:uint):void {
+		public function set color(value:uint):void
+		{
 			_color = value;
 		}
-		
+	
 	}
 
 }

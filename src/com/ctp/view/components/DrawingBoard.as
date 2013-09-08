@@ -52,6 +52,7 @@ package com.ctp.view.components {
 	
 	import code.tool.RollTool;
 	import code.events.QuesEvent;
+	import code.GlobalVars;
 	//import com.ctp.view.events.UploadPhotoEvent;
 	
 	/**
@@ -165,7 +166,7 @@ package com.ctp.view.components {
 			//boardMovie.y = -367;
 			//addChild(boardMovie);
 			//board
-			boardMovie.addChild(contentMovie);
+			boardMovie.contentMc.addChild(contentMovie);
 			brushMovie.toolBarMovie = toolBarMovie;
 			contentMovie.addChild(brushMovie);
 			
@@ -216,7 +217,7 @@ package com.ctp.view.components {
 		
 		private function onGotoGalleryHandler(e:MouseEvent):void 
 		{
-			navigateToURL(new URLRequest("htpp://www.baidu.com"), "_blank");
+			navigateToURL(new URLRequest("http://www.baidu.com"), "_blank");
 		}
 		
 		private function onShowChooseHandler(e:MouseEvent):void 
@@ -260,6 +261,22 @@ package com.ctp.view.components {
 		
 		private function onUploadUserInfoHanlder(e:QuesEvent):void 
 		{
+			
+			//trace(e.talent);
+			//trace(e.talent);
+			switch(e.talent) {
+				case "1":
+						tipsMc.status("develop");
+					break;
+				case "2":
+						tipsMc.status("service");
+					break;
+				case "3":
+						tipsMc.status("science");
+					break;
+			
+			}
+			
 			TweenMax.to(ChooseMc, 0.5, { autoAlpha:0 } );
 		}
 		
@@ -295,7 +312,6 @@ package com.ctp.view.components {
 					}
 					break;
 				case ManagaEvent.CLEAR_ALL:
-					//confirmMovie.show(ManagaEvent.CLEAR_ALL);
 					ConfirmBox.instance.show(ManagaEvent.CLEAR_ALL);
 					break;
 			}
@@ -356,7 +372,6 @@ package com.ctp.view.components {
 			
 			//"你还没选择挑战题目哦，快挑选一个吧！"
 			//"你还没选择达人类型哦，这就选一个吧！"
-			
 			//"你的主意还没有名字哦，快起个名字吧！"
 			//"你还没描述你的主意哦，说两句吧！"
 			
@@ -389,18 +404,22 @@ package com.ctp.view.components {
 				
 			}
 			
+			trace("q1:"+GlobalVars.getQ1());
+			trace("q2:"+GlobalVars.getQ2());
+			trace("q3:"+GlobalVars.getQ3());
+			trace("q4:"+GlobalVars.getQ4());
+			trace("q5:"+GlobalVars.getQ5());
 			
-			var bmd: BitmapData = new BitmapData(stage.stageWidth, stage.stageHeight, false, 0xFFFFFF);
+			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
 			bmd.draw(boardMovie);
 			
 			//-- test --//
 			var bit:Bitmap = new Bitmap(bmd);
-			bit.x = -500;
+			bit.x = -1000;
 			bit.y = -500;
 			
 			addChild(bit);
-			
-			
+
 			for (var i:int = 0; i < bmd.width; i++) {
 				for (var j:int = 0; j < bmd.height; j++) {
 					if (bmd.getPixel(i,j) != 0xFFFFFF) {
@@ -435,7 +454,6 @@ package com.ctp.view.components {
 		}
 		
 		private function stageClickHandler(e:MouseEvent):void {
-			//trace(3);
 			//if (errorMc.visible) {
 				//errorMc.visible = false;
 			//}
@@ -452,8 +470,7 @@ package com.ctp.view.components {
 			//if (toolBarMovie.shapesMenuOpening && selectedObject && selectedObject.type == ObjectType.SHAPE) {
 				//return;
 			//}
-			
-			//判断 是否 触碰
+
 			if (e == null || toolBarMovie.buttonGroupMovie.hitTestPoint(stage.mouseX, stage.mouseY)) {
 				resetSelectStates();
 				if (selectedObject) {

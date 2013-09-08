@@ -29,6 +29,7 @@ package com.pyco.controls {
 	import flash.events.MouseEvent;
 	import flash.geom.Rectangle;
 	import flash.text.TextField;
+	import code.tool.RollTool;
 	public class ScrollBar extends Sprite {
 		public static var MODE_VERTICAL: String = "vertical";
 		public static var MODE_HORIZONTAL: String = "horizontal";
@@ -207,6 +208,9 @@ package com.pyco.controls {
 		private function initEvents(): void {
 			this.addEventListener(Event.REMOVED_FROM_STAGE, removeFromStageHandler);
 			sliderMovie.addEventListener(MouseEvent.MOUSE_DOWN, sliderMoviePressHandler);
+			
+			RollTool.setRoll(sliderMovie);
+			
 			trackMovie.addEventListener(MouseEvent.CLICK, trackMovieClickHandler);
 			
 			if (useMouseWheel && stage && contentMovie) stage.addEventListener(MouseEvent.MOUSE_WHEEL, mouseWheelHandler);

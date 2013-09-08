@@ -30,6 +30,8 @@
 			
 			content.boardMc.addEventListener(MouseEvent.CLICK, onClickHandler);
 			
+			
+			
 		}
 		
 		private function onClickHandler(e:MouseEvent):void

@@ -10,7 +10,7 @@ package com.ctp.view.components.drawingboard.resizing {
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
-	
+	import code.tool.RollTool;
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -62,6 +62,7 @@ package com.ctp.view.components.drawingboard.resizing {
 			}
 			
 			addEventListener(ObjectResizingEvent.CLICK, objectResizingClickHandler);
+			RollTool.setRoll(closeButton);
 			closeButton.addEventListener(MouseEvent.CLICK, closeButtonClickHandler);
 		}
 		
