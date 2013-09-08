@@ -151,7 +151,7 @@
 		private function stageMouseDownHandler(e:MouseEvent):void
 		{
 			
-			graphicMovie.graphics.clear();
+			
 			
 			this.addEventListener(MouseEvent.MOUSE_MOVE, stageMouseMoveHandler);
 			
@@ -230,9 +230,10 @@
 				bmd.draw(graphicMovie, myMatrix,null, BlendMode.NORMAL, null, true);
 				 
 				graphicMovie.visible = false;
+				
 			}
 			
-			
+			graphicMovie.graphics.clear();
 		}
 		
 		private function stageMouseMoveHandler(e:MouseEvent):void
@@ -241,8 +242,6 @@
 			if (brush.type != BrushType.ERASER)
 			{
 				graphicMovie.graphics.lineTo(mouseX, mouseY);
-				
-				
 			}
 			else
 			{
