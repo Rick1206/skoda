@@ -3,23 +3,25 @@
 <head>
   <title>Skoda-html</title>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <link rel="stylesheet" href="assets/css/lfportal.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <!--[if lt IE 9]><script type="text/javascript" src="assets/js/lib/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="assets/css/jquery.jscrollpane.css"/>
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="assets/js/lib/html5.js"></script>
+  <![endif]-->
   <script type="text/javascript" src="assets/js/lib/jquery.min.js"></script>
   <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  
 </head>
 <body>
-<article class="all">
 <header>
-  <div class="wrap">
-    <div class="fn-left"><span class="text-sc"></span></div>
-    <div class="logo-skoda"><a href="#"></a></div>
+  <div class="ht">
+    <div class="wrap">
+      <div class="fn-left"><span class="text-sc"></span></div>
+      <div class="logo-skoda"><a href="#"></a></div>
+    </div>
   </div>
-</header>
-<section id="page" class="">
-  <div class="hd" style="position: absolute;top: 70px;width: 100%;z-index: 10;">
+  
 <nav class="nav-bar">
   <div class="logo-clever"><a href="./index.html"></a></div>
   <div class="nav">
@@ -31,22 +33,25 @@
       
       <li><a href=""><span class="font-nav-a5" rel="登录"></span></a></li>
       
-
     </ul>
   </div>
-</nav></div>
-  <div class="bd">
-    <div class="" style="height: 1200px;">
-      <!-- 若有足夠的 JavaScript 和 Flash 外掛程式支援可用，針對 Flash內容，SWFObject 的動態嵌入方法會取代替用的 HTML 內容。 -->
-      <div id="flashContent">
-        <a href="http://www.adobe.com/go/getflash">
-          <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="取得 Adobe Flash 播放程式" />
-        </a>
-        <p>此頁面需要 Flash Player 9.0.124 版或更新版本。</p>
+</nav>
+</header>
+<article class="all">
+  <section id="page" class="noTop">
+    <div class="bd">
+      <div class="" style="height: 1200px;">
+        <!-- 若有足夠的 JavaScript 和 Flash 外掛程式支援可用，針對 Flash內容，SWFObject 的動態嵌入方法會取代替用的 HTML 內容。 -->
+        <div id="flashContent">
+          <a href="http://www.adobe.com/go/getflash">
+            <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="取得 Adobe Flash 播放程式" />
+          </a>
+          <p>此頁面需要 Flash Player 9.0.124 版或更新版本。</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</article>
 
 
 <footer>
@@ -77,15 +82,14 @@
     <div class="logo2"></div>
   </div>
 </footer>
-</article>
 <script type="text/javascript" src="assets/js/swfobject.js"></script>
 <script type="text/javascript">
-//  <!-- Adobe 建議開發人員使用 SWFObject2 進行 Flash Player 的偵測。 -->
-//  <!-- 如需詳細資訊，請參閱 Google code (http://code.google.com/p/swfobject/) 中的 SWFObject 頁面。 -->
-//  <!-- 亦可從 Adobe Developer Connection 之下的 "偵測 Flash Player 版本，並以 SWFObject 2 內嵌 SWF 檔案" 取得資訊 -->
-//  <!-- 設定所需 Flash Player 版本的最小值，或若不偵測版本的話，可設定為 0 -->
+  //  <!-- Adobe 建議開發人員使用 SWFObject2 進行 Flash Player 的偵測。 -->
+  //  <!-- 如需詳細資訊，請參閱 Google code (http://code.google.com/p/swfobject/) 中的 SWFObject 頁面。 -->
+  //  <!-- 亦可從 Adobe Developer Connection 之下的 "偵測 Flash Player 版本，並以 SWFObject 2 內嵌 SWF 檔案" 取得資訊 -->
+  //  <!-- 設定所需 Flash Player 版本的最小值，或若不偵測版本的話，可設定為 0 -->
   var swfVersionStr = "10.0.3";
-//  <!-- xiSwfUrlStr 可用來定義快捷安裝程式 SWF。 -->
+  //  <!-- xiSwfUrlStr 可用來定義快捷安裝程式 SWF。 -->
   var xiSwfUrlStr = "";
   var flashvars = {
     debug: "true",
@@ -93,14 +97,14 @@
     categoryUrl: "assets/xml/clipart.xml",
     bgImage: "assets/images/bg.jpg",
     url:"assets/swf/draw.swf",
-	cloudSwf:"assets/swf/cloud.swf"
+    cloudSwf:"assets/swf/cloud.swf"
   };
   var params = {};
   params.quality = "high";
   params.bgcolor = "#ffffff";
   params.play = "true";
   params.loop = "true";
-  params.wmode = "window";
+  params.wmode = "Opaque";
   params.scale = "showall";
   params.menu = "true";
   params.devicefont = "false";
@@ -116,6 +120,9 @@
       swfVersionStr, xiSwfUrlStr,
       flashvars, params, attributes);
 </script>
+<script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
+<script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="assets/js/lib/jquery.jscrollpane.js"></script>
 <script type="text/javascript" src="assets/js/skoda.js"></script>
 </body>
 </html>

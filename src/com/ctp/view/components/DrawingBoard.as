@@ -459,8 +459,8 @@ package com.ctp.view.components {
 				//errorMc.visible = false;
 			//}
 			//trace(e.name);
-			trace(e.currentTarget);
-			trace("stage click");
+			//trace(e.currentTarget);
+			//trace("stage click");
 			
 			if (!userProfileMc.hitTestPoint(stage.mouseX, stage.mouseY)) {
 				userProfileMc.close();
