@@ -9,10 +9,12 @@
 	import flash.events.Event;
 	import flash.events.ProgressEvent;
 	import flash.net.URLRequest;
-	
+	import com.google.analytics.AnalyticsTracker;
+	import com.google.analytics.GATracker;
 	
 	public class preloader extends MovieClip {
 		
+		private var tracker:AnalyticsTracker;
 		private var percent: int ;
 		private var mainMc:MovieClip;
 		
@@ -32,6 +34,14 @@
 		
 		private function init(e:Event=null):void 
 		{
+			
+			tracker  = new GATracker( this, "UA-34374356-3", "AS3", false );
+			
+			try {
+				tracker.trackPageview( "/idea-submission-flash-loading");
+			}catch(error:Error){
+				trace(error);
+			}
 			
 			mcLoading.x = stage.stageWidth / 2;
 			

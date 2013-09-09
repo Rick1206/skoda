@@ -34,6 +34,9 @@
 	import flash.utils.Dictionary;
 	
 	import com.ctp.model.constant.BrushType;
+	
+	import com.google.analytics.AnalyticsTracker;
+	import com.google.analytics.GATracker;
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -63,6 +66,8 @@
 	
 		private var penTool: Dictionary = new Dictionary(true);
 		
+		private var tracker:AnalyticsTracker;
+		
 		public function ToolBar() {
 			
 			//uploadPhotoMovie.closeButton.addEventListener(MouseEvent.CLICK, closeSubTool);
@@ -79,14 +84,28 @@
 			eraserToolMovie.addEventListener(BrushEvent.CHANGE, eraserClickHandler);
 			
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE, addClipartImageHandler);
+			
 			clipartMovie.addEventListener(ClipartEvent.ADD_IMAGE_AT_CENTER, addClipartImageHandler);
 			
 			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			
 			penTool[buttonGroupMovie.penMovie.airBushMovie] = airBrushToolMovie;
+			
 			penTool[buttonGroupMovie.penMovie.brushMovie] = brushToolMovie;
 			
 			//penTool[buttonGroupMovie.penMovie.paintMovie] = paintBucketToolMovie;
+			
+			if (stage) {
+				init();
+			}else {
+				addEventListener(Event.ADDED_TO_STAGE, init);
+			}
+		}
+		
+		private function init(e:Event=null):void 
+		{
+			removeEventListener(Event.ADDED_TO_STAGE, init);
+			tracker = new GATracker(this, "UA-34374356-3", "AS3", false);
 		}
 		
 		//private function changeColorShapeHandler(e:ShapeEvent):void {
@@ -242,29 +261,75 @@
 			}
 			var needToReturn: Boolean = false;
 			switch (buttonGroupMovie.toggledButton) {
-				//case buttonGroupMovie.shapeMovie:
-					//selectedTool = shapesMenuMovie;
-					//break;
 				case buttonGroupMovie.eraserMovie:
+					
 					selectedTool = eraserToolMovie;
 					break;
 				case buttonGroupMovie.clearMovie:
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "clear-all-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					dispatchEvent(new ManagaEvent(ManagaEvent.CLEAR_ALL));
 					break;	
 				case buttonGroupMovie.typeMovie:
 					//fontdata 
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "text-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					selectedTool = typeToolMovie;
 					typeToolMovie.data = fontTypeData;
 					break;
 				case buttonGroupMovie.uploadImageMovie:
+					
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "upload-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
+					
 					selectedTool = UploadPhotoPopup.instance;
 					UploadPhotoPopup.instance.reset();
 					break;
 				case buttonGroupMovie.clipartMovie:
+					
+					
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "clipart-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
+					
+					
 					selectedTool = clipartMovie;
 					clipartMovie.reset();
 					break;
 				case buttonGroupMovie.penMovie:
+					
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "brush-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
+					
 					if (buttonGroupMovie.penMovie.stageClicked == false) {
 						selectedTool = penTool[buttonGroupMovie.penMovie.selectedButton]
 					}
@@ -273,10 +338,21 @@
 					} else {
 						buttonGroupMovie.penMovie.show();
 						selectedTool = null;
-						//needToReturn = true;
 					}
 					break;
 				case buttonGroupMovie.manageMovie:
+					
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "order-button-icp");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
+					
+					
+					
 					if (buttonGroupMovie.manageMovie.defaultButton != buttonGroupMovie.manageMovie.selectedButton) {
 						
 						if (buttonGroupMovie.manageMovie.defaultButton == buttonGroupMovie.manageMovie.frontMovie) {
@@ -284,10 +360,7 @@
 						} else if (buttonGroupMovie.manageMovie.defaultButton == buttonGroupMovie.manageMovie.backMovie) {
 							dispatchEvent(new ManagaEvent(ManagaEvent.SEND_TO_BACK));
 						}
-						
-						//} else if (buttonGroupMovie.manageMovie.defaultButton == buttonGroupMovie.manageMovie.clearMovie) {
-							//dispatchEvent(new ManagaEvent(ManagaEvent.CLEAR_ALL));
-						//}
+
 						needToReturn = true;
 					} else if (buttonGroupMovie.manageMovie.stageClicked && buttonGroupMovie.manageMovie.isShowing) {
 						buttonGroupMovie.manageMovie.show(false);

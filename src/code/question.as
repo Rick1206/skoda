@@ -9,6 +9,9 @@
 	
 	import com.greensock.TweenMax;
 	
+	import com.google.analytics.AnalyticsTracker;
+	import com.google.analytics.GATracker;
+	
 	public class question extends MovieClip
 	{
 		
@@ -17,6 +20,7 @@
 		private var boolEnable:Boolean = true;
 		private var btnTArr:Array;
 		private var btnIArr:Array;
+		private var tracker:AnalyticsTracker;
 		
 		public function question()
 		{
@@ -36,13 +40,13 @@
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
+			tracker = new GATracker(this, "UA-34374356-3", "AS3", false);
+			
 			//inspireMc.visible = false;
 			//inspireMc.alpha = 0;
 			
-			
 			talentMc.visible = false;
 			talentMc.alpha = 0;
-			
 			
 			btnTArr = [talentMc.c1, talentMc.c2, talentMc.c3];
 			
@@ -90,21 +94,69 @@
 					break;
 				case "i1": 
 					strInspire = "1";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question1-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 				case "i2": 
 					strInspire = "2";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question2-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 				case "i3": 
 					strInspire = "3";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question3-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 				case "i4": 
 					strInspire = "4";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question4-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 				case "i5": 
 					strInspire = "5";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question5-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 				case "i6": 
 					strInspire = "6";
+					try
+					{
+						tracker.trackEvent("/idea-submission", "click", "question6-is");
+					}
+					catch (error:Error)
+					{
+						trace(error);
+					}
 					break;
 			}
 			
@@ -127,7 +179,7 @@
 					if (strName == btnTArr[i].name)
 					{
 						TweenMax.to(btnTArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 1}});
-						TweenMax.to(btnTArr[i].content, .3, { colorTransform: { tint: 0xffffff, tintAmount: 1 }} );
+						TweenMax.to(btnTArr[i].content, .3, {colorTransform: {tint: 0xffffff, tintAmount: 1}});
 						
 						btnTArr[i].removeEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnTArr[i].btn.gotoAndStop(2);
@@ -135,7 +187,7 @@
 					else
 					{
 						TweenMax.to(btnTArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 0}});
-						TweenMax.to(btnTArr[i].content, .3, { colorTransform: { tint: 0xffffff, tintAmount:0 }} );
+						TweenMax.to(btnTArr[i].content, .3, {colorTransform: {tint: 0xffffff, tintAmount: 0}});
 						
 						btnTArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnTArr[i].btn.gotoAndStop(1);
@@ -153,13 +205,13 @@
 					if (btnIArr[i].name == strName)
 					{
 						btnIArr[i].btn.gotoAndStop(2);
-						//trace("suc");
+							//trace("suc");
 					}
 					else
 					{
 						
 						btnIArr[i].btn.gotoAndStop(1);
-						//mc.btn.gotoAndStop(1);
+							//mc.btn.gotoAndStop(1);
 					}
 				}
 				

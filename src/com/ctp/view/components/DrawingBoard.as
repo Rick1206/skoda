@@ -53,6 +53,10 @@ package com.ctp.view.components {
 	import code.tool.RollTool;
 	import code.events.QuesEvent;
 	import code.GlobalVars;
+	import com.google.analytics.AnalyticsTracker;
+	import com.google.analytics.GATracker;
+	
+	
 	//import com.ctp.view.events.UploadPhotoEvent;
 	
 	/**
@@ -87,6 +91,8 @@ package com.ctp.view.components {
 		private var intPercentage:int;
 		
 		private var mcChoSwf:MovieClip;
+		
+		private var tracker:AnalyticsTracker;
 		
 		public function DrawingBoard() {
 			TweenPlugin.activate([AutoAlphaPlugin]);
@@ -134,6 +140,8 @@ package com.ctp.view.components {
 		
 		private function addedToStageHandler(e:Event):void {
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			
+			tracker = new GATracker(this, "UA-34374356-3", "AS3", false);
 			//this.visible = false;
 			//this.alpha = 0;
 			init();
@@ -217,6 +225,16 @@ package com.ctp.view.components {
 		
 		private function onGotoGalleryHandler(e:MouseEvent):void 
 		{
+			
+			try
+			{
+				tracker.trackEvent("/idea-submission", "click", "check-idea-gallery-is");
+			}
+			catch (error:Error)
+			{
+				trace(error);
+			}
+			
 			navigateToURL(new URLRequest("http://www.baidu.com"), "_blank");
 		}
 		
@@ -364,6 +382,16 @@ package com.ctp.view.components {
 		}
 		
 		public function getImage(e:Event):String {
+			
+			try
+			{
+				tracker.trackEvent("/idea-submission", "click", "submit-idea-is");
+			}
+			catch (error:Error)
+			{
+				trace(error);
+			}
+			
 			selectedObject = null;
 			
 			stageClickHandler(null);
@@ -455,6 +483,7 @@ package com.ctp.view.components {
 		}
 		
 		private function stageClickHandler(e:MouseEvent):void {
+			
 			//if (errorMc.visible) {
 				//errorMc.visible = false;
 			//}

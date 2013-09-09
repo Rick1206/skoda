@@ -12,6 +12,9 @@
 	import code.tool.RollTool;
 	import com.greensock.TweenMax;
 	
+	import com.google.analytics.AnalyticsTracker;
+	import com.google.analytics.GATracker;
+	
 	public class userContent extends MovieClip
 	{
 		
@@ -23,6 +26,8 @@
 		private var _matrix:Matrix;
 		
 		private var _scaledBmp:Bitmap;
+		
+		private var tracker:AnalyticsTracker;
 		
 		public function userContent()
 		{
@@ -40,6 +45,8 @@
 		private function init(e:Event = null):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			
+			tracker = new GATracker(this, "UA-34374356-3", "AS3", false);
 			
 			btnInspire.addEventListener(MouseEvent.CLICK, onUploadHeadPicHandler);
 			
@@ -59,6 +66,17 @@
 		
 		private function onUploadHeadPicHandler(e:MouseEvent):void
 		{
+			
+			try
+			{
+				tracker.trackEvent("/idea-submission", "click", "upload-image-is");
+			}
+			catch (error:Error)
+			{
+				trace(error);
+			}
+			
+			
 			//UploadPhotoPopup.instance.init();
 			UploadPhotoPopup.instance.type = "user";
 			UploadPhotoPopup.instance.reset();
