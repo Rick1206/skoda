@@ -68,11 +68,13 @@ package com.ctp.view.components.drawingboard.resizing
 			for (i = 1; i <= 8; i++)
 			{
 				var dotMovie:MovieClip = getChildByName("dot" + i) as MovieClip;
-				dotMovie.buttonMode = true;
+				//dotMovie.buttonMode = true;
+				RollTool.setRoll(dotMovie);
 				dotMovie.addEventListener(MouseEvent.MOUSE_DOWN, dotMouseDownHandler, false, 0, true);
 			}
 			for (i = 1; i <= 4; i++)
 			{
+				RollTool.setRoll(getChildByName("rot" + i));
 				getChildByName("rot" + i).addEventListener(MouseEvent.MOUSE_DOWN, rotationMouseDownHandler, false, 0, true);
 			}
 			

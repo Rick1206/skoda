@@ -264,6 +264,7 @@ package com.ctp.view.components {
 			
 			//trace(e.talent);
 			//trace(e.talent);
+			
 			switch(e.talent) {
 				case "1":
 						tipsMc.status("develop");
@@ -457,6 +458,9 @@ package com.ctp.view.components {
 			//if (errorMc.visible) {
 				//errorMc.visible = false;
 			//}
+			//trace(e.name);
+			trace(e.currentTarget);
+			trace("stage click");
 			
 			if (!userProfileMc.hitTestPoint(stage.mouseX, stage.mouseY)) {
 				userProfileMc.close();

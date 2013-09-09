@@ -87,7 +87,6 @@
 			{
 				case "rollOut": 
 					mc.gotoAndStop(1);
-					
 					break;
 				case "rollOver": 
 					mc.gotoAndStop(2);
@@ -125,14 +124,40 @@
 			}
 			
 			numTipsNum = 1;
+			
 			strFir = "fir";
+			
+			if (strFir == "fir")
+			{
+				btnTip1.gotoAndStop(2);
+				curContentMc.gotoAndStop(numTipsNum);
+				curContentMc.x = 100;
+				curContentMc.alpha = 0;
+				
+				TweenMax.to(curContentMc, 0.5, {delay: 0.3, x: 0, alpha: 1});
+				strFir = "sec";
+			}
 			
 			if (myTimer != null)
 			{
 				myTimer.stop();
+				myTimer.reset();
 				myTimer = null;
+				
+				myTimer = new Timer(4000, 0);
+				
+				myTimer.addEventListener(TimerEvent.TIMER, onTimerHandler);
+				myTimer.start();
+				
 			}
-			btnArr[numTipsNum - 1].dispatchEvent(new MouseEvent(MouseEvent.CLICK));
+			else
+			{
+				
+				myTimer = new Timer(4000, 0);
+				
+				myTimer.addEventListener(TimerEvent.TIMER, onTimerHandler);
+				myTimer.start();
+			}
 		
 		}
 		
@@ -169,38 +194,16 @@
 				}
 			}
 			
-			if (myTimer == null)
-			{
-				myTimer = new Timer(4000, 0);
-				
-				myTimer.addEventListener(TimerEvent.TIMER, onTimerHandler);
-				myTimer.start();
-				
-			}
-			
-			if (strFir == "fir")
-			{
-				curContentMc.gotoAndStop(numTipsNum);
-				curContentMc.x = 100;
-				curContentMc.alpha = 0;
-				
-				TweenMax.to(curContentMc, 0.5, {delay: 0.3, x: 0, alpha: 1});
-				strFir = "sec";
-			}
-			else
-			{
-				
-				TweenMax.to(curContentMc, 0.5, {x: -100, alpha: 0, onComplete: function()
-					{
-						
-						curContentMc.gotoAndStop(numTipsNum);
-						curContentMc.x = 100;
-						curContentMc.alpha = 0;
-						
-						TweenMax.to(curContentMc, 0.5, {delay: 0.3, x: 0, alpha: 1});
+			TweenMax.to(curContentMc, 0.5, {x: -100, alpha: 0, onComplete: function()
+				{
 					
-					}});
-			}
+					curContentMc.gotoAndStop(numTipsNum);
+					curContentMc.x = 100;
+					curContentMc.alpha = 0;
+					
+					TweenMax.to(curContentMc, 0.5, {delay: 0.3, x: 0, alpha: 1});
+				
+				}});
 		
 		}
 		
@@ -208,12 +211,39 @@
 		{
 			
 			numTipsNum++;
+			
 			if (numTipsNum > 3)
 			{
 				numTipsNum = 1;
 			}
 			
-			btnArr[numTipsNum - 1].dispatchEvent(new MouseEvent(MouseEvent.CLICK));
+			TweenMax.to(curContentMc, 0.5, {x: -100, alpha: 0, onComplete: function()
+				{
+					
+					curContentMc.gotoAndStop(numTipsNum);
+					curContentMc.x = 100;
+					curContentMc.alpha = 0;
+					
+					TweenMax.to(curContentMc, 0.5, {delay: 0.3, x: 0, alpha: 1});
+				
+				}});
+			
+			for (var i:int = 0; i < 3; i++)
+			{
+				if (i == (numTipsNum - 1))
+				{
+					btnArr[i].gotoAndStop(2);
+					btnArr[i].removeEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+					btnArr[i].removeEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+					
+				}
+				else
+				{
+					btnArr[i].gotoAndStop(1);
+					btnArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+					btnArr[i].addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+				}
+			}
 		
 		}
 	
