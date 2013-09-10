@@ -11,6 +11,9 @@ package com.ctp.view.components.drawingboard.resizing {
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	import code.tool.RollTool;
+	
+		import flash.ui.Mouse;
+	import flash.ui.MouseCursor;
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -37,6 +40,8 @@ package com.ctp.view.components.drawingboard.resizing {
 			minHeight = TEXT_MIN_HEIGHT;
 			
 			inputText = contentMovie.inputText;
+			inputText.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+			inputText.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
 			inputText.mouseEnabled = false;
 			inputText.multiline = true;
 			inputText.wordWrap = true;
@@ -65,7 +70,17 @@ package com.ctp.view.components.drawingboard.resizing {
 			RollTool.setRoll(closeButton);
 			closeButton.addEventListener(MouseEvent.CLICK, closeButtonClickHandler);
 		}
-		
+		private function onRollHandler(e:MouseEvent):void 
+		{
+			switch(e.type) {
+				case "rollOut":
+					Mouse.cursor = MouseCursor.ARROW;
+					break;
+				case "rollOver":
+					Mouse.cursor = MouseCursor.IBEAM;
+					break;
+			}
+		}
 		override public function setTextFormat(data:FontTypeInfo):void {
 			var textFormat: TextFormat = new TextFormat();
 			textFormat.size = data.fontSize;

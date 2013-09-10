@@ -6,8 +6,11 @@ package com.ctp.view.components.drawingboard.clipart {
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.MouseEvent;
+	import flash.net.FileReference;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
+	import code.tool.RollTool;
+	
 	/**
 	 * ...
 	 * @author tram.nguyen
@@ -27,12 +30,62 @@ package com.ctp.view.components.drawingboard.clipart {
 			alpha = 0;
 			errorText.mouseEnabled = false;
 			scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
-			addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			
+			if (stage) {
+				addedToStageHandler();
+			}else {
+				addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			}	
 		}
 		
-		private function addedToStageHandler(e:Event):void {
+		private function addedToStageHandler(e:Event=null):void {
 			removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+			
 			//reset();
+			
+			RollTool.setRoll(btnDownload);
+			btnDownload.addEventListener(MouseEvent.CLICK, onDownLoadHandler);
+		}
+		
+		private function onDownLoadHandler(e:MouseEvent):void 
+		{
+			trace("download");
+			
+			//trace(AppData.parameters.downloadUrl);
+		
+			var fr:FileReference = new FileReference();
+			
+			var strUrl:String = AppData.parameters.downloadUrl ? AppData.parameters.downloadUrl : "../images/bg.jpg";
+			 fr.addEventListener(Event.OPEN,openHandler);
+			 //fr.addEventListener(ProgressEvent.PROGRESS,progressHandler);
+			 fr.addEventListener(Event.COMPLETE,completeHandler);
+			 fr.addEventListener(IOErrorEvent.IO_ERROR, ioerrorHd);
+			 
+			 
+			  var request:URLRequest = new URLRequest();
+				 request.url = strUrl;
+				fr.download(request);
+			
+		}
+		
+		private function ioerrorHd(e:IOErrorEvent):void 
+		{
+			trace("不能下载该文件");
+		}
+		
+		private function completeHandler(e:Event):void 
+		{
+			
+		}
+		
+		private function progressHandler(e:Event):void 
+		{
+			
+		}
+		
+		private function openHandler(e:Event):void 
+		{
+			
 		}
 		
 		public function reset(): void {

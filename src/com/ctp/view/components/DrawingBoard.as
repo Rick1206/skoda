@@ -55,6 +55,8 @@ package com.ctp.view.components {
 	import code.GlobalVars;
 	import com.google.analytics.AnalyticsTracker;
 	import com.google.analytics.GATracker;
+	import flash.ui.Mouse;
+	import flash.ui.MouseCursor;
 	
 	
 	//import com.ctp.view.events.UploadPhotoEvent;
@@ -151,8 +153,14 @@ package com.ctp.view.components {
 		private function init(): void {
 			
 			AppData.parameters = stage.loaderInfo.parameters;
-			//AppData.parameters.debug = "true";
 			
+			txtDrawName.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+			txtDrawName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+			
+			txtDrawDesc.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+			txtDrawDesc.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+			
+			//AppData.parameters.debug = "true";
 			//AppData.parameters.exportedImage = "images/Sunset.jpg";
 			
 			//-- loading --//
@@ -279,10 +287,6 @@ package com.ctp.view.components {
 		
 		private function onUploadUserInfoHanlder(e:QuesEvent):void 
 		{
-			
-			//trace(e.talent);
-			//trace(e.talent);
-			
 			switch(e.talent) {
 				case "1":
 						tipsMc.status("develop");
@@ -399,14 +403,13 @@ package com.ctp.view.components {
 			strDrawName = txtDrawName.text;
 			strDrawDesc = txtDrawDesc.text;
 			
+			
 			//"你还没选择挑战题目哦，快挑选一个吧！"
 			//"你还没选择达人类型哦，这就选一个吧！"
 			//"你的主意还没有名字哦，快起个名字吧！"
 			//"你还没描述你的主意哦，说两句吧！"
 			
-			
-			if (strDrawName == "") {
-				
+			if (strDrawName == "") {	
 				errorMc.gotoAndStop(3);
 				
 				TweenMax.to(errorMc, .3, { autoAlpha:1 , onComplete:function() {
@@ -433,11 +436,11 @@ package com.ctp.view.components {
 				
 			}
 			
-			trace("q1:"+GlobalVars.getQ1());
-			trace("q2:"+GlobalVars.getQ2());
-			trace("q3:"+GlobalVars.getQ3());
-			trace("q4:"+GlobalVars.getQ4());
-			trace("q5:"+GlobalVars.getQ5());
+			//trace("q1:"+GlobalVars.getQ1());
+			//trace("q2:"+GlobalVars.getQ2());
+			//trace("q3:"+GlobalVars.getQ3());
+			//trace("q4:"+GlobalVars.getQ4());
+			//trace("q5:"+GlobalVars.getQ5());
 			
 			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
 			bmd.draw(boardMovie);
@@ -458,6 +461,18 @@ package com.ctp.view.components {
 				}
 			}
 			return "";
+		}
+		
+		private function onRollHandler(e:MouseEvent):void 
+		{
+			switch(e.type) {
+				case "rollOut":
+					Mouse.cursor = MouseCursor.ARROW;
+					break;
+				case "rollOver":
+					Mouse.cursor = MouseCursor.IBEAM;
+					break;
+			}
 		}
 		
 		private function uploadPhotoCompleteHandler(e:UploadPhotoEvent):void {

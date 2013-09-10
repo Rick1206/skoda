@@ -130,6 +130,10 @@
 			if (strFir == "fir")
 			{
 				btnTip1.gotoAndStop(2);
+				
+				btnTip2.gotoAndStop(1);
+				btnTip3.gotoAndStop(1);
+				
 				curContentMc.gotoAndStop(numTipsNum);
 				curContentMc.x = 100;
 				curContentMc.alpha = 0;

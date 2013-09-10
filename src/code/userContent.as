@@ -14,6 +14,8 @@
 	
 	import com.google.analytics.AnalyticsTracker;
 	import com.google.analytics.GATracker;
+			import flash.ui.Mouse;
+	import flash.ui.MouseCursor;
 	
 	public class userContent extends MovieClip
 	{
@@ -61,7 +63,23 @@
 			contentMovie.q4.initData("q4");
 			
 			contentMovie.q5.initData("q5");
+			
+
+			userName.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+			userName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
 		
+		}
+		
+		private function onRollHandler(e:MouseEvent):void 
+		{
+			switch(e.type) {
+				case "rollOut":
+					Mouse.cursor = MouseCursor.ARROW;
+					break;
+				case "rollOver":
+					Mouse.cursor = MouseCursor.IBEAM;
+					break;
+			}
 		}
 		
 		private function onUploadHeadPicHandler(e:MouseEvent):void
