@@ -12,13 +12,24 @@
   <script type="text/javascript" src="assets/js/lib/jquery.min.js"></script>
   <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34374356-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </head>
 <body>
 <header>
   <div class="ht">
     <div class="wrap">
       <div class="fn-left"><span class="text-sc"></span></div>
-      <div class="logo-skoda"><a href="#"></a></div>
+      <div class="logo-skoda"></div>
     </div>
   </div>
   
@@ -26,10 +37,10 @@
   <div class="logo-clever"><a href="./index.html"></a></div>
   <div class="nav">
     <ul class="nav-list">
-      <li><a href="./idea.html"><span class="font-nav-a1" rel="达人招聘"></span></a></li>
-      <li><a href=""><span class="font-nav-a2" rel="达人榜"></span></a></li>
-      <li><a href=""><span class="font-nav-a3" rel="活动详情"></span></a></li>
-      <li><a href=""><span class="font-nav-a4" rel="新鲜资讯"></span></a></li>
+      <li><a href="./draw.html" onclick="_gaq.push(['_trackEvent', 'Click', 'idea-sub-men-hp'])"><span class="font-nav-a1" rel="达人招聘"></span></a></li>
+      <li><a href="./idea.html" onclick="_gaq.push(['_trackEvent', 'Click', 'gallery-menu-hp'])"><span class="font-nav-a2" rel="达人榜"></span></a></li>
+      <li><a href="" onclick="_gaq.push(['_trackEvent', 'Click', 'how-to-play-menu-hp'])"><span class="font-nav-a3" rel="活动详情"></span></a></li>
+      <li><a href="" onclick="_gaq.push(['_trackEvent', 'Click', 'news-menu-hp'])"><span class="font-nav-a4" rel="新鲜资讯"></span></a></li>
       
       <li class="usr">
         <div class="logined">
@@ -63,7 +74,7 @@
             </ul>
           </div>
           <div class="btns">
-            <a class="btn-myhomepage" href="#"></a>
+            <a class="btn-myhomepage" href="./profile.html"></a>
             <a class="btn-logout" href="#"></a>
           </div>
         </div>
@@ -73,22 +84,22 @@
   </div>
 </nav>
 </header>
-<article class="all body-background-idea">
+<div class="content body-background-idea">
   <section id="page" class="">
     <div class="hd">
       <div class="idea-head">
         <div class="btn">
-          <a href="#"><span class="btn-3d-becomeTalent2"></span></a>
+          <a href="#" onclick="_gaq.push(['_trackEvent', 'Click', 'create-your-idea-ig'])"><span class="btn-3d-becomeTalent2"></span></a>
         </div>
       </div>
     </div>
     <div class="bd body-background-idea-repeat">
       <div class="ideas">
         <div class="ideas-hd">
-          <a class="ideas-item hd-item1 " href="./idea.html"></a>
-          <a class="ideas-item hd-item2 " href="./idea1.html"></a>
-          <a class="ideas-item hd-item3 selected" href="./idea2.html"></a>
-          <a class="ideas-item hd-item4 " href="./idea3.html"></a>
+          <a onclick="_gaq.push(['_trackEvent', 'Click', 'category-all-ig'])" class="ideas-item hd-item1 " href="./idea.html"></a>
+          <a onclick="_gaq.push(['_trackEvent', 'Click', 'category-product-ig'])" class="ideas-item hd-item2 " href="./idea1.html"></a>
+          <a onclick="_gaq.push(['_trackEvent', 'Click', 'category-service-ig '])" class="ideas-item hd-item3 selected" href="./idea2.html"></a>
+          <a onclick="_gaq.push(['_trackEvent', 'Click', 'category-digital-ig'])" class="ideas-item hd-item4 " href="./idea3.html"></a>
         </div>
         <div class="ideas-bd">
           <div class="dropdown">
@@ -625,7 +636,8 @@
       </div>
     </div>
   </section>
-</article>
+</div>
+
 
 <footer>
   <div class="footer-corner"></div>
@@ -633,7 +645,7 @@
     <div class="clearfix">
       <div class="follow"><wb:follow-button uid="2954472480" type="red_2" width="136" height="24" ></wb:follow-button></div>
       <div class="douban">
-        <a href="http://site.douban.com/191862/" target="_blank"><img src="assets/images/douban.jpg" alt="推荐到豆瓣" /></a>
+        <a onclick="_gaq.push(['_trackEvent', 'Click', 'douban-ctp-logo-fo'])" href="http://site.douban.com/191862/" target="_blank"><img src="assets/images/douban.jpg" alt="推荐到豆瓣" /></a>
       </div>
       <div class="share">
         <a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
@@ -648,17 +660,20 @@
     </div>
     <div class="copyright">
       <span>2013 版权 | 沪ICP备08000392号-2</span> |
-      <a href="#" target="_blank">服务条款</a> |
-      <a href="#" target="_blank">常见问题</a> |
+      <a onclick="_gaq.push(['_trackEvent', 'Click', 'tnc-fo'])" href="#" target="_blank">服务条款</a> |
+      <a onclick="_gaq.push(['_trackEvent', 'Click', 'faq-fo'])" href="#" target="_blank">常见问题</a> |
       <a href="Mailto:info@congmingzhuyi.com">info@congmingzhuyi.com</a>
     </div>
-    <div class="logo2"></div>
+    <div class="logo2"><a href="#" onclick="_gaq.push(['_trackEvent', 'Click', 'skoda-logo-fo'])"></a></div>
   </div>
 </footer>
-
+<script type="text/javascript">
+  _gaq.push(['_trackPageview', '/idea-gallery']);
+</script>
 <script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
 <script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="assets/js/lib/jquery.jscrollpane.js"></script>
 <script type="text/javascript" src="assets/js/skoda.js"></script>
+
 </body>
 </html>

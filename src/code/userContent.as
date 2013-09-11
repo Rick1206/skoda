@@ -14,8 +14,11 @@
 	
 	import com.google.analytics.AnalyticsTracker;
 	import com.google.analytics.GATracker;
-			import flash.ui.Mouse;
+	import flash.ui.Mouse;
 	import flash.ui.MouseCursor;
+	import com.adobe.images.JPGEncoder;
+	
+	import com.dynamicflash.util.Base64;
 	
 	public class userContent extends MovieClip
 	{
@@ -31,9 +34,12 @@
 		
 		private var tracker:AnalyticsTracker;
 		
+		private var _userName:String;
+		
+		private var _userHead:String;
+		
 		public function userContent()
 		{
-			// constructor code
 			if (stage)
 			{
 				init();
@@ -55,28 +61,33 @@
 			scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
 			
 			contentMovie.q1.initData("q1");
-			
 			contentMovie.q2.initData("q2");
-			
 			contentMovie.q3.initData("q3");
-			
 			contentMovie.q4.initData("q4");
-			
 			contentMovie.q5.initData("q5");
 			
-
-			userName.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
-			userName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+			txtUserName.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
+			txtUserName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
+			
+			//-- test --//
+				//var bmd:BitmapData = new BitmapData(145, 145, false, 0xFFFFFF);
+				//var myMatrix:Matrix = new Matrix();
+				//myMatrix.translate(bmd.width/2,bmd.height/2);
+				//bmd.draw(headPic,myMatrix);
+				
+			//var bmp:Bitmap = new Bitmap(bmd);
+			//addChild(bmp);
 		
 		}
 		
-		private function onRollHandler(e:MouseEvent):void 
+		private function onRollHandler(e:MouseEvent):void
 		{
-			switch(e.type) {
-				case "rollOut":
+			switch (e.type)
+			{
+				case "rollOut": 
 					Mouse.cursor = MouseCursor.ARROW;
 					break;
-				case "rollOver":
+				case "rollOver": 
 					Mouse.cursor = MouseCursor.IBEAM;
 					break;
 			}
@@ -94,14 +105,19 @@
 				trace(error);
 			}
 			
-			
-			//UploadPhotoPopup.instance.init();
 			UploadPhotoPopup.instance.type = "user";
 			UploadPhotoPopup.instance.reset();
 			
 			UploadPhotoPopup.instance.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
 			
-			TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 1});
+			TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 1 } );
+			
+			
+			
+			
+		
+			
+			
 		}
 		
 		private function uploadPhotoCompleteHandler(e:UploadPhotoEvent):void
@@ -109,7 +125,6 @@
 			
 			if (e.ptype == "user")
 			{
-				
 				bm = UploadPhotoPopup.instance.uploadedPhoto as Bitmap;
 				
 				_height = bm.height;
@@ -159,11 +174,59 @@
 				headPic.picFrame.addChild(_scaledBmp);
 				
 				TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
+				
+				TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 0 } );
 				TweenMax.to(_scaledBmp, .2, {autoAlpha: 1});
-				TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 0});
+				
+				
 			}
 		
 		}
+		
+		public function get userName():String
+		{
+			
+			_userName = txtUserName.text
+			return _userName;
+		}
+		
+		public function set userName(value:String):void
+		{
+			_userName = value;
+		}
+		
+		public function get userHead():String 
+		{
+			_userHead = this.getImg();
+			return _userHead;
+		}
+		
+		public function set userHead(value:String):void 
+		{
+			_userHead = value;
+		}
+		
+		private function getImg():String {
+			
+			var bmd:BitmapData = new BitmapData(145, 145, false, 0xFFFFFF);
+			var myMatrix:Matrix = new Matrix();
+			myMatrix.translate(bmd.width/2,bmd.height/2);
+			bmd.draw(headPic,myMatrix);
+			
+			for (var i:int = 0; i < bmd.width; i++)
+			{
+				for (var j:int = 0; j < bmd.height; j++)
+				{
+					if (bmd.getPixel(i, j) != 0xFFFFFF)
+					{
+						var encoder:JPGEncoder = new JPGEncoder(80);
+						return Base64.encodeByteArray(encoder.encode(bmd));
+					}
+				}
+			}
+			return "";
+		}
+		
 	}
 
 }

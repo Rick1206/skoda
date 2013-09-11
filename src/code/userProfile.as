@@ -9,7 +9,8 @@
 	public class userProfile extends MovieClip
 	{
 		private var strStatus:String = "close";
-		
+		private var _userName:String = "";
+		private var _userHead:String = "";
 		public function userProfile()
 		{
 			if (stage)
@@ -29,7 +30,6 @@
 			RollTool.setRoll(content.boardMc);
 			
 			content.boardMc.addEventListener(MouseEvent.CLICK, onClickHandler);
-			
 			
 		}
 		
@@ -56,6 +56,28 @@
 				this.content.gotoAndPlay("close");
 				strStatus = "close";
 			}
+		}
+		
+		public function get userName():String 
+		{
+			_userName = content.userMc.userName;
+			return _userName;
+		}
+		
+		public function set userName(value:String):void 
+		{
+			_userName = value;
+		}
+		
+		public function get userHead():String 
+		{
+			_userHead = content.userMc.userHead
+			return _userHead;
+		}
+		
+		public function set userHead(value:String):void 
+		{
+			_userHead = value;
 		}
 	}
 

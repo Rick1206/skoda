@@ -57,7 +57,9 @@ package com.ctp.view.components {
 	import com.google.analytics.GATracker;
 	import flash.ui.Mouse;
 	import flash.ui.MouseCursor;
+	import flash.external.ExternalInterface;
 	
+	import com.adobe.serialization.json.JSON;
 	
 	//import com.ctp.view.events.UploadPhotoEvent;
 	
@@ -84,7 +86,8 @@ package com.ctp.view.components {
 		private var strUserInspie:String = "";
 		private var strDrawName:String = "";
 		private var strDrawDesc:String = "";
-		
+		private var strDrawInsipre:String = "";
+		private var strDrawTalent:String = "";
 		//-- user profile --//
 		private var strHeadPic:String = "";
 		private var strTypeNum:String = "";
@@ -211,7 +214,7 @@ package com.ctp.view.components {
 			stage.addEventListener(MouseEvent.CLICK, stageClickHandler);
 			
 			//add by rick
-			btnSubmission.addEventListener(MouseEvent.CLICK, getImage);
+			btnSubmission.addEventListener(MouseEvent.CLICK, onUploadSubmissionHandler);
 			
 			RollTool.setRoll(btnSubmission);
 			RollTool.setRoll(btnInspire);
@@ -228,12 +231,64 @@ package com.ctp.view.components {
 			errorMc.visible = false;
 			errorMc.alpha = 0;
 			
+			
+			JSBridge.addCallback("getUserInfo", getUserInfo);
+			
 			//userProfileMc.close();
+			
+			//trace(getUserInfo());
+		}
+		
+		private function getUserInfo():String 
+		{
+			
+			selectedObject = null;
+			stageClickHandler(null);
+			
+			var dataArr:Array = new Array;
+			var obj:Object = new Object;
+			
+			obj.DrawName = strDrawName;
+			obj.DrawDesc = strDrawDesc;
+			
+			obj.DrawInspire = strDrawInsipre;
+			obj.DrawTalent = strDrawTalent;
+			
+			obj.pic = getImg();
+			obj.UserName = userProfileMc.userName;
+			obj.UserHead = userProfileMc.userHead;
+			
+			obj.q1 = GlobalVars.getQ1();
+			obj.q2 = GlobalVars.getQ2();
+			obj.q3 = GlobalVars.getQ3();
+			obj.q4 = GlobalVars.getQ4();
+			obj.q5 = GlobalVars.getQ5();
+			
+			
+			dataArr.push(obj);
+			
+			var jsonString:String = JSON.encode(dataArr);
+			
+			return jsonString;
+			
+		}
+		
+		private function getImg():String {
+			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
+			bmd.draw(boardMovie);
+			for (var i:int = 0; i < bmd.width; i++) {
+				for (var j:int = 0; j < bmd.height; j++) {
+					if (bmd.getPixel(i,j) != 0xFFFFFF) {
+						var encoder: JPGEncoder = new JPGEncoder(80);
+						 return Base64.encodeByteArray(encoder.encode(bmd));
+					}
+				}
+			}
+			return "";
 		}
 		
 		private function onGotoGalleryHandler(e:MouseEvent):void 
 		{
-			
 			try
 			{
 				tracker.trackEvent("/idea-submission", "click", "check-idea-gallery-is");
@@ -299,6 +354,9 @@ package com.ctp.view.components {
 					break;
 			
 			}
+			
+			strDrawInsipre = e.insprie;
+			strDrawTalent = e.talent;
 			
 			TweenMax.to(ChooseMc, 0.5, { autoAlpha:0 } );
 		}
@@ -385,8 +443,7 @@ package com.ctp.view.components {
 			}
 		}
 		
-		public function getImage(e:Event):String {
-			
+		public function onUploadSubmissionHandler(e:Event):String {
 			try
 			{
 				tracker.trackEvent("/idea-submission", "click", "submit-idea-is");
@@ -403,11 +460,32 @@ package com.ctp.view.components {
 			strDrawName = txtDrawName.text;
 			strDrawDesc = txtDrawDesc.text;
 			
-			
 			//"你还没选择挑战题目哦，快挑选一个吧！"
 			//"你还没选择达人类型哦，这就选一个吧！"
 			//"你的主意还没有名字哦，快起个名字吧！"
 			//"你还没描述你的主意哦，说两句吧！"
+			
+			if (strDrawInsipre == "") {	
+				errorMc.gotoAndStop(1);
+				
+				TweenMax.to(errorMc, .3, { autoAlpha:1 , onComplete:function() {
+				
+					TweenMax.to(errorMc, .3, { autoAlpha:0,delay:1.5 } );
+					}} );
+				return "";
+			}
+			
+			if (strDrawTalent == "") {	
+				errorMc.gotoAndStop(2);
+				
+				TweenMax.to(errorMc, .3, { autoAlpha:1 , onComplete:function() {
+				
+					TweenMax.to(errorMc, .3, { autoAlpha:0,delay:1.5 } );
+					
+					}} );
+				
+				return "";
+			}
 			
 			if (strDrawName == "") {	
 				errorMc.gotoAndStop(3);
@@ -436,22 +514,17 @@ package com.ctp.view.components {
 				
 			}
 			
-			//trace("q1:"+GlobalVars.getQ1());
-			//trace("q2:"+GlobalVars.getQ2());
-			//trace("q3:"+GlobalVars.getQ3());
-			//trace("q4:"+GlobalVars.getQ4());
-			//trace("q5:"+GlobalVars.getQ5());
+			ExternalInterface.call("is_login");
 			
-			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
-			bmd.draw(boardMovie);
+			return "";
 			
 			//-- test --//
-			var bit:Bitmap = new Bitmap(bmd);
-			bit.x = -1000;
-			bit.y = -500;
-			
-			addChild(bit);
-
+			//var bit:Bitmap = new Bitmap(bmd);
+			//bit.x = -1000;
+			//bit.y = -500;
+			//addChild(bit);
+			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
+			bmd.draw(boardMovie);
 			for (var i:int = 0; i < bmd.width; i++) {
 				for (var j:int = 0; j < bmd.height; j++) {
 					if (bmd.getPixel(i,j) != 0xFFFFFF) {
@@ -461,6 +534,8 @@ package com.ctp.view.components {
 				}
 			}
 			return "";
+			
+			
 		}
 		
 		private function onRollHandler(e:MouseEvent):void 

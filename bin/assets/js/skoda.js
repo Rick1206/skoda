@@ -63,7 +63,9 @@
                     expertLinkHover(i,'out');
                 })
             });
+
             $('.expert-mask').hover(itemCarouselPause,itemCarouselPlay);
+
             function expertLinkHover(i,direction){
                 var direction = direction == "on" ? 0:1;
                 itemCarousel.eq(i).trigger('currentPage',function(a){
@@ -83,11 +85,13 @@
             }
             //vertical center
             itemCarousel.find('img').each(function(){
+                $(this).css('visibility','hidden');
                 $(this).load(function(){
                     $(this).css({
                         top:'50%',
-                        marginTop:-$(this).height() *.5
-                    })
+                        marginTop:-$(this).height() *.5,
+                        'visibility':'visible'
+                    });
                 })
             });
         })();
@@ -177,6 +181,53 @@
         })();
 
         $('.text-wrap').length >=1 && (function(){
-            $('.text-wrap').jScrollPane();
+            $('.text-wrap').jScrollPane({autoReinitialise: true,contentWidth: '0px'});
         })();
+
+        $('.jsPopIdeaDetail').click(function(){
+            $('.pop-idea-detail').bPopup({
+                follow: [true,false],
+                position:['auto',100]
+            });
+        });
+
+    //  upload
+
+    $('.pop-upload-box').length>0&&(function(){
+        var $box = $('.pop-upload-box');
+        var $form = $('#upload');
+        var $form_file = $form.find('input[type=file]');
+        $('.jsPopUploadBox').click(function(){
+            $box.bPopup({
+                onClose:function(){
+                    $box.find('.file-input').html('...');
+                }
+            });
+        });
+        $form.ajaxForm(function(){
+            alert('Upload succeed!');
+        });
+        $box.find('.btn-select-file').click(function(){
+            $form_file.click();
+        });
+        $form_file.change(function(){
+            $box.find('.file-input').html($(this).val());
+        });
+
+    })();
+    $('.pop-profile-form').length>0&&(function(){
+        var $form = $('.pop-profile-form');
+        $('.jsPopProfileForm').click(function(){
+            $('.pop-profile-form').bPopup({
+                follow: [true,false],
+                position:['auto',0],
+                onClose:function(){
+                    $form.find('input[type=reset]').click();
+                }
+            });
+        })
+        $('.cars',$form).jScrollPane({autoReinitialise: true});
+        $('.form-horizontal',$form).validator();
+    })();
+
 })(window.jQuery);
