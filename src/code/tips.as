@@ -101,13 +101,15 @@
 			{
 				case "develop": 
 					curContentMc = developMc;
+					titleMc.gotoAndStop(1);
 					break;
 				case "service": 
 					curContentMc = serviceMc;
+					titleMc.gotoAndStop(2);
 					break;
 				case "science": 
 					curContentMc = scienceMc;
-					
+					titleMc.gotoAndStop(3);
 					break;
 			}
 			
@@ -129,6 +131,7 @@
 			
 			if (strFir == "fir")
 			{
+				
 				btnTip1.gotoAndStop(2);
 				
 				btnTip2.gotoAndStop(1);
@@ -198,6 +201,8 @@
 				}
 			}
 			
+			
+			
 			TweenMax.to(curContentMc, 0.5, {x: -100, alpha: 0, onComplete: function()
 				{
 					
@@ -220,6 +225,8 @@
 			{
 				numTipsNum = 1;
 			}
+			
+			
 			
 			TweenMax.to(curContentMc, 0.5, {x: -100, alpha: 0, onComplete: function()
 				{
