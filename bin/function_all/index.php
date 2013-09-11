@@ -31,13 +31,39 @@ switch ($ftype) {
 	
 	case 'User_submission':
 		$state = "1";
-		$message = "Login Success";
+		$message = "Upload User profile Success";
 		
-		$state = is_base64_encoded($_POST['pic']);
+		$state = is_base64_encoded($_POST['Draw_pic']);
 		
 		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";
 		
 		break;
+		
+	case 'User_Profile':
+		
+		
+		$state = "1";		
+		$message = "Get User profile Success";
+		
+		$username = "rick";
+		$headpic = "./function_all/rick.jpg";
+		
+		$q1 = "1";
+		$q2 = "2";
+		$q3 = "1";
+		$q4 = "3";
+		$q5 = "4";
+			
+		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":{\"username\":\"".$username 
+			  ."\",\"headpic\":\"".$headpic
+			  ."\",\"profile_q1\":\"".$q1
+			  ."\",\"profile_q2\":\"".$q2
+			  ."\",\"profile_q3\":\"".$q3
+			  ."\",\"profile_q4\":\"".$q4
+			  ."\",\"profile_q5\":\"".$q5."\"}}";
+		
+		break;
+	
 
 }
 

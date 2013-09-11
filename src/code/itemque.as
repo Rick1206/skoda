@@ -12,6 +12,7 @@
 		
 		private var queArr:Array;
 		private var qname:String;
+		
 		public function itemque() {
 			// constructor code
 			if (stage) {
@@ -23,11 +24,8 @@
 		
 		private function init(e:Event=null):void 
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			
-			
+			removeEventListener(Event.ADDED_TO_STAGE, init);	
 		}
-		
 		public function initData(str:String) {
 			trace("init: "+str);
 			
@@ -47,16 +45,16 @@
 			
 			switch(e.currentTarget.name) {
 				case "q1":
-					_ans = "A";
+					_ans = "1";
 					break;
 				case "q2":
-					_ans = "B";
+					_ans = "2";
 					break;
 				case "q3":
-					_ans = "C";
+					_ans = "3";
 					break;
 				case "q4":
-					_ans = "D";
+					_ans = "4";
 					break;
 			}
 			
@@ -81,8 +79,6 @@
 			}
 			
 			
-			
-			
 				for (var key:String in queArr) {
 					
 					if (queArr[key].name == mc.name) {
@@ -102,8 +98,11 @@
 		
 		public function set ans(value:String):void 
 		{
+			
 			_ans = value;
+			queArr[int(_ans) - 1].gotoAndStop(2);
 		}
+	
 	}
 	
 }

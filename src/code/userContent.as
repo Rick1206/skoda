@@ -4,6 +4,7 @@
 	import com.ctp.view.components.drawingboard.UploadPhotoPopup;
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
+	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -17,8 +18,12 @@
 	import flash.ui.Mouse;
 	import flash.ui.MouseCursor;
 	import com.adobe.images.JPGEncoder;
-	
+	import flash.net.URLLoader;
+	import flash.net.URLRequest;
+	import flash.net.URLVariables;
 	import com.dynamicflash.util.Base64;
+	import com.adobe.serialization.json.JSON;
+	import com.ctp.model.AppData;
 	
 	public class userContent extends MovieClip
 	{
@@ -38,6 +43,10 @@
 		
 		private var _userHead:String;
 		
+		private var _urlreq:URLRequest;
+		private var _urlvar:URLVariables;
+		private var _urlloa:URLLoader;
+		
 		public function userContent()
 		{
 			if (stage)
@@ -48,6 +57,81 @@
 			{
 				addEventListener(Event.ADDED_TO_STAGE, init);
 			}
+		}
+		
+		private function getUserInfo():void
+		{
+			
+			_urlvar = new URLVariables();
+			_urlreq = new URLRequest();
+			_urlloa = new URLLoader();
+			
+			var strBackendUrl:String = AppData.parameters.backendUrl ? AppData.parameters.backendUrl : "./function_all/index.php";
+			
+			//var strBackendUrl:String = "http://localhost/skoda/function_all/index.php";
+			
+			trace(strBackendUrl);
+			_urlvar.Fun_type = "User_Profile";
+			
+			_urlloa.addEventListener(Event.COMPLETE, onCompInfoHandle);
+			_urlreq.data = _urlvar;
+			_urlreq.url = strBackendUrl;
+			_urlreq.method = "POST";
+			//_urlloa.dataFormat = URLLoaderDataFormat.BINARY;
+			_urlloa.load(_urlreq);
+		}
+		
+		private function onCompInfoHandle(e:Event):void
+		{
+			//trace(e.content);
+			trace(e.target.data);
+			
+			var myData:Object = JSON.decode(e.target.data);
+			if (myData.state == "1")
+			{
+				this.userName = myData.profile.username;
+				loadPic(myData.profile.headpic);
+				
+				contentMovie.q1.ans = myData.profile.profile_q1;
+				GlobalVars.setQ1(myData.profile.profile_q1);
+				contentMovie.q2.ans = myData.profile.profile_q2;
+				GlobalVars.setQ2(myData.profile.profile_q2);
+				contentMovie.q3.ans = myData.profile.profile_q3;
+				GlobalVars.setQ3(myData.profile.profile_q3);
+				contentMovie.q4.ans = myData.profile.profile_q4;
+				GlobalVars.setQ4(myData.profile.profile_q4);
+				contentMovie.q5.ans = myData.profile.profile_q5;
+				GlobalVars.setQ5(myData.profile.profile_q5);
+			}
+		
+		}
+		
+		private function loadPic(str:String)
+		{
+			var loader:Loader = new Loader;
+			loader.load(new URLRequest(str));
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoadPic);
+		}
+		
+		private function onLoadPic(e:Event):void
+		{
+			e.target.content.removeEventListener(Event.COMPLETE, onLoadPic);
+			
+			var pic:Bitmap = e.target.content as Bitmap;
+			pic.smoothing = true;
+			var bmd:BitmapData = new BitmapData(145, 145);
+			bmd.draw(pic);
+			
+			var bm:Bitmap = new Bitmap(bmd);
+			
+			bm.x = -bm.width / 2;
+			bm.y = -bm.height / 2;
+			
+			headPic.picFrame.addChild(bm);
+			
+			TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
+			TweenMax.to(headPic.picFrame, .2, {autoAlpha: 1});
+		
 		}
 		
 		private function init(e:Event = null):void
@@ -70,13 +154,15 @@
 			txtUserName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
 			
 			//-- test --//
-				//var bmd:BitmapData = new BitmapData(145, 145, false, 0xFFFFFF);
-				//var myMatrix:Matrix = new Matrix();
-				//myMatrix.translate(bmd.width/2,bmd.height/2);
-				//bmd.draw(headPic,myMatrix);
-				
+			//var bmd:BitmapData = new BitmapData(145, 145, false, 0xFFFFFF);
+			//var myMatrix:Matrix = new Matrix();
+			//myMatrix.translate(bmd.width/2,bmd.height/2);
+			//bmd.draw(headPic,myMatrix);
+			
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
+			
+			getUserInfo();
 		
 		}
 		
@@ -110,14 +196,8 @@
 			
 			UploadPhotoPopup.instance.addEventListener(UploadPhotoEvent.COMPLETE, uploadPhotoCompleteHandler);
 			
-			TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 1 } );
-			
-			
-			
-			
+			TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 1});
 		
-			
-			
 		}
 		
 		private function uploadPhotoCompleteHandler(e:UploadPhotoEvent):void
@@ -175,9 +255,8 @@
 				
 				TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
 				
-				TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 0 } );
-				TweenMax.to(_scaledBmp, .2, {autoAlpha: 1});
-				
+				TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 0});
+				TweenMax.to(headPic.picFrame, .2, {autoAlpha: 1});
 				
 			}
 		
@@ -193,25 +272,27 @@
 		public function set userName(value:String):void
 		{
 			_userName = value;
+			txtUserName.text = _userName;
 		}
 		
-		public function get userHead():String 
+		public function get userHead():String
 		{
 			_userHead = this.getImg();
 			return _userHead;
 		}
 		
-		public function set userHead(value:String):void 
+		public function set userHead(value:String):void
 		{
 			_userHead = value;
 		}
 		
-		private function getImg():String {
+		private function getImg():String
+		{
 			
 			var bmd:BitmapData = new BitmapData(145, 145, false, 0xFFFFFF);
 			var myMatrix:Matrix = new Matrix();
-			myMatrix.translate(bmd.width/2,bmd.height/2);
-			bmd.draw(headPic,myMatrix);
+			myMatrix.translate(bmd.width / 2, bmd.height / 2);
+			bmd.draw(headPic, myMatrix);
 			
 			for (var i:int = 0; i < bmd.width; i++)
 			{
@@ -226,7 +307,7 @@
 			}
 			return "";
 		}
-		
+	
 	}
 
 }
