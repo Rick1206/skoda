@@ -45,6 +45,9 @@
   display: block;
   background-repeat: no-repeat;
 }
+.jspVerticalBar .jspCap {
+  height: 7px;
+}
 .jspCapTop {
   background-position: 2px 0;
 }

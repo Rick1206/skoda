@@ -41,14 +41,15 @@ switch ($ftype) {
 		
 	case 'User_Profile':
 		
-		
+		if($_SESSION["status"]){
+			
 		$state = "1";		
 		$message = "Get User profile Success";
 		
 		$username = "rick";
 		$headpic = "./function_all/rick.jpg";
 		
-		$q1 = "1";
+		$q1 = "3";
 		$q2 = "2";
 		$q3 = "1";
 		$q4 = "3";
@@ -61,6 +62,14 @@ switch ($ftype) {
 			  ."\",\"profile_q3\":\"".$q3
 			  ."\",\"profile_q4\":\"".$q4
 			  ."\",\"profile_q5\":\"".$q5."\"}}";
+		
+		
+		}else{
+			$state = "0";		
+				$message = "Get User profile Faliure";
+			
+			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";	
+		}
 		
 		break;
 	

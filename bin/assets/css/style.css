@@ -861,6 +861,7 @@ footer .logo2 a {
 }
 #page {
   width: 100%;
+  min-width: 980px;
   padding-top: 90px;
 }
 #page .bd .wrap {
@@ -885,15 +886,27 @@ footer .logo2 a {
 .body-background-index {
   background: #ececec url(../images/body-background.jpg) no-repeat center top;
   min-height: 1217px;
+  min-width: 980px;
 }
 .body-background-idea {
   background: #ececec url(../images/body-background-idea-top.jpg) no-repeat center top;
+  min-width: 980px;
 }
 .body-background-idea-repeat {
   background: #ececec url(../images/body-background-idea-repeat.jpg) repeat-y center top;
+  min-width: 980px;
 }
 .body-background-profile {
-  background: #cccccc url(../images/body-background-profile.jpg) no-repeat center top;
+  background: #ececec url(../images/body-background-profile.jpg) no-repeat center top;
+  min-width: 980px;
+}
+.body-background-profile-fixed {
+  background: #ececec url(../images/body-background-profile-fixed.jpg) repeat-y center;
+  position: absolute;
+  width: 100%;
+  top: 1384px;
+  z-index: 1;
+  height: 0 ;
 }
 .call-board {
   position: absolute;
@@ -1373,6 +1386,8 @@ footer .logo2 a {
 .user-info .user-pic img {
   position: relative;
   z-index: 1;
+  width: 116px;
+  height: 116px;
 }
 .user-info .user-pic .updata {
   position: absolute;
@@ -1464,7 +1479,7 @@ footer .logo2 a {
   color: #68b254;
 }
 .user-intro .btns {
-  padding-top: 22px;
+  padding-top: 19px;
 }
 .tv {
   width: 558px;
@@ -1522,7 +1537,7 @@ footer .logo2 a {
   z-index: 10;
 }
 .tv .tv-show .tv-btns .share {
-  padding-top: 10px;
+  padding-top: 7px;
 }
 .tv .tv-show .tv-btns .share .share-bar {
   background-position: -230px 0;
@@ -1569,10 +1584,11 @@ footer .logo2 a {
 }
 .suggestions {
   padding: 40px 0;
+  position: relative;
+  z-index: 2;
 }
 .suggestions .suggestions-box {
   width: 754px;
-  height: 516px;
   margin-left: 124px;
 }
 .suggestions .suggestions-box .suggestions-box-hd {
@@ -1653,7 +1669,7 @@ footer .logo2 a {
 .suggestions .suggestions-box .suggestions-box-ft {
   width: 100%;
   height: 25px;
-  background: url(../images/suggestions_bg.png) no-repeat -1576px -20px;
+  background: url(../images/suggestions_bg.png) no-repeat -1576px -35px;
 }
 .video-3d-men {
   width: 132px;
@@ -1757,7 +1773,7 @@ footer .logo2 a {
 }
 .pop-profile-form .cars {
   width: 323px;
-  height: 93px;
+  height: 107px;
   border: 1px solid #c6c7c8;
   overflow: hidden;
   -webkit-box-shadow: inset 1px 1px 8px #c6c7c8;
@@ -1765,7 +1781,8 @@ footer .logo2 a {
   box-shadow: inset 1px 1px 8px #c6c7c8;
 }
 .pop-profile-form .cars ul {
-  width: 1211px;
+  width: 1253px;
+  list-style: none;
   *zoom: 1;
 }
 .pop-profile-form .cars ul:before,
@@ -1779,6 +1796,11 @@ footer .logo2 a {
 }
 .pop-profile-form .cars ul > li {
   float: left;
+  border: 2px solid #cccccc;
+  margin-right: 2px;
+}
+.pop-profile-form .cars ul > li.selected {
+  border-color: #68b254;
 }
 .pop-profile-form .cars img {
   width: 173px;
@@ -1790,6 +1812,11 @@ footer .logo2 a {
   background: url(../images/profile_form_bg_ft.png) no-repeat 0 -70px;
   margin-top: -10px;
   padding: 0 50px;
+  font-size: 14px;
+  color: #000;
+}
+.pop-profile-form .text_middle {
+  line-height: 25px;
 }
 .pop-upload-box {
   width: 345px;
@@ -1819,6 +1846,80 @@ footer .logo2 a {
 .pop-upload-box .pop-content #upload {
   text-align: center;
   padding-top: 10px;
+}
+.confirm {
+  width: 342px;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  border: 5px solid #4aa82c;
+  background-image: url(../images/grain_bg.jpg);
+  position: relative;
+  text-align: center;
+}
+.confirm .title {
+  font-size: 18px;
+  color: #419a20;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0 22px;
+}
+.confirm .title a {
+  color: #419a20;
+}
+.confirm .btn-yes {
+  margin-right: 40px;
+}
+div[class*=pop-video-box] {
+  border: 5px solid #4ea736;
+  width: 604px;
+  height: 483px;
+  display: none;
+  background-image: url(../images/grain_bg.jpg);
+}
+div[class*=pop-video-box] .pop-close {
+  top: -20px;
+  right: -20px;
+}
+div[class*=pop-video-box] .content {
+  padding: 32px;
+  position: relative;
+}
+div[class*=pop-video-box] .content .video {
+  width: 540px;
+  height: 374px;
+}
+div[class*=pop-video-box] .share {
+  position: absolute;
+  left: 516px;
+  top: 425px;
+}
+div[class*=pop-video-box] .share .share-bar {
+  background-position: 0 -167px;
+  height: 54px;
+  width: 236px;
+  top: -13px;
+  left: -236px;
+}
+div[class*=pop-video-box] .share .share-bar .icon-tsina {
+  margin-left: 18px;
+}
+.pop-video-box02 .btn-skip {
+  position: absolute;
+  left: 516px;
+  top: 425px;
+}
+.pop-video-box02 .step1 .share {
+  left: 450px;
+}
+.pop-video-box02 .step2 {
+  display: none;
+  text-align: center;
+}
+.pop-video-box02 .step2 .message {
+  color: #4ba82e;
+  font-size: 18px;
+  text-align: center;
+  margin: 90px 0 70px 0;
 }
 .text-sc {
   background: url(../images/text-simplayclerver.png) no-repeat;
@@ -2397,13 +2498,15 @@ input[type="checkbox"][readonly] {
 }
 input:focus:required:invalid,
 textarea:focus:required:invalid,
-select:focus:required:invalid {
+select:focus:required:invalid,
+input.error {
   color: #b94a48;
   border-color: #ee5f5b;
 }
 input:focus:required:invalid:focus,
 textarea:focus:required:invalid:focus,
-select:focus:required:invalid:focus {
+select:focus:required:invalid:focus,
+input.error:focus {
   border-color: #e9322d;
   -webkit-box-shadow: 0 0 6px #f8b9b7;
   -moz-box-shadow: 0 0 6px #f8b9b7;
@@ -2723,8 +2826,8 @@ legend + .control-group {
 .form-horizontal .form-actions {
   padding-left: 80px;
 }
-[class^=icon-],
-[class^=btn-] {
+[class*=icon-],
+[class*=btn-] {
   background-image: url(../images/sprites.png);
   border: 0;
 }
@@ -2741,8 +2844,8 @@ legend + .control-group {
   background-position: -95px -303px;
 }
 .tv-btns .btn-share {
-  width: 84px;
-  height: 27px;
+  width: 85px;
+  height: 28px;
   margin: 0;
   background-position: -412px -367px;
 }
@@ -2752,12 +2855,12 @@ legend + .control-group {
 }
 .btn-submit {
   width: 50px;
-  height: 24px;
-  background-position: -95px -341px;
+  height: 25px;
+  background-position: -94px -341px;
   display: inline-block;
 }
 .btn-submit:hover {
-  background-position: -95px -372px;
+  background-position: -94px -372px;
 }
 .share-bar,
 .icon-tsina,
@@ -2911,7 +3014,7 @@ legend + .control-group {
 }
 .btn-getmore-idea {
   width: 84px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -6px;
 }
@@ -2919,8 +3022,8 @@ legend + .control-group {
   background-position: -412px -40px;
 }
 .btn-more {
-  width: 83px;
-  height: 26px;
+  width: 85px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -442px;
 }
@@ -2929,7 +3032,7 @@ legend + .control-group {
 }
 .btn-more2 {
   width: 58px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
   background-position: -158px -337px;
 }
@@ -2937,8 +3040,8 @@ legend + .control-group {
   background-position: -158px -372px;
 }
 .btn-update-info {
-  width: 54px;
-  height: 26px;
+  width: 56px;
+  height: 28px;
   display: inline-block;
   background-position: -95px -405px;
 }
@@ -2946,8 +3049,8 @@ legend + .control-group {
   background-position: -159px -405px;
 }
 .btn-next-topic {
-  width: 84px;
-  height: 27px;
+  width: 85px;
+  height: 28px;
   display: block;
   background-position: -412px -295px;
 }
@@ -2955,44 +3058,62 @@ legend + .control-group {
   background-position: -412px -333px;
 }
 .btn-update-avatar {
-  width: 76px;
-  height: 22px;
+  width: 77px;
+  height: 23px;
   background-position: -412px -148px;
   display: block;
 }
 .btn-update-avatar:hover {
-  background-position: -412px -183px;
+  background-position: -412px -182px;
 }
 .btn-update-avatar2 {
-  width: 76px;
-  height: 22px;
-  background-position: -412px -79px;
+  width: 79px;
+  height: 23px;
+  background-position: -412px -78px;
   display: block;
 }
 .btn-update-avatar2:hover {
-  background-position: -412px -112px;
+  background-position: -412px -111px;
+}
+.btn-update-avatar3 {
+  width: 85px;
+  height: 28px;
+  background-position: -312px -810px;
+  display: block;
+}
+.btn-update-avatar3:hover {
+  background-position: -312px -847px;
 }
 .btn-myhomepage {
   width: 84px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
-  background-position: -411px -511px;
+  background-position: -412px -511px;
 }
 .btn-myhomepage:hover {
-  background-position: -411px -546px;
+  background-position: -412px -546px;
+}
+.btn-myhomepage2 {
+  width: 123px;
+  height: 38px;
+  display: inline-block;
+  background-position: -247px -417px;
+}
+.btn-myhomepage2:hover {
+  background-position: -247px -477px;
 }
 .btn-logout {
   width: 56px;
   height: 25px;
   display: inline-block;
-  background-position: -96px -442px;
+  background-position: -98px -444px;
 }
 .btn-logout:hover {
-  background-position: -160px -442px;
+  background-position: -162px -444px;
 }
 .btn-ranking {
   width: 86px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -584px;
 }
@@ -3000,8 +3121,8 @@ legend + .control-group {
   background-position: -412px -625px;
 }
 .btn-submit-upload {
-  width: 83px;
-  height: 26px;
+  width: 85px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -736px;
   border: none;
@@ -3010,8 +3131,8 @@ legend + .control-group {
   background-position: -412px -770px;
 }
 .btn-select-file {
-  width: 83px;
-  height: 26px;
+  width: 85px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -664px;
   border: none;
@@ -3020,8 +3141,8 @@ legend + .control-group {
   background-position: -412px -700px;
 }
 .btn-upload-file {
-  width: 83px;
-  height: 26px;
+  width: 85px;
+  height: 28px;
   display: inline-block;
   background-position: -412px -810px;
   border: none;
@@ -3031,7 +3152,7 @@ legend + .control-group {
 }
 .btn-save {
   width: 56px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
   background-position: -95px -485px;
   border: none;
@@ -3041,11 +3162,38 @@ legend + .control-group {
 }
 .btn-cancel {
   width: 56px;
-  height: 26px;
+  height: 28px;
   display: inline-block;
   background-position: -160px -485px;
   border: none;
 }
 .btn-cancel:hover {
   background-position: -161px -520px;
+}
+.btn-yes {
+  width: 54px;
+  height: 28px;
+  background-position: -95px -566px;
+  display: inline-block;
+}
+.btn-yes:hover {
+  background-position: -158px -567px;
+}
+.btn-no {
+  width: 54px;
+  height: 28px;
+  background-position: -95px -610px;
+  display: inline-block;
+}
+.btn-no:hover {
+  background-position: -158px -610px;
+}
+.btn-skip {
+  width: 56px;
+  height: 27px;
+  background-position: -94px -656px;
+  display: inline-block;
+}
+.btn-skip:hover {
+  background-position: -159px -656px;
 }

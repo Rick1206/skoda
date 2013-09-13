@@ -119,15 +119,22 @@
 			
 			var pic:Bitmap = e.target.content as Bitmap;
 			pic.smoothing = true;
+			
 			var bmd:BitmapData = new BitmapData(145, 145);
-			bmd.draw(pic);
+				bmd.draw(pic);
 			
-			var bm:Bitmap = new Bitmap(bmd);
+			if (_scaledBmp != null) {
+				headPic.picFrame.removeChild(_scaledBmp);
+			}
 			
-			bm.x = -bm.width / 2;
-			bm.y = -bm.height / 2;
+			_scaledBmp = new Bitmap(bmd, "auto", true);
 			
-			headPic.picFrame.addChild(bm);
+			_scaledBmp.x = -_scaledBmp.width / 2;
+			_scaledBmp.y = -_scaledBmp.height / 2;
+			
+			headPic.picFrame.alpha = 0;
+			
+			headPic.picFrame.addChild(_scaledBmp);
 			
 			TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
 			TweenMax.to(headPic.picFrame, .2, {autoAlpha: 1});
@@ -158,9 +165,9 @@
 			//var myMatrix:Matrix = new Matrix();
 			//myMatrix.translate(bmd.width/2,bmd.height/2);
 			//bmd.draw(headPic,myMatrix);
-			
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
+			
 			
 			getUserInfo();
 		
@@ -241,21 +248,28 @@
 				_matrix.scale(newRatio, newRatio);
 				_bmpdata.draw(bm, _matrix);
 				
+				
+				if (_scaledBmp != null) {
+					headPic.picFrame.removeChild(_scaledBmp);
+				}
+				
 				_scaledBmp = new Bitmap(_bmpdata, "auto", true);
 				
 				_scaledBmp.scaleX = 145 * 1.5 / (_width * newRatio);
 				_scaledBmp.scaleY = _scaledBmp.scaleX;
 				
-				_scaledBmp.alpha = 0;
+				headPic.picFrame.alpha = 0;
 				
 				_scaledBmp.x = -_scaledBmp.width / 2;
 				_scaledBmp.y = -_scaledBmp.height / 2;
-				
+								
+
 				headPic.picFrame.addChild(_scaledBmp);
 				
 				TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
 				
-				TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 0});
+				TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 0 } );
+				
 				TweenMax.to(headPic.picFrame, .2, {autoAlpha: 1});
 				
 			}

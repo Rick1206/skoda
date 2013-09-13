@@ -237,6 +237,7 @@ footer{
 
 #page{
   width: 100%;
+  min-width: @wrapWidth;
   padding-top: 90px;
   .bd .wrap{
     position: relative;
@@ -251,15 +252,27 @@ footer{
 .body-background-index{
   background:#ececec url(../images/body-background.jpg) no-repeat center top;
   min-height: 1217px;
+  min-width: @wrapWidth;
 }
 .body-background-idea{
   background:#ececec url(../images/body-background-idea-top.jpg) no-repeat center top;
+  min-width: @wrapWidth;
 }
 .body-background-idea-repeat{
   background:#ececec url(../images/body-background-idea-repeat.jpg) repeat-y center top;
+  min-width: @wrapWidth;
 }
 .body-background-profile{
-  background:#cccccc url(../images/body-background-profile.jpg) no-repeat center top;
+  background:#ececec url(../images/body-background-profile.jpg) no-repeat center top;
+  min-width: @wrapWidth;
+}
+.body-background-profile-fixed{
+  background:#ececec url(../images/body-background-profile-fixed.jpg) repeat-y center ;
+  position: absolute;
+  width: 100%;
+  top: 1384px;
+  z-index: 1;
+  height: 0 ;
 }
 .call-board{
   position: absolute;
@@ -706,6 +719,8 @@ footer{
     img{
       position: relative;
       z-index: 1;
+      width: 116px;
+      height: 116px;
     }
     .updata{
       position: absolute;
@@ -788,7 +803,7 @@ footer{
     color: #68b254;
   }
   .btns{
-    padding-top: 22px;
+    padding-top: 19px;
   }
 }
 
@@ -845,7 +860,7 @@ footer{
       left: 399px;
       z-index: 10;
       .share{
-        padding-top: 10px;
+        padding-top: 7px;
         .share-bar{
           background-position: -230px 0;
           width: 46px;
@@ -895,11 +910,13 @@ footer{
 .pt10{
   padding-top: 10px;
 }
+
 .suggestions{
   padding: 40px 0;
+  position: relative;
+  z-index: 2;
   .suggestions-box{
     width: 754px;
-    height: 516px;
     margin-left: 124px;
     .suggestions-box-hd{
       width: 100%;
@@ -966,7 +983,7 @@ footer{
     .suggestions-box-ft{
       width: 100%;
       height: 25px;
-      background: url(../images/suggestions_bg.png) no-repeat -1576px -20px;
+      background: url(../images/suggestions_bg.png) no-repeat -1576px -35px;
     }
   }
 }
@@ -1072,16 +1089,22 @@ footer{
   }
   .cars{
     width: 323px;
-    height: 93px;
+    height: 107px;
     border: 1px solid #c6c7c8;
     overflow: hidden;
     .box-shadow(inset 1px 1px 8px #c6c7c8);
     ul{
-      width: 173px * 7;
+      width: (173px + 6px) * 7;
+      list-style: none;
       .clearfix();
     }
     ul>li{
       float: left;
+      border:2px solid #cccccc;
+      margin-right: 2px;
+      &.selected{
+        border-color: #68b254;
+      }
     }
     img{
       width: 173px;
@@ -1094,6 +1117,11 @@ footer{
     background: url(../images/profile_form_bg_ft.png) no-repeat 0 -70px;
     margin-top: -10px;
     padding: 0 50px;
+    font-size: 14px;
+    color: #000;
+  }
+  .text_middle{
+    line-height: 25px;
   }
 }
 .pop-upload-box{
@@ -1120,6 +1148,86 @@ footer{
     #upload{
       text-align: center;
       padding-top: 10px;
+    }
+  }
+}
+
+.confirm{
+  width: 342px;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  border: 5px solid #4aa82c;
+  background-image: url(../images/grain_bg.jpg);
+  position: relative;
+  text-align: center;
+  .title{
+    font-size: 18px;
+    color: #419a20;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0 22px;
+    a{
+      color: #419a20;
+    }
+  }
+  .btn-yes{
+    margin-right: 40px;
+  }
+}
+div[class*=pop-video-box]{
+  border: 5px solid #4ea736;
+  width: 604px;
+  height: 483px;
+  display: none;
+  background-image: url(../images/grain_bg.jpg);
+  .pop-close{
+    top: -20px;
+    right: -20px;
+  }
+  .content{
+    padding: 32px;
+    position: relative;
+    .video{
+      width: 540px;
+      height: 374px;
+    }
+  }
+  .share{
+    position: absolute;
+    left: 516px;
+    top: 425px;
+    .share-bar{
+      background-position: 0 -167px;
+      height: 54px;
+      width: 236px;
+      top: -13px;
+      left: -236px;
+      .icon-tsina{
+        margin-left: 18px;
+      }
+    }
+  }
+}
+
+.pop-video-box02{
+  .btn-skip{
+    position: absolute;
+    left: 516px;
+    top: 425px;
+  }
+  .step1{
+    .share{
+      left: 450px;
+    }
+  }
+  .step2{
+    display: none;
+    text-align: center;
+    .message{
+      color: #4ba82e;
+      font-size: 18px;
+      text-align: center;
+      margin: 90px 0 70px 0;
     }
   }
 }

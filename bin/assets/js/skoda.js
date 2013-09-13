@@ -1,4 +1,5 @@
 (function($){
+
     //notification
     $('.logined').click(function(){
         var target = $(this).parent('.usr');
@@ -191,43 +192,155 @@
             });
         });
 
-    //  upload
+        //get more data'  for example
+        $('.suggestions').length>0&&(function(){
+            var $suggestions =  $('.suggestions');
+            var $suggestions_list = $suggestions.find('.suggestions-list');
+            $('.btn-more2',$suggestions).click(function(){
+                $suggestions_list.find('li').clone(true).appendTo($suggestions_list);
+                bgfix();
+            });
+            $('.delete',$suggestions).click(function(){
+                var $this = $(this);
+                $.confirm('确认删除吗?',function(result){
+                    if(result){
+                        $this.parent('li').remove();
+                        bgfix();
+                    }
+                });
+                return false;
+            });
+            function bgfix(){
+                var $page = $('#page');
+                var fixMask = $('.body-background-profile-fixed');
+                if($page.height()>=1200){
+                    fixMask.css({
+                        height:($page.height()-1200)<30?0:($page.height()-1200)
+                    })
+                }
+            }
+        })();
 
-    $('.pop-upload-box').length>0&&(function(){
-        var $box = $('.pop-upload-box');
-        var $form = $('#upload');
-        var $form_file = $form.find('input[type=file]');
-        $('.jsPopUploadBox').click(function(){
-            $box.bPopup({
+        $.confirm = function(title,callback){
+            var title = title || '';
+            var callback = callback ;
+            var confirm =  false;
+            var popbox = $('<div class="confirm"><p class="title">'+title+'</p><a href="#" class="btn-yes"></a><a href="#" class="btn-no"></a></div>');
+            popbox.find('.btn-yes').click(function(){
+                confirm= true;
+                popbox.bPopup().close();
+                return false;
+            });
+            popbox.find('.btn-no').click(function(){
+                confirm= false;
+                popbox.bPopup().close();
+                return false;
+            })
+            $('body').append(popbox);
+            popbox.bPopup({
+                modalClose: false,
+                fadeSpeed: 'fast',
+                positionStyle: 'fixed',
                 onClose:function(){
-                    $box.find('.file-input').html('...');
+                    popbox.remove();
+                    callback.call(this,confirm);
                 }
             });
-        });
-        $form.ajaxForm(function(){
-            alert('Upload succeed!');
-        });
-        $box.find('.btn-select-file').click(function(){
-            $form_file.click();
-        });
-        $form_file.change(function(){
-            $box.find('.file-input').html($(this).val());
-        });
+        }
+        //  upload
 
-    })();
-    $('.pop-profile-form').length>0&&(function(){
-        var $form = $('.pop-profile-form');
-        $('.jsPopProfileForm').click(function(){
-            $('.pop-profile-form').bPopup({
-                follow: [true,false],
-                position:['auto',0],
-                onClose:function(){
-                    $form.find('input[type=reset]').click();
+        $('.pop-upload-box').length>0&&(function(){
+            var $box = $('.pop-upload-box');
+            var $form = $('#upload');
+            var $form_file = $form.find('input[type=file]');
+            $('.jsPopUploadBox').click(function(){
+                $box.bPopup({
+                    onClose:function(){
+                        $box.find('.file-input').html('...');
+                    }
+                });
+            });
+            $form.ajaxForm(function(){
+                alert('Upload succeed!');
+            });
+            $box.find('.btn-select-file').click(function(){
+                $form_file.click();
+            });
+            $form_file.change(function(){
+                $box.find('.file-input').html($(this).val());
+            });
+
+        })();
+        $('.pop-profile-form').length>0&&(function(){
+            var $form = $('.pop-profile-form');
+            $('.jsPopProfileForm').click(function(){
+                $form.bPopup({
+                    follow: [true,false],
+                    position:['auto',0],
+                    modalClose: false,
+                    onClose:function(){
+                        $form.find('input[type=reset]').click();
+                        $form.find('.error').removeClass('error');
+                    }
+                });
+            })
+
+            $(window).resize(function(){
+                $form.css('left',($(this).width()-775) *.5);
+            })
+            $('.cars',$form).jScrollPane({autoReinitialise: true}).find('li').click(function(){
+                $(this).toggleClass('selected');
+            }).end().on('mousedown',function(){
+                    $(this).removeAttr('tabindex');
+                });
+            $('.form-horizontal',$form).validator();
+
+            $('.student',$form).change(function(){
+                var $this = $(this);
+                if($this.is(':checked')){
+                    $.confirm('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="http://www.congmingzhuyi.com/how-to-play" target="_blank">查看这里</a>。',function(result){
+                        if(!result){
+                            $this.attr('checked',false);
+                        }
+                    })
                 }
             });
-        })
-        $('.cars',$form).jScrollPane({autoReinitialise: true});
-        $('.form-horizontal',$form).validator();
-    })();
 
+        })();
+
+
+//        video popup
+        $('.pop-video-box01').length>0&&(function(){
+            $('.btn-3d-becomeTalent3').click(function(){
+                $('.pop-video-box01').bPopup();
+                return false;
+            });
+        })();
+
+        $('.pop-video-box02').length>0&&(function(){
+            $('.video-3d-men>a').click(popVideo2);
+
+            var $popbox = $('.pop-video-box02');
+            var domCache ;
+
+            $popbox.find('.skip1').click(function(){
+                $(this).parent('.step1').hide().siblings('.step2').show().end().remove();
+            });
+
+
+
+            function popVideo2(){
+                $popbox.bPopup({
+                    modalClose: false,
+                    onOpen:function(){
+                        domCache = $popbox.clone(true);
+                    },
+                    onClose:function(){
+                        $popbox.replaceWith(domCache);
+                        $popbox = $('.pop-video-box02');
+                    }
+                });
+                return false;
+            }
+        })();
 })(window.jQuery);
