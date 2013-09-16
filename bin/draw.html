@@ -142,6 +142,35 @@
 <script type="text/javascript" src="assets/js/skoda.js"></script>
 <script type="text/javascript" charset="utf-8">
 			$(function() {
+				
+				//--- get user profile --//
+				$.ajax({
+						url : './function_all/',
+						data : {
+							Fun_type : 'User_Profile',
+						},
+						type : 'POST',
+						success : function(data) {
+							var myObject = JSON.parse(data);
+							if (myObject.state == "1") {
+								call(data);
+							} 
+						},
+						error : function(e) {
+							alert(e);
+						}
+					});
+					
+					
+					function call(data){
+			            try{
+			                GetSWF("draw").setUserProfile(data);
+			                
+			            }catch(e){
+			                setTimeout(function(){call(data);},500);
+			            }
+			        }
+				
 				//--- login function ---//
 				window.is_login = function() {
 					$.ajax({
@@ -164,7 +193,7 @@
 						}
 					});
 				}
-
+				
 				window.uploadsubmission = function() {
 					var data = GetSWF("draw").getUserInfo();
 					var myObject = JSON.parse(data);

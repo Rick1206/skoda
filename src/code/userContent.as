@@ -24,6 +24,7 @@
 	import com.dynamicflash.util.Base64;
 	import com.adobe.serialization.json.JSON;
 	import com.ctp.model.AppData;
+	import com.pyco.external.JSBridge;
 	
 	public class userContent extends MovieClip
 	{
@@ -47,6 +48,7 @@
 		private var _urlvar:URLVariables;
 		private var _urlloa:URLLoader;
 		private var queArr:Array;
+		
 		public function userContent()
 		{
 			if (stage)
@@ -79,6 +81,8 @@
 			_urlreq.method = "POST";
 			//_urlloa.dataFormat = URLLoaderDataFormat.BINARY;
 			_urlloa.load(_urlreq);
+			
+			
 		}
 		
 		private function onCompInfoHandle(e:Event):void
@@ -186,8 +190,26 @@
 			//bmd.draw(headPic,myMatrix);
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
-			
-			getUserInfo();
+			JSBridge.addCallback("setUserProfile", setUserProfile);
+			//getUserInfo();
+		}
+		
+		public function setUserProfile(str:String):void 
+		{
+			var myData:Object = JSON.decode(str);
+			if (myData.state == "1"){
+				this.userName = myData.profile[0].username;
+				loadPic(myData.profile[0].headpic);
+				for (var i:int = 0; i < queArr.length ; i++) {
+					for (var t:int = 0; t < myData.questions[i].options.length; t++ ) {
+						if (myData.questions[i].options[t].selected == "true") {
+							queArr[i].ans = t + 1;
+							setGlobal(i,String(t+1));
+							break;
+						}
+					}
+				}
+			}
 		}
 		
 		private function onRollHandler(e:MouseEvent):void
