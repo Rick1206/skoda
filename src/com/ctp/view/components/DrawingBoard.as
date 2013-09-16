@@ -235,7 +235,6 @@ package com.ctp.view.components {
 			JSBridge.addCallback("getUserInfo", getUserInfo);
 			
 			//userProfileMc.close();
-			
 			//trace(getUserInfo());
 		}
 		
@@ -255,14 +254,31 @@ package com.ctp.view.components {
 			obj.DrawTalent = strDrawTalent;
 			
 			obj.pic = getImg();
-			obj.UserName = userProfileMc.userName;
-			obj.UserHead = userProfileMc.userHead;
 			
-			obj.q1 = GlobalVars.getQ1();
-			obj.q2 = GlobalVars.getQ2();
-			obj.q3 = GlobalVars.getQ3();
-			obj.q4 = GlobalVars.getQ4();
-			obj.q5 = GlobalVars.getQ5();
+			var profileObj:Object = new Object;
+			profileObj.UserName = userProfileMc.userName;
+			profileObj.UserHead = userProfileMc.userHead;
+			obj.profile = profileObj;
+			
+			
+			//obj.profile[0].UserHead =  userProfileMc.userHead;
+			//obj.UserName = userProfileMc.userName;
+			//obj.UserHead = userProfileMc.userHead;
+			
+			var quesObj:Array = new Array();
+			for (var i:int = 0; i < 5;	 i++) {
+					var opObj:Object = new Object();
+					opObj.questionId = i + 1;
+					opObj.optionId = getQueByNum(i);
+					quesObj.push(opObj);
+			}
+			obj.questions = quesObj;
+			
+			//obj.q1 = GlobalVars.getQ1();
+			//obj.q2 = GlobalVars.getQ2();
+			//obj.q3 = GlobalVars.getQ3();
+			//obj.q4 = GlobalVars.getQ4();
+			//obj.q5 = GlobalVars.getQ5();
 			
 			
 			dataArr.push(obj);
@@ -272,7 +288,28 @@ package com.ctp.view.components {
 			return jsonString;
 			
 		}
-		
+		private function getQueByNum(num:int):String {
+			switch (num) 
+			{
+				case 0:
+				    return	GlobalVars.getQ1();
+				break;
+				case 1:
+					return	GlobalVars.getQ2();
+				break;
+				case 2:
+					return	GlobalVars.getQ3();
+				break;
+				case 3:
+					return	GlobalVars.getQ4();
+				break;
+				case 4:
+					return	GlobalVars.getQ5();
+				break;
+			default:
+				return	"";
+			}
+		}
 		private function getImg():String {
 			var bmd: BitmapData = new BitmapData(624, 624, false, 0xFFFFFF);
 			bmd.draw(boardMovie);
@@ -444,6 +481,7 @@ package com.ctp.view.components {
 		}
 		
 		public function onUploadSubmissionHandler(e:Event):String {
+		
 			try
 			{
 				tracker.trackEvent("/idea-submission", "click", "submit-idea-is");
@@ -629,7 +667,6 @@ package com.ctp.view.components {
 				contentMovie.removeChild(selectedObject);
 				selectedObject = null;
 			}
-			
 			//if (ConfirmBox.instance.messageMovie.totalFrames == confirmMovie.messageMovie.currentFrame) {
 			if (ConfirmBox.instance.messageMovie.totalFrames == ConfirmBox.instance.messageMovie.currentFrame) {
 				while (contentMovie.numChildren) {

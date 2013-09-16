@@ -2,6 +2,8 @@
 session_start();
 $ftype = isset($_POST["Fun_type"]) ? $_POST["Fun_type"] : "" ;
 
+//$ftype = isset($_GET["Fun_type"]) ? $_GET["Fun_type"] : "" ;
+
 if($ftype == ""){
 	return;
 }
@@ -40,7 +42,7 @@ switch ($ftype) {
 		break;
 		
 	case 'User_Profile':
-		
+		//$_SESSION["status"]= TRUE;
 		if($_SESSION["status"]){
 			
 		$state = "1";		
@@ -55,22 +57,49 @@ switch ($ftype) {
 		$q4 = "3";
 		$q5 = "4";
 			
-		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":{\"username\":\"".$username 
+		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":[{\"username\":\"".$username 
 			  ."\",\"headpic\":\"".$headpic
-			  ."\",\"profile_q1\":\"".$q1
-			  ."\",\"profile_q2\":\"".$q2
-			  ."\",\"profile_q3\":\"".$q3
-			  ."\",\"profile_q4\":\"".$q4
-			  ."\",\"profile_q5\":\"".$q5."\"}}";
-		
-		
+			  ."\"}],\"questions\":[{\"questionId\":\"1\",\"title\":\"\",
+			  \"options\":[
+           			{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"true\"},
+           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+       		  ]},{
+			  	\"questionId\":\"2\",\"title\":\"\",
+			  	\"options\":[
+					{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"true\"},
+           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+			  ]},{
+			  	\"questionId\":\"3\",\"title\":\"\",
+			  	\"options\":[
+			  		{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"true\"},
+           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+			  ]},{
+			  	\"questionId\":\"4\",\"title\":\"\",
+			  	\"options\":[
+			  	    {\"optionId\": \"1\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"true\"}
+			 ]},{
+			  	\"questionId\":\"5\",\"title\":\"\",
+			  	\"options\":[
+			  		{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"true\"},
+           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+			  ]}]}";
+			  	
 		}else{
 			$state = "0";		
-				$message = "Get User profile Faliure";
-			
-			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";	
+			$message = "Get User profile Faliure";
+			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";		
 		}
-		
 		break;
 	
 

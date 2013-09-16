@@ -39,14 +39,14 @@
 		
 		private var tracker:AnalyticsTracker;
 		
-		private var _userName:String;
+		private var _userName:String = "";
 		
-		private var _userHead:String;
+		private var _userHead:String = "";
 		
 		private var _urlreq:URLRequest;
 		private var _urlvar:URLVariables;
 		private var _urlloa:URLLoader;
-		
+		private var queArr:Array;
 		public function userContent()
 		{
 			if (stage)
@@ -83,29 +83,44 @@
 		
 		private function onCompInfoHandle(e:Event):void
 		{
-			//trace(e.content);
-			trace(e.target.data);
-			
+
 			var myData:Object = JSON.decode(e.target.data);
-			if (myData.state == "1")
-			{
-				this.userName = myData.profile.username;
-				loadPic(myData.profile.headpic);
-				
-				contentMovie.q1.ans = myData.profile.profile_q1;
-				GlobalVars.setQ1(myData.profile.profile_q1);
-				contentMovie.q2.ans = myData.profile.profile_q2;
-				GlobalVars.setQ2(myData.profile.profile_q2);
-				contentMovie.q3.ans = myData.profile.profile_q3;
-				GlobalVars.setQ3(myData.profile.profile_q3);
-				contentMovie.q4.ans = myData.profile.profile_q4;
-				GlobalVars.setQ4(myData.profile.profile_q4);
-				contentMovie.q5.ans = myData.profile.profile_q5;
-				GlobalVars.setQ5(myData.profile.profile_q5);
+			if (myData.state == "1"){
+				this.userName = myData.profile[0].username;
+				loadPic(myData.profile[0].headpic);
+				for (var i:int = 0; i < queArr.length ; i++) {
+					for (var t:int = 0; t < myData.questions[i].options.length; t++ ) {
+						if (myData.questions[i].options[t].selected == "true") {
+							queArr[i].ans = t + 1;
+							setGlobal(i,String(t+1));
+							break;
+						}
+					}
+				}
 			}
-		
 		}
 		
+		private function setGlobal(num:int,ans:String) {
+			switch (num) 
+			{
+				case 0:
+					GlobalVars.setQ1(ans);
+				break;
+				case 1:
+					GlobalVars.setQ2(ans);
+				break;
+				case 2:
+					GlobalVars.setQ3(ans);
+				break;
+				case 3:
+					GlobalVars.setQ4(ans);
+				break;
+				case 4:
+					GlobalVars.setQ5(ans);
+				break;
+				default:
+			}
+		}
 		private function loadPic(str:String)
 		{
 			var loader:Loader = new Loader;
@@ -151,6 +166,10 @@
 			
 			scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
 			
+			
+			queArr = [contentMovie.q1, contentMovie.q2, contentMovie.q3, contentMovie.q4, contentMovie.q5];
+			
+			
 			contentMovie.q1.initData("q1");
 			contentMovie.q2.initData("q2");
 			contentMovie.q3.initData("q3");
@@ -168,9 +187,7 @@
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
 			
-			
 			getUserInfo();
-		
 		}
 		
 		private function onRollHandler(e:MouseEvent):void
@@ -291,7 +308,9 @@
 		
 		public function get userHead():String
 		{
-			_userHead = this.getImg();
+			if (_scaledBmp != null) {
+				_userHead = this.getImg();
+			}
 			return _userHead;
 		}
 		
