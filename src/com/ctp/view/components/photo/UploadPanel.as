@@ -44,7 +44,7 @@ package com.ctp.view.components.photo
 			var jpgTypeFilter:FileFilter = new FileFilter("JPEG (*.jpg;*.jpeg)", "*.jpg;*.jpeg");
 			var gifTypeFilter:FileFilter = new FileFilter("GIF (*.gif)", "*.gif");
 			var pngTypeFilter:FileFilter = new FileFilter("PNG (*.png)", "*.png");
-			
+		
 			typeFilter = [allTypeFilter, jpgTypeFilter, gifTypeFilter, pngTypeFilter];
 			
 			browseButton.addEventListener(MouseEvent.CLICK, browseButtonClickHandler);
@@ -52,6 +52,8 @@ package com.ctp.view.components.photo
 			RollTool.setRoll(browseButton);
 			RollTool.setRoll(uploadPhotoButton);
 			RollTool.setRoll(closeButton);
+			
+			messageMovie.alpha = 0;
 		}
 		
 		private function browseButtonClickHandler(e:MouseEvent):void
@@ -59,6 +61,7 @@ package com.ctp.view.components.photo
 			e.stopImmediatePropagation();
 			var fileReference:FileReference = new FileReference();
 			fileReference.addEventListener(Event.SELECT, fileRefSelectHandler);
+			//fileReference.addEventListener(
 			fileReference.browse(typeFilter);
 		}
 		
@@ -66,12 +69,35 @@ package com.ctp.view.components.photo
 		{
 			fileRef = e.currentTarget as FileReference;
 			reset();
+			
 			if (fileRef.size > 2 * 1024 * 1024)
 			{
+				messageMovie.alpha = 1;
+				messageMovie.gotoAndStop(2);
 				colorTransform.color = 0xFF0000;
 				messageMovie.transform.colorTransform = colorTransform;
 				return;
+			}else {
+				messageMovie.alpha = 0;
 			}
+			
+			var imgType:Array = [".jpg", ".jpeg", ".gif", ".png"];
+			var statusFormat:Boolean = false;
+			for (var i:int = 0; i < imgType.length; i++) {
+				if (fileRef.type == imgType[i]) {
+					statusFormat = true;
+				}
+			}
+			if (!statusFormat) {
+				messageMovie.alpha = 1;
+				messageMovie.gotoAndStop(1);
+					colorTransform.color = 0xFF0000;
+					messageMovie.transform.colorTransform = colorTransform;
+					return;
+			}else {
+				messageMovie.alpha = 0;
+			}
+			
 			dotMovie.visible = false;
 			filenameText.text = fileRef.name;
 			uploadPhotoButton.addEventListener(MouseEvent.CLICK, uploadPhotoButtonClickHandler);
@@ -86,8 +112,8 @@ package com.ctp.view.components.photo
 		
 		public function reset():void
 		{
-			colorTransform.color = 0x898989;
-			messageMovie.transform.colorTransform = colorTransform;
+			//colorTransform.color = 0x898989;
+			//messageMovie.transform.colorTransform = colorTransform;
 			
 			progressMovie.visible = false;
 			dotMovie.visible = true;

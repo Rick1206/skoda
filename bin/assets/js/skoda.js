@@ -85,15 +85,25 @@
                 })
             }
             //vertical center
+
             itemCarousel.find('img').each(function(){
-                $(this).css('visibility','hidden');
-                $(this).load(function(){
-                    $(this).css({
+                var $this = $(this);
+                $this.css({visibility:'hidden'});
+                $this.on('load',function(){
+                    $this.css({
                         top:'50%',
                         marginTop:-$(this).height() *.5,
-                        'visibility':'visible'
+                        visibility:'visible'
                     });
-                })
+                });
+
+                var _pic = new Image();
+                _pic.onload = function(){
+                    $this.trigger('load');
+                    _pic = null;
+                }
+                _pic.src = this.src;
+
             });
         })();
 
@@ -118,14 +128,19 @@
         //share bar
         $('.btn-share').length>=1&&
         (function(){
+            $('.btn-share').each(function(){
+                if(!$(this).hasClass('disable')){
+                    $(this).on('mouseenter',function(){
+                        $(this).siblings('.share-bar').show(),
+                            $(this).addClass('selected');
+                    }).parent('.share').on('mouseleave',function(){
+                            $(this).find('.share-bar').hide(),
+                                $(this).find('.btn-share').removeClass('selected');
+                        });
+                };
+            })
 
-            $('.btn-share').on('mouseenter',function(){
-                $(this).siblings('.share-bar').show(),
-                $(this).addClass('selected');
-            }).parent('.share').on('mouseleave',function(){
-                    $(this).find('.share-bar').hide(),
-                    $(this).find('.btn-share').removeClass('selected');
-                });
+
 
         })();
         //maessage popup
@@ -192,15 +207,44 @@
             });
         });
 
+        var test_notification_ele = $('.notification .text-wrap').find('ul').clone();
+
+        $('.notification .text-wrap').on('jsp-scroll-y',function(event, scrollPositionY, isAtTop, isAtBottom){
+            if(isAtBottom){
+                $(this).find('.jspPane').append(test_notification_ele);
+            }
+        });
+
+
         //get more data'  for example
         $('.suggestions').length>0&&(function(){
             var $suggestions =  $('.suggestions');
             var $suggestions_list = $suggestions.find('.suggestions-list');
+            var element_example = $suggestions_list.find('li');
             $('.btn-more2',$suggestions).click(function(){
-                $suggestions_list.find('li').clone(true).appendTo($suggestions_list);
+                element_example.clone(true).appendTo($suggestions_list);
                 bgfix();
             });
-            $('.delete',$suggestions).click(function(){
+            $(window).scroll(function(){
+                if( $(this).scrollTop() == $(document).height()-$(this).height()){
+
+                    if($suggestions_list.find('li').length<15){
+                        $('.btn-more2',$suggestions).click();
+                    };
+                    if($suggestions_list.find('li').length==15){
+                        $(window).off('scroll');
+                    }
+                }
+            });
+            $(document).on('click','.suggestions .against',function(){
+                var $this = $(this);
+                if($(this).data('reported')!=1){
+                    $(this).siblings('.pos-text').append('<span style="padding-left: 10px;color: red">已举报</span>');
+                    $(this).data('reported',1).hide();
+                }
+                return false;
+            });
+            $(document).on('click','.suggestions .delete',function(){
                 var $this = $(this);
                 $.confirm('确认删除吗?',function(result){
                     if(result){
@@ -210,6 +254,7 @@
                 });
                 return false;
             });
+            bgfix();
             function bgfix(){
                 var $page = $('#page');
                 var fixMask = $('.body-background-profile-fixed');
@@ -219,6 +264,19 @@
                     })
                 }
             }
+
+            var suggestionsInput = $('#suggestions-input');
+            $('#suggestions-submit').click(function(){
+                if(suggestionsInput.val() =="") return false;
+                var ele = element_example.eq(1).clone(true);
+                ele.find('.type-middle').html(suggestionsInput.val());
+                ele.find('.time').html('刚刚');
+                $suggestions_list.prepend(ele);
+                suggestionsInput.val(""),bgfix();
+                return false;
+            });
+
+
         })();
 
         $.confirm = function(title,callback){
@@ -244,6 +302,25 @@
                 onClose:function(){
                     popbox.remove();
                     callback.call(this,confirm);
+                }
+            });
+        };
+        $.alert = function(title){
+            var title = title || '';
+            var callback = callback ;
+            var confirm =  false;
+            var popbox = $('<div class="alert"><p class="title">'+title+'</p><a href="#" class="btn-affirm"></a></div>');
+            popbox.find('.btn-affirm').click(function(){
+                popbox.bPopup().close();
+                return false;
+            });
+            $('body').append(popbox);
+            popbox.bPopup({
+                modalClose: false,
+                fadeSpeed: 'fast',
+                positionStyle: 'fixed',
+                onClose:function(){
+                    popbox.remove();
                 }
             });
         }
@@ -293,18 +370,48 @@
             }).end().on('mousedown',function(){
                     $(this).removeAttr('tabindex');
                 });
-            $('.form-horizontal',$form).validator();
+
 
             $('.student',$form).change(function(){
                 var $this = $(this);
                 if($this.is(':checked')){
-                    $.confirm('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="http://www.congmingzhuyi.com/how-to-play" target="_blank">查看这里</a>。',function(result){
-                        if(!result){
-                            $this.attr('checked',false);
-                        }
-                    })
+                    $.alert('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="http://www.congmingzhuyi.com/how-to-play" target="_blank">查看这里</a>。');
                 }
             });
+
+            //validate
+
+            validate('#inputMobile','mobile');
+            validate('#inputEmail','email');
+            var validate_error = false;
+
+            $form.find('.btn-save').click(function(){
+
+                $('form',$form).find('.control-group').each(function(){
+                    if($(this).hasClass('error')){
+                        validate_error =  true;
+                        return false;
+                    }
+                });
+
+                if(validate_error) return false;
+            })
+            function validate(ele,r){
+                var reg = {
+                    mobile : /^0*(13|15)\d{9}$/,
+                    email :/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+                };
+                $(ele).focusout(function(){
+                    var _val = $(this).val();
+                    var regx = reg[r] ;
+                    if(regx.test(_val)||_val==""){
+                        $(this).parents('.control-group').removeClass('error');
+                    }else{
+                        $(this).parents('.control-group').addClass('error');
+                    }
+                });
+            }
+
 
         })();
 
@@ -313,6 +420,8 @@
         $('.pop-video-box01').length>0&&(function(){
             $('.btn-3d-becomeTalent3').click(function(){
                 $('.pop-video-box01').bPopup();
+                $(this).addClass('disable');
+                $(this).off('click');
                 return false;
             });
         })();
@@ -343,4 +452,8 @@
                 return false;
             }
         })();
+
+    $('.pop-box').bPopup();
+
+
 })(window.jQuery);

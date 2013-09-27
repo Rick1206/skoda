@@ -25,6 +25,7 @@
 	import com.adobe.serialization.json.JSON;
 	import com.ctp.model.AppData;
 	import com.pyco.external.JSBridge;
+	import flash.external.ExternalInterface;
 	
 	public class userContent extends MovieClip
 	{
@@ -190,6 +191,8 @@
 			//bmd.draw(headPic,myMatrix);
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
+			ExternalInterface.call("getUserUserProfile");
+			
 			JSBridge.addCallback("setUserProfile", setUserProfile);
 			//getUserInfo();
 		}

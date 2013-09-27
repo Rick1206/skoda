@@ -48,11 +48,33 @@
   </div>
 </nav>
 </header>
-<div class="content body-background-index">
+
+<div class="content body-background-cloud">
   <section id="page">
-    ##content
+    <div class="wrap" style="position: relative;">
+      <div class="activate">
+        <h1>帐户激活链接已发送至你的 <br>
+          注册邮箱，请尽快查询并激活。
+        </h1>
+        <p>别忘了看看你的垃圾箱喔。你也可以点击<a href="javascript:;" class="resend">再次发送</a>激活链接。
+        </p>
+      </div>
+    </div>
   </section>
 </div>
+
+<!--jsPopBox-->
+<div class="pop-box">
+  <a class="b-close pop-close" href="#"><span></span></a>
+  <div class="pop-content">
+    <p class="title2">重新获取验证码</p>
+    <p class="help-block">如果你尚未收到验证码，请重新获取。</p>
+    <form class="form-inline">
+      <input type="text" value="输入邮箱地址" id="checkEmail"/> <button class="btn-send"></button>
+    </form>
+  </div>
+</div>
+
 <footer>
   <div class="footer-corner"></div>
   <div class="wrap">
@@ -81,7 +103,34 @@
     <div class="logo2"><a href="#" onclick="_gaq.push(['_trackEvent', 'Click', 'skoda-logo-fo'])"></a></div>
   </div>
 </footer>
+<script type="text/javascript">
+  (function($){
 
+    $('.resend').click(function(){
+      $('.pop-box').bPopup();
+    });
+
+    $('#checkEmail').focusout(function(){
+      if($(this).val()==""){
+        $(this).removeClass('error');
+        return false;
+      }
+
+      if(!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test($(this).val())){
+        $(this).addClass('error');
+
+      }else{
+        $(this).removeClass('error');
+      }
+    }).focus(function(){
+          $(this).val('');
+    }).siblings('.btn-send').click(function(){
+      if($('#checkEmail').val()==""||$('#checkEmail').hasClass('error')){
+        return false;
+      };
+    })
+  })(jQuery)
+</script>
 <script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
 <script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
 <script type="text/javascript" src="assets/js/lib/jquery.jscrollpane.js"></script>
