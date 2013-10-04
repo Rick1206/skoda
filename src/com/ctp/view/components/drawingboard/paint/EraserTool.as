@@ -26,33 +26,19 @@ package com.ctp.view.components.drawingboard.paint {
 			data.type = BrushType.ERASER;
 			data.percent = 0.5;
 			
-			
-			
-			//eraserMovie.addEventListener(MouseEvent.CLICK, eraserMovieClickHandler);
-			//colorSliderMovie.addEventListener(ColorSlider.CHANGE, colorSliderChangeHandler);
 			sizeSliderMovie.addEventListener(Slider.CHANGE, sizeSliderChangeHandler);
 		}
 		
 		private function sizeSliderChangeHandler(e:Event):void {
-			_data.percent = sizeSliderMovie.percent;
-			//dispatchEvent(new BrushEvent(BrushEvent.CHANGE));
+			_data.percent = sizeSliderMovie.percent * 1.8;
 		}
 		
 		private function colorSliderChangeHandler(e:Event):void {
-			//_data.color = colorSliderMovie.color;
-			//eraserMovie.toggled = false;
-			//_data.type = BrushType.BRUSH;
-			//dispatchEvent(new BrushEvent(BrushEvent.CHANGE));
+		
 		}
 		
 		private function eraserMovieClickHandler(e:MouseEvent):void {
-			//eraserMovie.toggled = !eraserMovie.toggled;
-			//if (eraserMovie.toggled) {
-				//_data.type = BrushType.ERASER;
-			//} else {
-				//_data.type = BrushType.BRUSH;
-			//}
-			//dispatchEvent(new BrushEvent(BrushEvent.CHANGE));
+		
 		}
 		
 		public function get data():BrushInfo {
@@ -61,7 +47,6 @@ package com.ctp.view.components.drawingboard.paint {
 		
 		public function set data(value:BrushInfo):void {
 			_data = value;
-			//colorSliderMovie.toggled = false;
 			sizeSliderMovie.percent = value.percent;
 		}
 		

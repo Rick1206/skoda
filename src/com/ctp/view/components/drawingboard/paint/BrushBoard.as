@@ -23,7 +23,7 @@ package com.ctp.view.components.drawingboard.paint {
 	 */
 	public class BrushBoard extends Sprite {
 		
-		private const MAX_THICKNESS: uint = 10;
+		private const MAX_THICKNESS: uint = 16;
 		private const MAX_BLUR: uint = 8;
 		
 		private var hiddenMovie: Sprite = new Sprite();		

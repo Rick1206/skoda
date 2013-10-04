@@ -1,0 +1,29 @@
+.clearfix{*zoom:1}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0}
+.clearfix:after{clear:both}
+.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}
+.hide{display:none!important}
+.input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.jspContainer{overflow:hidden;position:relative}
+.jspCap{background-image:url(../images/angle.png);width:10px;height:10px;display:block;background-repeat:no-repeat}
+.jspVerticalBar .jspCap{height:7px}
+.jspCapTop{background-position:2px 0}
+.jspCapBottom{background-position:2px -5px}
+.jspCapLeft{background-position:-8px -6px}
+.jspCapRight{background-position:-7px 2px}
+.jspPane{position:absolute}
+.jspVerticalBar{position:absolute;top:0;right:0;width:9px;height:100%}
+.jspHorizontalBar{position:absolute;bottom:0;left:0;width:100%;height:9px;font-size:0px}
+.jspVerticalBar *,.jspHorizontalBar *{margin:0;padding:0}
+.jspHorizontalBar .jspCap{float:left}
+.jspTrack{position:relative}
+.jspVerticalBar .jspTrack{background:url(../images/pan.png) repeat-y 2px 0}
+.jspHorizontalBar .jspTrack{background:url(../images/pan2.png) repeat-x 0 1px}
+.jspDrag{background:#d9d8d8;-webkit-box-shadow:inset 2px 2px 1px #fff;-moz-box-shadow:inset 2px 2px 1px #fff;box-shadow:inset 2px 2px 1px #fff;position:relative;top:0;left:0;border:1px solid #bbbbbb;cursor:pointer}
+.jspHorizontalBar .jspTrack,.jspHorizontalBar .jspDrag{float:left;height:7px}
+.jspArrow{background:#aaa;text-indent:-20000px;display:block;cursor:pointer}
+.jspArrow.jspDisabled{cursor:default;background:#aaa}
+.jspVerticalBar .jspArrow{height:0px;font-size:0px}
+.jspHorizontalBar .jspArrow{width:0px;float:left;height:100%}
+.jspVerticalBar .jspArrow:focus{outline:none}
+.jspCorner{background:#aaa;float:left;height:100%}
+* html .jspCorner{margin:0 -3px 0 0}

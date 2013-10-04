@@ -135,12 +135,19 @@ package com.ctp.view.components {
 				addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
 			}
 			
+			
+			this.loaderInfo.addEventListener(Event.COMPLETE, loadComplete);
 			//js event
 			//showStudentPopup(null);
 			//JSBridge.addCallback("getImage", getImage);
 			//JSBridge.addCallback("showStudentPopup", showStudentPopup);
 			//showStudentPopup("INITIALIZING: Adobe Flex Compiler SHell (fcsh)");
 			
+		}
+		
+		private function loadComplete(e:Event):void 
+		{
+			JSBridge.addCallback("getUserInfo", getUserInfo);
 		}
 		
 		private function addedToStageHandler(e:Event):void {
@@ -232,13 +239,14 @@ package com.ctp.view.components {
 			errorMc.alpha = 0;
 			
 			
-			JSBridge.addCallback("getUserInfo", getUserInfo);
+			//JSBridge.addCallback("getUserInfo", getUserInfo);
 			
+			//ExternalInterface.addCallback("getUserInfo", getUserInfo);
 			//userProfileMc.close();
 			//trace(getUserInfo());
 		}
 		
-		private function getUserInfo():String 
+		public function getUserInfo():String 
 		{
 			
 			selectedObject = null;
@@ -335,7 +343,9 @@ package com.ctp.view.components {
 				trace(error);
 			}
 			
-			navigateToURL(new URLRequest("http://www.baidu.com"), "_blank");
+			var StrUrl:String = AppData.parameters.galleryUrl ? AppData.parameters.galleryUrl : "./idea.html";
+			
+			navigateToURL(new URLRequest(StrUrl), "_blank");
 		}
 		
 		private function onShowChooseHandler(e:MouseEvent):void 

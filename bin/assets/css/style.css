@@ -122,7 +122,7 @@ header .ht{height:69px;border-bottom:1px solid #91aab1}
 .logo-skoda{background:url(../images/logo.png) no-repeat;width:113px;height:97px;position:absolute;top:0;right:22px}
 .logo-clever{width:91px;height:83px;background:url(../images/logo-clever.png) no-repeat 0 10px;_display:inline;float:left;_display:inline}
 .logo-skoda a,.logo-clever a{display:block;width:100%;height:100%}
-.nav-bar{width:938px;height:90px;padding-left:42px;position:absolute;top:70px;left:50%;margin-left:-469px}.nav-bar .nav{padding-top:26px;_display:inline;float:left;_display:inline}.nav-bar .nav .nav-list li{float:left;_display:inline;list-style:none;margin-left:-3px;position:relative;z-index:1}.nav-bar .nav .nav-list li:nth-child(1){margin-left:0;z-index:5}
+.nav-bar{width:938px;height:90px;padding-left:22px;position:absolute;top:70px;left:50%;margin-left:-469px}.nav-bar .nav{padding-top:26px;_display:inline;float:left;_display:inline}.nav-bar .nav .nav-list li{float:left;_display:inline;list-style:none;margin-left:-3px;position:relative;z-index:1}.nav-bar .nav .nav-list li:nth-child(1){margin-left:0;z-index:5}
 .nav-bar .nav .nav-list li:nth-child(2){z-index:4}
 .nav-bar .nav .nav-list li:nth-child(3){z-index:3}
 .nav-bar .nav .nav-list li:nth-child(4){z-index:2}
@@ -195,7 +195,8 @@ footer .logo2{width:142px;height:43px;background:url(../images/logo2.png) no-rep
 .ideas .ideas-bd .ideas-item .btns .message{width:82px;height:20px;display:block;text-align:center;position:relative}.ideas .ideas-bd .ideas-item .btns .message.selected,.ideas .ideas-bd .ideas-item .btns .message:hover{background-color:#4ba82e}.ideas .ideas-bd .ideas-item .btns .message.selected .icon-message,.ideas .ideas-bd .ideas-item .btns .message:hover .icon-message{background-position:-21px -366px}
 .ideas .ideas-bd .ideas-item .btns .message-box{position:relative;float:left}.ideas .ideas-bd .ideas-item .btns .message-box .message-popup{position:absolute;width:229px;height:153px;background:url(../images/sprites_02.png) no-repeat;top:-152px;left:-75px;display:none}.ideas .ideas-bd .ideas-item .btns .message-box .message-popup .mwrap{padding:21px 0 0 15px}
 .ideas .ideas-bd .ideas-item .btns .message-box .message-popup textarea{width:181px;height:56px;padding:5px;border:1px solid #bcbcbd;color:#aeaeae}
-.ideas .ideas-bd .ideas-item .btns .message-box .message-popup .btn-submit{margin-left:142px;margin-top:0px}
+.ideas .ideas-bd .ideas-item .btns .message-box .message-popup .message-error{width:142px;height:20px;float:left;display:block;color:red;}
+.ideas .ideas-bd .ideas-item .btns .message-box .message-popup .btn-submit{float:left;margin-top:0px}
 .ideas .ideas-bd .ideas-item .btns .message-box .message-popup .close{width:15px;height:15px;position:absolute;cursor:pointer;top:0;right:0}
 .ideas .ideas-bd .ideas-item .btns .share{width:78px;height:20px;margin-left:2px;text-align:center;position:relative;float:left}.ideas .ideas-bd .ideas-item .btns .share .btn-share{width:78px;height:20px;margin:0;background:none;padding:0;border:0}.ideas .ideas-bd .ideas-item .btns .share .btn-share .font-share{background:url(../images/sprites.png) no-repeat -52px -345px;width:18px;height:20px;display:inline-block}
 .ideas .ideas-bd .ideas-item .btns .share .btn-share.selected{background-color:#4ba82e}.ideas .ideas-bd .ideas-item .btns .share .btn-share.selected .font-share{background-position:-52px -366px}
@@ -250,6 +251,7 @@ footer .logo2{width:142px;height:43px;background:url(../images/logo2.png) no-rep
 .suggestions .suggestions-box .suggestions-box-bd .submit-bar{text-align:right;padding:10px 0 10px 0;*zoom:1}.suggestions .suggestions-box .suggestions-box-bd .submit-bar:before,.suggestions .suggestions-box .suggestions-box-bd .submit-bar:after{display:table;content:"";line-height:0}
 .suggestions .suggestions-box .suggestions-box-bd .submit-bar:after{clear:both}
 .suggestions .suggestions-box .suggestions-box-bd .color{color:#4ba82e}
+.suggestions .suggestions-box .suggestions-box-bd .suggestions-error{color:red;padding-left:50px;}
 .suggestions .suggestions-box .suggestions-box-bd .suggestions-list{list-style:none}.suggestions .suggestions-box .suggestions-box-bd .suggestions-list li{padding:20px 3px 25px 3px;border-bottom:1px solid #b2dbb0;position:relative;font-size:14px}.suggestions .suggestions-box .suggestions-box-bd .suggestions-list li:first-child{border-top:1px solid #b2dbb0}
 .suggestions .suggestions-box .suggestions-box-bd .suggestions-list li.official-pd{padding:10px 3px}
 .suggestions .suggestions-box .suggestions-box-bd .suggestions-list li .name{width:108px}
@@ -303,7 +305,10 @@ div[class*=pop-video-box] .share{position:absolute;left:516px;top:425px}div[clas
 .pass_reset{position:absolute;top:123px;left:299px;width:392px;height:127px;text-align:center}.pass_reset h1{font-weight:bold;color:#4ba82e;font-size:36px;margin:0px 20px 0 10px}
 .pass_reset p{margin-top:10px;font-size:14px;margin-bottom:10px}
 .pass_reset a{color:#4ba82e;text-decoration:none;font-size:16px}
-.how-to-play [class*=image-block-]{width:100%;min-width:980px}
+.how-to-play .image-block-1{height:594px;background:url(../images/how_to_play_01.jpg) no-repeat center}
+.how-to-play .image-block-2{height:1671px;background:url(../images/how_to_play_02.jpg) no-repeat center}
+.how-to-play .image-block-3{height:1034px;background:url(../images/how_to_play_03.jpg) no-repeat center}
+.how-to-play [class*=image-block-]{width:100%;min-width:980px}.how-to-play [class*=image-block-] .wrap{height:100%;position:relative}.how-to-play [class*=image-block-] .wrap .img-map{width:100%;height:100%;display:block;position:relative;z-index:1}
 .news-hd{width:100%;height:137px}.news-hd.detail{height:331px;width:980px;margin-right:auto;margin-left:auto;*zoom:1;position:relative}.news-hd.detail:before,.news-hd.detail:after{display:table;content:"";line-height:0}
 .news-hd.detail:after{clear:both}
 .news-hd.detail .title{font-size:36px;color:#4ba82e;width:600px;position:absolute;top:115px;left:195px}
@@ -503,3 +508,7 @@ legend+.control-group{margin-top:18px;-webkit-margin-top-collapse:separate}
 .btn-affirm{width:56px;height:27px;background-position:-94px -707px;display:inline-block}.btn-affirm:hover{background-position:-158px -707px}
 .btn-goback{width:56px;height:26px;display:inline-block;background-position:-93px -789px}.btn-goback:hover{background-position:-158px -789px}
 .btn-send{width:54px;height:26px;display:inline-block;border:none;background-position:-94px -833px}.btn-send:hover{background-position:-159px -833px}
+.btn-howtoplay01{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -413px}.btn-howtoplay01:hover{background-position:-506px -467px}
+.btn-howtoplay02{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -291px}.btn-howtoplay02:hover{background-position:-506px -350px}
+.btn-howtoplay03{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -537px}.btn-howtoplay03:hover{background-position:-506px -597px}
+.btn-howtoplay04{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -656px}.btn-howtoplay04:hover{background-position:-506px -722px}

@@ -200,18 +200,21 @@
 				
 				for (i = 0; i < btnIArr.length; i++)
 				{
-					//trace(strName);
-					//trace(btnIArr[i].name == strName);
-					if (btnIArr[i].name == strName)
+					if (strName == btnIArr[i].name)
 					{
+						TweenMax.to(btnIArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 1}});
+						TweenMax.to(btnIArr[i].content, .3, {colorTransform: {tint: 0xffffff, tintAmount: 1}});
+						
+						btnIArr[i].removeEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnIArr[i].btn.gotoAndStop(2);
-							//trace("suc");
 					}
 					else
 					{
+						TweenMax.to(btnIArr[i].bg, .3, {colorTransform: {tint: 0x4ba82e, tintAmount: 0}});
+						TweenMax.to(btnIArr[i].content, .3, {colorTransform: {tint: 0xffffff, tintAmount: 0}});
 						
+						btnIArr[i].addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 						btnIArr[i].btn.gotoAndStop(1);
-							//mc.btn.gotoAndStop(1);
 					}
 				}
 				

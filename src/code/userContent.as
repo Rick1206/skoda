@@ -27,6 +27,8 @@
 	import com.pyco.external.JSBridge;
 	import flash.external.ExternalInterface;
 	
+	import code.tool.ScrollBar2;
+	
 	public class userContent extends MovieClip
 	{
 		
@@ -60,6 +62,9 @@
 			{
 				addEventListener(Event.ADDED_TO_STAGE, init);
 			}
+			
+			this.loaderInfo.addEventListener(Event.COMPLETE, loadComplete);
+			
 		}
 		
 		private function getUserInfo():void
@@ -169,8 +174,30 @@
 			
 			btnInspire.addEventListener(MouseEvent.CLICK, onUploadHeadPicHandler);
 			
-			scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
+			//scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
 			
+			var myScroll:ScrollBar2 = new ScrollBar2(contentMovie,maskMovie,sliderMovie, trackMovie);
+			
+			myScroll.direction = "L";
+			
+			myScroll.tween = 5;
+			
+			myScroll.elastic = false;
+			
+			myScroll.lineAbleClick = true;
+			
+			myScroll.mouseWheel = true;
+			
+			myScroll.UP = upMovie;
+			
+			myScroll.DOWN = downMovie;
+			
+			myScroll.stepNumber = 15;
+			
+			
+			
+			RollTool.setRoll(upMovie);
+			RollTool.setRoll(downMovie);
 			
 			queArr = [contentMovie.q1, contentMovie.q2, contentMovie.q3, contentMovie.q4, contentMovie.q5];
 			
@@ -191,10 +218,13 @@
 			//bmd.draw(headPic,myMatrix);
 			//var bmp:Bitmap = new Bitmap(bmd);
 			//addChild(bmp);
-			ExternalInterface.call("getUserUserProfile");
-			
-			JSBridge.addCallback("setUserProfile", setUserProfile);
 			//getUserInfo();
+		}
+		
+		private function loadComplete(e:Event):void 
+		{
+			ExternalInterface.call("getUserProfile");
+			JSBridge.addCallback("setUserProfile", setUserProfile);
 		}
 		
 		public function setUserProfile(str:String):void 

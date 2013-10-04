@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skoda-html</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../assets/css/lfportal.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/jquery.jscrollpane.css"/>
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="../assets/js/lib/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="../assets/js/lib/jquery.min.js"></script>
+  
+</head>
+<body>
+<a href="javascript:;" id="btnlogin">Login</a>
+ 
+<script type="text/javascript" src="../assets/js/lib/dropdown.min.js"></script>
+<script type="text/javascript" src="../assets/js/lib/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="../assets/js/lib/jquery.jscrollpane.js"></script>
+<script type="text/javascript" src="../assets/js/skoda.js"></script>
+<script type="text/javascript" charset="utf-8">
+	
+	$("#btnlogin").click(function(){
+		
+		var _parentWin = window.opener;
+		
+		_parentWin.uploadsubmission();
+		
+		window.close();
+	});
+	
+</script>
+</body>
+</html>

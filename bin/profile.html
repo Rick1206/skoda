@@ -1,906 +1,1180 @@
 <!DOCTYPE html>
 <html xmlns:wb="http://open.weibo.com/wb">
-<head>
-  <title>Skoda-html</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="assets/css/lfportal.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/jquery.jscrollpane.css"/>
-  <!--[if lt IE 9]>
-  <script type="text/javascript" src="assets/js/lib/html5.js"></script>
-  <![endif]-->
-  <script type="text/javascript" src="assets/js/lib/jquery.min.js"></script>
-  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-34374356-3']);
-    _gaq.push(['_trackPageview']);
+	<head>
+		<title>Skoda-html</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="assets/css/lfportal.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="assets/css/jquery.jscrollpane.css"/>
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="assets/js/lib/html5.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="assets/js/lib/jquery.min.js"></script>
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-</head>
-<body>
-<header>
-  <div class="ht">
-    <div class="wrap">
-      <div class="fn-left"><span class="text-sc"></span></div>
-      <div class="logo-skoda"></div>
-    </div>
-  </div>
-  
-<nav class="nav-bar">
-  <div class="logo-clever"><a href="./index.html"></a></div>
-  <div class="nav">
-    <ul class="nav-list">
-      <li><a href="./draw.html" onclick="_gaq.push(['_trackEvent', 'Click', 'idea-sub-men-hp'])"><span class="font-nav-a1" rel="达人招聘"></span></a></li>
-      <li><a href="./idea.html" onclick="_gaq.push(['_trackEvent', 'Click', 'gallery-menu-hp'])"><span class="font-nav-a2" rel="达人榜"></span></a></li>
-      <li><a href="" onclick="_gaq.push(['_trackEvent', 'Click', 'how-to-play-menu-hp'])"><span class="font-nav-a3" rel="活动详情"></span></a></li>
-      <li><a href="./news.html" onclick="_gaq.push(['_trackEvent', 'Click', 'news-menu-hp'])"><span class="font-nav-a4" rel="新鲜资讯"></span></a></li>
-      
-      <li class="usr">
-        <div class="logined">
-          <div class="usr-pic"><img src="assets/images/pic_01.jpg" alt=""/></div>
-          <div class="usr-name">达人曹晓明1234</div>
-          <div class="usr-mgs">99</div>
-        </div>
-        <div class="usr-popup">
-          <h2><span class="notice-tit"></span>(99):</h2>
-          <div class="text-wrap">
-            <ul>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-              <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-              
-            </ul>
-          </div>
-          <div class="btns">
-            <a class="btn-myhomepage" href="./profile.html"></a>
-            <a class="btn-logout" href="#"></a>
-          </div>
-        </div>
-      </li>
-      
-    </ul>
-  </div>
-</nav>
-</header>
-<div class="content body-background-profile">
-  <section id="page">
-    <div class="bd">
-      <div class="wrap">
-        <div class="profile-left">
-          <div class="user-info">
-            <div class="fn-left">
-              <div class="user-pic">
-                <img src="assets/images/user_pic_default_01.jpg" alt=""/>
-                <div class="updata">
-                  <a onclick="_gaq.push(['_trackEvent', 'Click', 'upload-profile-pic-pp'])" class="btn-update-avatar2 jsPopUploadBox" href="javascript:void(0);"></a>
-                </div>
-              </div>
-              <div class="pt10">
-                <a onclick="_gaq.push(['_trackEvent', 'Click', 'watch-vote-video-pp'])" class="btn-3d-becomeTalent3" href="#"></a>
-              </div>
-            </div>
-            <div class="user-intro">
-              <p class="name">简永豪的豪</p>
-              <p>智猜人气：<span class="color">72</span></p>
-              <div class="text-wrap">
-                <p>在细节上做到更加人性化会更能让大众接受它，老百姓用的顺心，对它产生好感！在细节上做到更加人性化会更能让大众接受它，老百姓用的顺心，对它产生好感！</p>
-              </div>
-              <div class="btns">
-                <a class="btn-more jsPopIdeaDetail" href="javascript:;"></a>
-                <a onclick="_gaq.push(['_trackEvent', 'Click', 'edit-profile-pp'])" class="btn-update-info jsPopProfileForm" href="javascript:;"></a>
-              </div>
-            </div>
-          </div>
-          <div class="ranking">
-            <a onclick="_gaq.push(['_trackEvent', 'Click', 'go-gallery-pp'])" href="idea.html" class="btn-ranking fn-left"></a>
-          </div>
-          <!--notification-->
-          <div class="notification">
-            <h2><span class="notice-tit"></span>(99):</h2>
-            <div class="text-wrap">
-              <ul>
-                
-                <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                
-                <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                
-                <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                
-                <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                
-                <li><div class="m1">你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                <li><div class="m1">你的主意已经通过审核!你的主意已经通过审核!</div><div class="time">1小时以前</div></li>
-                
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="profile-right">
-          <div class="tv">
-            <div class="tv-crash">
-              <img width="363" height="330" src="assets/images/tv.gif" alt="">
-              
-            </div>
-            <div class="tv-show">
-              <div  ></div>
-              <div class="tv-btns">
-                <a class="btn-next-topic disable" onclick="_gaq.push(['_trackEvent', 'Click', 'next-idea-pp'])" href="#"></a>
-                <div class="share">
-                  
-                  
-                  <a class="btn-share disable" href="javascript:void(0);"><span class="font-share"></span></a>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-34374356-3']);
+			_gaq.push(['_trackPageview']);
 
-                  
-                </div>
-              </div>
-              <div class="idea">
-                <div class="text-wrap">
-                  <h1>隐身收纳盒<span>3天前提交</span></h1>
-                  <p>汽车上空间小,而我们出去自驾游放在车里的小物件又太多了
-                    容易找不到，在门侧边设计一款隐身收纳盒很有用！</p>
-                  <h3>灵感来源：</h3>
-                  <p>汽车上空间小,而我们放在车里的小物件又太多了，在门侧边
-                    设计一款隐身收纳盒很有用！</p>
-                  <p>汽车上空间小,而我们放在车里的小物件又太多了，在门侧边
-                    设计一款隐身收纳盒很有用！</p>
-                </div>
-              </div>
-              <div class="btns2"><a onclick="_gaq.push(['_trackEvent', 'Click', 'create-your-idea-pp'])" class="btn-3d-becomeTalent4" href="draw.html"></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrap suggestions">
-        <!--play video-->
-        <div class="video-3d-men"><a onclick="_gaq.push(['_trackEvent', 'Click', 'watch-sub-video-pp'])" href="#"></a></div>
-        <div class="suggestions-box">
-          <div class="suggestions-box-hd"></div>
-          <div class="suggestions-box-bd">
-            <form action="">
-              <textarea name="" id="suggestions-input" class="text-input" maxlength="200"></textarea>
-              <div class="submit-bar">
-                <div class="fn-left"><span class="color">50</span>条评论</div>
-                <div class="fn-right">
-                  <a onclick="_gaq.push(['_trackEvent', 'Click', 'post-comments-pp'])" href="#" class="btn-submit" id="suggestions-submit"></a>
-                </div>
-              </div>
-            </form>
-            <ul class="suggestions-list">
-              <li class="official-pd">
-                <div class="official">
-                  <div class="official-wrap">
-                    <div class="row-fluid">
-                      <div class="span1"><a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/logo3.jpg" alt=""/></a></div>
-                      <div class="span11">
-                        <div class="row-fluid">
-                          <div class="color span3 name">
-                            斯柯达聪明主义:
-                          </div>
-                          <div class="span8 type-middle">
-                            主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
-                          </div>
-                        </div>
-                        <span class="color"></span>
-                      </div>
-                    </div>
-                    <div class="pos-text">一个小时前</div>
-                    <a href="#" class="delete" title="删除"></a>
-                  </div>
-                  <div class="shadow sleft"></div>
-                  <div class="shadow sright"></div>
-                </div>
-              </li>
-              
-              <li>
-                <div class="row-fluid">
-                  <div class="span1"><a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a></div>
-                  <div class="span11">
-                    <div class="row-fluid">
-                      <div class="color span3 name">
-                        隔壁家的小明:
-                      </div>
-                      <div class="span9 type-middle">
-                        主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
-                      </div>
-                    </div>
-                    <span class="color"></span>
-                  </div>
-                </div>
-                <div class="pos-text">一个小时前</div>
-                <a href="#" class="delete" title="删除"></a>
-                <a href="#" class="against" title="举报"></a>
-              </li>
-              
-              <li>
-                <div class="row-fluid">
-                  <div class="span1"><a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a></div>
-                  <div class="span11">
-                    <div class="row-fluid">
-                      <div class="color span3 name">
-                        隔壁家的小明:
-                      </div>
-                      <div class="span9 type-middle">
-                        主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
-                      </div>
-                    </div>
-                    <span class="color"></span>
-                  </div>
-                </div>
-                <div class="pos-text">一个小时前</div>
-                <a href="#" class="delete" title="删除"></a>
-                <a href="#" class="against" title="举报"></a>
-              </li>
-              
-              <li>
-                <div class="row-fluid">
-                  <div class="span1"><a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a></div>
-                  <div class="span11">
-                    <div class="row-fluid">
-                      <div class="color span3 name">
-                        隔壁家的小明:
-                      </div>
-                      <div class="span9 type-middle">
-                        主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
-                      </div>
-                    </div>
-                    <span class="color"></span>
-                  </div>
-                </div>
-                <div class="pos-text">一个小时前</div>
-                <a href="#" class="delete" title="删除"></a>
-                <a href="#" class="against" title="举报"></a>
-              </li>
-              
-              <li>
-                <div class="row-fluid">
-                  <div class="span1"><a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a></div>
-                  <div class="span11">
-                    <div class="row-fluid">
-                      <div class="color span3 name">
-                        隔壁家的小明:
-                      </div>
-                      <div class="span9 type-middle">
-                        主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
-                      </div>
-                    </div>
-                    <span class="color"></span>
-                  </div>
-                </div>
-                <div class="pos-text">一个小时前</div>
-                <a href="#" class="delete" title="删除"></a>
-                <a href="#" class="against" title="举报"></a>
-              </li>
-              
-            </ul>
-            <p class="text-center pt10"><a href="javascript:void(0);" class="btn-more2"></a></p>
-          </div>
-          <div class="suggestions-box-ft"></div>
-        </div>
-      </div>
-      <div class="body-background-profile-fixed"></div>
-    </div>
-  </section>
-</div>
-<!--jsPopIdeaDetail-->
-<div class="pop-idea-detail">
-  <a class="b-close pop-close" href="#"><span></span></a>
-  <div class="pop-content">
-    <div class="text-wrap">
-      <h1 class="title"></h1>
-      <div class="row-fluid">
-        <div class="span3"><img src="assets/images/pic_04.jpg" alt=""/></div>
-        <div class="span8">
-          <p>我是John Doe，20岁，来自广东广州。</p>
-          <p>我的灵感细胞从不受束缚，如果不是脑壳罩着早飚出来了。我一般通过鼻孔感知外界，可以毫无压力辨别23517种气味。我的坐骑是一辆会飞的车。小时候我的江湖绰号叫海豹，因为我总是被罚站，像海报（海豹）一样贴在墙上！
-            但是有一点毋庸置疑，那就是我绝顶聪明，不服来辩！</p>
-        </div>
-      </div>
-      <h2 class="title"></h2>
-      <p>
-        <img src="assets/images/test00001.jpg" alt=""/>
-      </p>
-    </div>
-  </div>
-</div>
-<!--jsPopProfileForm-->
-<div class="pop-profile-form">
-  <a class="b-close pop-close" href="#"><span></span></a>
-  <form class="form-horizontal">
-    <div class="pop-content">
-      <div class="row-fluid">
-        <div class="span4">
-          <img width="181" height="181"  class="user-pic" src="assets/images/user_pic_default_01.jpg" alt=""/>
-          <div class="btns-wrap">
-            <a onclick="_gaq.push(['_trackEvent', 'Click', 'upload-profile-pic-pp'])" href="javascript:void(0);" class="btn-update-avatar3 jsPopUploadBox"></a>
-          </div>
-        </div>
-        <div class="span8">
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="ht">
+				<div class="wrap">
+					<div class="fn-left">
+						<span class="text-sc"></span>
+					</div>
+					<div class="logo-skoda"></div>
+				</div>
+			</div>
 
-            <div class="control-group">
-              <label class="control-label" for="inputName">姓</label>
-              <div class="controls">
-                <input type="text" id="inputName" maxlength="20">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputName2">名</label>
-              <div class="controls">
-                <input type="text" id="inputName2" maxlength="20">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">性别</label>
-              <div class="controls">
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                  男
-                </label>
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                  女
-                </label>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">省</label>
-              <div class="controls">
-                <select>
-                  <option>上海市</option>
-                </select>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">城市</label>
-              <div class="controls">
-                <select>
-                  <option>上海市</option>
-                </select>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">手机</label>
-              <div class="controls">
-                <input type="text" id="inputMobile">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">邮箱</label>
-              <div class="controls">
-                <input type="text" id="inputEmail">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label">生日</label>
-              <div class="controls">
-                <select class="inline span3">
-                  <option>年</option>
-                  
-                  <option>1933年</option>
-                  
-                  <option>1934年</option>
-                  
-                  <option>1935年</option>
-                  
-                  <option>1936年</option>
-                  
-                  <option>1937年</option>
-                  
-                  <option>1938年</option>
-                  
-                  <option>1939年</option>
-                  
-                  <option>1940年</option>
-                  
-                  <option>1941年</option>
-                  
-                  <option>1942年</option>
-                  
-                  <option>1943年</option>
-                  
-                  <option>1944年</option>
-                  
-                  <option>1945年</option>
-                  
-                  <option>1946年</option>
-                  
-                  <option>1947年</option>
-                  
-                  <option>1948年</option>
-                  
-                  <option>1949年</option>
-                  
-                  <option>1950年</option>
-                  
-                  <option>1951年</option>
-                  
-                  <option>1952年</option>
-                  
-                  <option>1953年</option>
-                  
-                  <option>1954年</option>
-                  
-                  <option>1955年</option>
-                  
-                  <option>1956年</option>
-                  
-                  <option>1957年</option>
-                  
-                  <option>1958年</option>
-                  
-                  <option>1959年</option>
-                  
-                  <option>1960年</option>
-                  
-                  <option>1961年</option>
-                  
-                  <option>1962年</option>
-                  
-                  <option>1963年</option>
-                  
-                  <option>1964年</option>
-                  
-                  <option>1965年</option>
-                  
-                  <option>1966年</option>
-                  
-                  <option>1967年</option>
-                  
-                  <option>1968年</option>
-                  
-                  <option>1969年</option>
-                  
-                  <option>1970年</option>
-                  
-                  <option>1971年</option>
-                  
-                  <option>1972年</option>
-                  
-                  <option>1973年</option>
-                  
-                  <option>1974年</option>
-                  
-                  <option>1975年</option>
-                  
-                  <option>1976年</option>
-                  
-                  <option>1977年</option>
-                  
-                  <option>1978年</option>
-                  
-                  <option>1979年</option>
-                  
-                  <option>1980年</option>
-                  
-                  <option>1981年</option>
-                  
-                  <option>1982年</option>
-                  
-                  <option>1983年</option>
-                  
-                  <option>1984年</option>
-                  
-                  <option>1985年</option>
-                  
-                  <option>1986年</option>
-                  
-                  <option>1987年</option>
-                  
-                  <option>1988年</option>
-                  
-                  <option>1989年</option>
-                  
-                  <option>1990年</option>
-                  
-                  <option>1991年</option>
-                  
-                  <option>1992年</option>
-                  
-                  <option>1993年</option>
-                  
-                  <option>1994年</option>
-                  
-                  <option>1995年</option>
-                  
-                  <option>1996年</option>
-                  
-                  <option>1997年</option>
-                  
-                  <option>1998年</option>
-                  
-                  <option>1999年</option>
-                  
-                  <option>2000年</option>
-                  
-                  <option>2001年</option>
-                  
-                  <option>2002年</option>
-                  
-                  <option>2003年</option>
-                  
-                  <option>2004年</option>
-                  
-                  <option>2005年</option>
-                  
-                  <option>2006年</option>
-                  
-                  <option>2007年</option>
-                  
-                  <option>2008年</option>
-                  
-                  <option>2009年</option>
-                  
-                  <option>2010年</option>
-                  
-                  <option>2011年</option>
-                  
-                  <option>2012年</option>
-                  
-                  <option>2013年</option>
-                  
-                </select>
-                <select class="inline span3">
-                  <option>月</option>
-                  
-                  <option>01月</option>
-                  
-                  <option>02月</option>
-                  
-                  <option>03月</option>
-                  
-                  <option>04月</option>
-                  
-                  <option>05月</option>
-                  
-                  <option>06月</option>
-                  
-                  <option>07月</option>
-                  
-                  <option>08月</option>
-                  
-                  <option>09月</option>
-                  
-                  <option>10月</option>
-                  
-                  <option>11月</option>
-                  
-                  <option>12月</option>
-                  
-                </select>
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="checkbox inline">
-                <input type="checkbox" class="student" name="option" value="option">
-                我是在校学生，若最终获奖，将选择“学子特别奖”， <br>
-                赢得实习机会，同时放弃“2013年度聪明达人”奖。
-              </label>
-            </div>
-            <div class="control-group">
-              <label class="span5 text_middle">你计划在多长时间内购车？</label>
-              <div class="span7">
-                <select class="span5">
-                  <option value="">请选择</option>
-                  <option>1-3个月</option>
-                  <option>4-6个月</option>
-                  <option>7-12个月</option>
-                  <option>一年以上</option>
-                </select>
-              </div>
-            </div>
-            <div class="control-group">
-              <p>你最关注斯柯达品牌的哪个车型？</p>
-              <div class="cars">
-                <ul>
-                  
-                  <li><img src="assets/images/cars/01.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/02.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/03.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/04.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/05.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/06.jpg" alt=""/></li>
-                  
-                  <li><img src="assets/images/cars/07.jpg" alt=""/></li>
-                  
-                </ul>
-              </div>
-            </div>
+			<nav class="nav-bar">
+				<div class="logo-clever">
+					<a href="./index.html"></a>
+				</div>
+				<div class="nav">
+					<ul class="nav-list">
+						<li>
+							<a href="./draw.html" onclick="_gaq.push(['_trackEvent', 'Click', 'idea-sub-men-hp'])"><span class="font-nav-a1" rel="达人招聘"></span></a>
+						</li>
+						<li>
+							<a href="./idea.html" onclick="_gaq.push(['_trackEvent', 'Click', 'gallery-menu-hp'])"><span class="font-nav-a2" rel="达人榜"></span></a>
+						</li>
+						<li>
+							<a href="" onclick="_gaq.push(['_trackEvent', 'Click', 'how-to-play-menu-hp'])"><span class="font-nav-a3" rel="活动详情"></span></a>
+						</li>
+						<li>
+							<a href="./news.html" onclick="_gaq.push(['_trackEvent', 'Click', 'news-menu-hp'])"><span class="font-nav-a4" rel="新鲜资讯"></span></a>
+						</li>
 
-            <div class="control-group">
-              <p>1.你突然得知有人会送你一辆车，你认为它会是？</p>
-              <div class="span12">
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios1" value="option">
-                  华丽的跑车
-                </label>
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios1" value="option">
-                  家用高级轿车
-                </label>
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios1" value="option">
-                  儿童三轮车
-                </label>
-                <label class="radio inline">
-                  <input type="radio" name="optionsRadios1" value="option">
-                  智能房车
-                </label>
-              </div>
-            </div>
+						<li class="usr">
+							<div class="logined">
+								<div class="usr-pic"><img src="assets/images/pic_01.jpg" alt=""/>
+								</div>
+								<div class="usr-name">
+									达人曹晓明1234
+								</div>
+								<div class="usr-mgs">
+									99
+								</div>
+							</div>
+							<div class="usr-popup">
+								<h2><span class="notice-tit"></span>(99):</h2>
+								<div class="text-wrap">
+									<ul>
 
-          <div class="control-group">
-            <p>2.你通常什么情况下最会胡思乱想？ </p>
-            <div class="span12">
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios2" value="option">
-                半夜三更
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios2" value="option">
-                上厕所
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios2" value="option">
-                吵架时
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios2" value="option">
-                不定时
-              </label>
-            </div>
-          </div>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
-          <div class="control-group">
-            <p>3.你自认为脸上最满意的部分是？ </p>
-            <div class="span12">
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios3" value="option">
-                鼻子
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios3" value="option">
-                嘴
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios3" value="option">
-                眼睛
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios3" value="option">
-                耳朵
-              </label>
-            </div>
-          </div>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
-          <div class="control-group">
-            <p>4.探险途中大家被挡住去路，只有你有办法，你觉得障碍物会是？ </p>
-            <div class="span12">
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios4" value="option">
-                荆棘丛
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios4" value="option">
-                湍急的河流
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios4" value="option">
-                大石块
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios4" value="option">
-                漆黑的山洞
-              </label>
-            </div>
-          </div>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
-          <div class="control-group">
-            <p>5.现在你面临一项重大挑战，你觉得尝试几次才会成功？ </p>
-            <div class="span12">
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios5" value="option">
-                一次就成功
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios5" value="option">
-                两次
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios5" value="option">
-                三次
-              </label>
-              <label class="radio inline">
-                <input type="radio" name="optionsRadios5" value="option">
-                N多次
-              </label>
-            </div>
-          </div>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
-        </div>
-      </div>
-    </div>
-    <div class="pop-bg-ft">
-      <div class="row-fluid">
-        <div class="span4"></div>
-        <div class="span8">
-          <div class="row-fluid">
-            <div class="span4">请分享你的灵感来源？</div>
-            <div class="span8">
-              <a class="btn-upload-file jsPopUploadBox" href="javascript:void(0);" style=""></a>
-              <p class="help-inline "></p>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="span12">
-              <textarea name="" class="input-block-level" maxlength="140">在此输入文字</textarea>
-            </div>
-          </div>
-          <div class="control-group">
-            <p class="">通过以下方式接收通知</p>
-            <label class="checkbox">
-              <input type="checkbox" checked>邮箱通知
-            </label>
-          </div>
-          <div class="row-fluid">
-            <div class="span12">
-              <p class="color">我已阅读并同意 <a href="#" target="_blank">相关条款</a></p>
-            </div>
-          </div>
-          <div class="row-fluid">
-            <div class="span2"><button type="submit" class="btn-save"></button></div>
-            <div class="span2"><a class="btn-cancel b-close" href="javascript:void(0);"></a></div>
-          </div>
-          <input type="reset" class="hide"/>
-        </div>
-      </div>
-    </div>
-  </form>
-</div>
-<!--jsPopBox-->
-<div class="pop-box">
-  <a class="b-close pop-close" href="#"><span></span></a>
-  <div class="pop-content">
-    <p class="title">该评论含有敏感字词，请重新编写。</p>
-    <div class="err">上网文凭<br> 替考<br> 赌博机<br> 顺利过<br> 考后付款 <br>香港彩<br> 传送答案</div>
-  </div>
-</div>
-<!--jsPopUploadBox-->
-<div class="pop-upload-box">
-  <a class="b-close pop-close" href="#"><span></span></a>
-  <div class="pop-content">
-    <div class="row-fluid">
-      <div class="span8">
-        <div class="file-input">...</div>
-      </div>
-      <div class="span4">
-        <a href="javascript:void(0);" class="btn-select-file"></a>
-      </div>
-    </div>
-    <p class="help-block">图片不得大于2M <span class="err">图片大小超过2M</span></p>
-    <form id="upload" action="src.php">
-      <input type="file" class="hide" accept="image/gif, image/jpeg,image/png"/>
-      <button type="submit" value="" class="btn-submit-upload"></button>
-    </form>
-  </div>
-</div>
-<!--video pop1 -->
-<div class="pop-video-box01">
-  <a class="pop-close b-close" href="javascript:void(0)"><span></span></a>
-  <div class="content">
-    <div class="video">
-      <embed src="http://player.youku.com/player.php/sid/XNjA3NjcxNjY4/v.swf" allowFullScreen="true" quality="high" width="540" height="374" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-    </div>
-    <div class="share">
-      
-      <a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
-<div class="share-bar">
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-tsina"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-kaixin001"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-douban"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-renren"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-tqq"></span></a>
-</div>
-    </div>
-  </div>
-</div>
-<!--video pop1 -->
-<div class="pop-video-box02">
-  <div class="content">
-    <div class="step1">
-      <div class="video">
-        <embed src="http://player.youku.com/player.php/sid/XNjA3NjcxNjY4/v.swf" allowFullScreen="true" quality="high" width="540" height="374" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-      </div>
-      <div class="share">
-        
-        <a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
-<div class="share-bar">
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-tsina"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-kaixin001"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-douban"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-renren"></span></a>
-  <a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-tqq"></span></a>
-</div>
-      </div>
-      <a href="javascript:void(0)" class="btn-skip skip1"></a>
-    </div>
-    <div class="step2">
-      <p class="message">恭喜，聪明的你已成功提交主意！主意正在审核中， <br>
-        趁现在完善你的个人页面，让更多人了解你吧！</p>
-      <a href="javascript:void(0)" class="b-close btn-myhomepage2"></a>
-      <a href="idea.html" class="btn-skip skip2"></a>
-    </div>
-  </div>
-</div>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
 
+									</ul>
+								</div>
+								<div class="btns">
+									<a class="btn-myhomepage" href="./profile.html"></a>
+									<a class="btn-logout" href="#"></a>
+								</div>
+							</div>
+						</li>
 
-<footer>
-  <div class="footer-corner"></div>
-  <div class="wrap">
-    <div class="clearfix">
-      <div class="follow"><wb:follow-button uid="2954472480" type="red_2" width="136" height="24" ></wb:follow-button></div>
-      <div class="douban">
-        <a onclick="_gaq.push(['_trackEvent', 'Click', 'douban-ctp-logo-fo'])" href="http://site.douban.com/191862/" target="_blank"><img src="assets/images/douban.jpg" alt="推荐到豆瓣" /></a>
-      </div>
-      <div class="share">
-        <a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
-<div class="share-bar">
-  <a href="#" target="_blank"  ><span class="icon-tsina"></span></a>
-  <a href="#" target="_blank"  ><span class="icon-kaixin001"></span></a>
-  <a href="#" target="_blank"  ><span class="icon-douban"></span></a>
-  <a href="#" target="_blank"  ><span class="icon-renren"></span></a>
-  <a href="#" target="_blank"  ><span class="icon-tqq"></span></a>
-</div>
-      </div>
-    </div>
-    <div class="copyright">
-      <span>2013 版权 | 沪ICP备08000392号-2</span> |
-      <a onclick="_gaq.push(['_trackEvent', 'Click', 'tnc-fo'])" href="./tnc.html" target="_blank">服务条款</a> |
-      <a onclick="_gaq.push(['_trackEvent', 'Click', 'faq-fo'])" href="./faq.html" target="_blank">常见问题</a> |
-      <a href="Mailto:info@congmingzhuyi.com">info@congmingzhuyi.com</a>
-    </div>
-    <div class="logo2"><a href="#" onclick="_gaq.push(['_trackEvent', 'Click', 'skoda-logo-fo'])"></a></div>
-  </div>
-</footer>
-<script type="text/javascript">
-  _gaq.push(['_trackPageview', '/personal-profile']);
-</script>
-<script type="text/javascript" src="assets/js/lib/jquery.form.min.js"></script>
-<script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
-<script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
-<script type="text/javascript" src="assets/js/lib/jquery.jscrollpane.js"></script>
-<script type="text/javascript" src="assets/js/lib/jquery.bpopup.js"></script>
-<script type="text/javascript" src="assets/js/skoda.js"></script>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<div class="content body-background-profile">
+			<section id="page">
+				<div class="bd">
+					<div class="wrap">
+						<div class="profile-left">
+							<div class="user-info">
+								<div class="fn-left">
+									<div class="user-pic">
+										<img src="assets/images/user_pic_default_01.jpg" alt=""/>
+										<div class="updata">
+											<a onclick="_gaq.push(['_trackEvent', 'Click', 'upload-profile-pic-pp'])" class="btn-update-avatar2 jsPopUploadBox" href="javascript:void(0);"></a>
+										</div>
+									</div>
+									<div class="pt10">
+										<a onclick="_gaq.push(['_trackEvent', 'Click', 'watch-vote-video-pp'])" class="btn-3d-becomeTalent3" href="#"></a>
+									</div>
+								</div>
+								<div class="user-intro">
+									<p class="name">
+										简永豪的豪
+									</p>
+									<p>
+										智猜人气：<span class="color">72</span>
+									</p>
+									<div class="text-wrap">
+										<p>
+											在细节上做到更加人性化会更能让大众接受它，老百姓用的顺心，对它产生好感！在细节上做到更加人性化会更能让大众接受它，老百姓用的顺心，对它产生好感！
+										</p>
+									</div>
+									<div class="btns">
+										<a class="btn-more jsPopIdeaDetail" href="javascript:;"></a>
+										<a onclick="_gaq.push(['_trackEvent', 'Click', 'edit-profile-pp'])" class="btn-update-info jsPopProfileForm" href="javascript:;"></a>
+									</div>
+								</div>
+							</div>
+							<div class="ranking">
+								<a onclick="_gaq.push(['_trackEvent', 'Click', 'go-gallery-pp'])" href="idea.html" class="btn-ranking fn-left"></a>
+							</div>
+							<!--notification-->
+							<div class="notification">
+								<h2><span class="notice-tit"></span>(99):</h2>
+								<div class="text-wrap">
+									<ul>
 
-</body>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+										<li>
+											<div class="m1">
+												你的主意已经通过审核!你的主意已经通过审核!
+											</div>
+											<div class="time">
+												1小时以前
+											</div>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="profile-right">
+							<div class="tv">
+								<div class="tv-crash">
+									<img width="363" height="330" src="assets/images/tv.gif" alt="">
+
+								</div>
+								<div class="tv-show">
+									<div  ></div>
+									<div class="tv-btns">
+										<a class="btn-next-topic disable" onclick="_gaq.push(['_trackEvent', 'Click', 'next-idea-pp'])" href="#"></a>
+										<div class="share">
+
+											<a class="btn-share disable" href="javascript:void(0);"><span class="font-share"></span></a>
+
+										</div>
+									</div>
+									<div class="idea">
+										<div class="text-wrap">
+											<h1>隐身收纳盒<span>3天前提交</span></h1>
+											<p>
+												汽车上空间小,而我们出去自驾游放在车里的小物件又太多了
+												容易找不到，在门侧边设计一款隐身收纳盒很有用！
+											</p>
+											<h3>灵感来源：</h3>
+											<p>
+												汽车上空间小,而我们放在车里的小物件又太多了，在门侧边
+												设计一款隐身收纳盒很有用！
+											</p>
+											<p>
+												汽车上空间小,而我们放在车里的小物件又太多了，在门侧边
+												设计一款隐身收纳盒很有用！
+											</p>
+										</div>
+									</div>
+									<div class="btns2">
+										<a onclick="_gaq.push(['_trackEvent', 'Click', 'create-your-idea-pp'])" class="btn-3d-becomeTalent4" href="draw.html"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="wrap suggestions">
+						<!--play video-->
+						<div class="video-3d-men">
+							<a onclick="_gaq.push(['_trackEvent', 'Click', 'watch-sub-video-pp'])" href="#"></a>
+						</div>
+						<div class="suggestions-box">
+							<div class="suggestions-box-hd"></div>
+							<div class="suggestions-box-bd">
+								<form action="">
+									<textarea name="" id="suggestions-input" class="text-input" maxlength="200"></textarea>
+									<div class="submit-bar">
+										<div class="fn-left">
+											<span class="color">50</span>条评论
+										</div>
+										<div class="fn-left suggestions-error">
+										</div>
+										<div class="fn-right">
+											<a onclick="_gaq.push(['_trackEvent', 'Click', 'post-comments-pp'])" href="#" class="btn-submit" id="suggestions-submit"></a>
+										</div>
+									</div>
+								</form>
+								<ul class="suggestions-list">
+									<li class="official-pd">
+										<div class="official">
+											<div class="official-wrap">
+												<div class="row-fluid">
+													<div class="span1">
+														<a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/logo3.jpg" alt=""/></a>
+													</div>
+													<div class="span11">
+														<div class="row-fluid">
+															<div class="color span3 name">
+																斯柯达聪明主义:
+															</div>
+															<div class="span8 type-middle">
+																主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
+															</div>
+														</div>
+														<span class="color"></span>
+													</div>
+												</div>
+												<div class="pos-text">
+													一个小时前
+												</div>
+												<a href="#" class="delete" title="删除"></a>
+											</div>
+											<div class="shadow sleft"></div>
+											<div class="shadow sright"></div>
+										</div>
+									</li>
+
+									<li>
+										<div class="row-fluid">
+											<div class="span1">
+												<a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a>
+											</div>
+											<div class="span11">
+												<div class="row-fluid">
+													<div class="color span3 name">
+														隔壁家的小明:
+													</div>
+													<div class="span9 type-middle">
+														主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
+													</div>
+												</div>
+												<span class="color"></span>
+											</div>
+										</div>
+										<div class="pos-text">
+											一个小时前
+										</div>
+										<a href="#" class="delete" title="删除"></a>
+										<a href="#" class="against" title="举报"></a>
+									</li>
+
+									<li>
+										<div class="row-fluid">
+											<div class="span1">
+												<a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a>
+											</div>
+											<div class="span11">
+												<div class="row-fluid">
+													<div class="color span3 name">
+														隔壁家的小明:
+													</div>
+													<div class="span9 type-middle">
+														主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
+													</div>
+												</div>
+												<span class="color"></span>
+											</div>
+										</div>
+										<div class="pos-text">
+											一个小时前
+										</div>
+										<a href="#" class="delete" title="删除"></a>
+										<a href="#" class="against" title="举报"></a>
+									</li>
+
+									<li>
+										<div class="row-fluid">
+											<div class="span1">
+												<a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a>
+											</div>
+											<div class="span11">
+												<div class="row-fluid">
+													<div class="color span3 name">
+														隔壁家的小明:
+													</div>
+													<div class="span9 type-middle">
+														主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
+													</div>
+												</div>
+												<span class="color"></span>
+											</div>
+										</div>
+										<div class="pos-text">
+											一个小时前
+										</div>
+										<a href="#" class="delete" title="删除"></a>
+										<a href="#" class="against" title="举报"></a>
+									</li>
+
+									<li>
+										<div class="row-fluid">
+											<div class="span1">
+												<a href="profile.html" target="_blank"><img width="40" height="40" src="assets/images/pic_04.jpg" alt=""/></a>
+											</div>
+											<div class="span11">
+												<div class="row-fluid">
+													<div class="color span3 name">
+														隔壁家的小明:
+													</div>
+													<div class="span9 type-middle">
+														主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！主意真好！
+													</div>
+												</div>
+												<span class="color"></span>
+											</div>
+										</div>
+										<div class="pos-text">
+											一个小时前
+										</div>
+										<a href="#" class="delete" title="删除"></a>
+										<a href="#" class="against" title="举报"></a>
+									</li>
+
+								</ul>
+								<p class="text-center pt10">
+									<a href="javascript:void(0);" class="btn-more2"></a>
+								</p>
+							</div>
+							<div class="suggestions-box-ft"></div>
+						</div>
+					</div>
+					<div class="body-background-profile-fixed"></div>
+				</div>
+			</section>
+		</div>
+		<!--jsPopIdeaDetail-->
+		<div class="pop-idea-detail">
+			<a class="b-close pop-close" href="#"><span></span></a>
+			<div class="pop-content">
+				<div class="text-wrap">
+					<h1 class="title"></h1>
+					<div class="row-fluid">
+						<div class="span3"><img src="assets/images/pic_04.jpg" alt=""/>
+						</div>
+						<div class="span8">
+							<p>
+								我是John Doe，20岁，来自广东广州。
+							</p>
+							<p>
+								我的灵感细胞从不受束缚，如果不是脑壳罩着早飚出来了。我一般通过鼻孔感知外界，可以毫无压力辨别23517种气味。我的坐骑是一辆会飞的车。小时候我的江湖绰号叫海豹，因为我总是被罚站，像海报（海豹）一样贴在墙上！
+								但是有一点毋庸置疑，那就是我绝顶聪明，不服来辩！
+							</p>
+						</div>
+					</div>
+					<h2 class="title"></h2>
+					<p>
+						<img src="assets/images/test00001.jpg" alt=""/>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!--jsPopProfileForm-->
+		<div class="pop-profile-form">
+			<a class="b-close pop-close" href="#"><span></span></a>
+			<form class="form-horizontal">
+				<div class="pop-content">
+					<div class="row-fluid">
+						<div class="span4">
+							<img width="181" height="181"  class="user-pic" src="assets/images/user_pic_default_01.jpg" alt=""/>
+							<div class="btns-wrap">
+								<a onclick="_gaq.push(['_trackEvent', 'Click', 'upload-profile-pic-pp'])" href="javascript:void(0);" class="btn-update-avatar3 jsPopUploadBox"></a>
+							</div>
+						</div>
+						<div class="span8">
+
+							<div class="control-group">
+								<label class="control-label" for="inputName">姓</label>
+								<div class="controls">
+									<input type="text" id="inputName" maxlength="20">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="inputName2">名</label>
+								<div class="controls">
+									<input type="text" id="inputName2" maxlength="20">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">性别</label>
+								<div class="controls">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+										男 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+										女 </label>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">省</label>
+								<div class="controls">
+									<select>
+										<option>上海市</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">城市</label>
+								<div class="controls">
+									<select>
+										<option>上海市</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">手机</label>
+								<div class="controls">
+									<input type="text" id="inputMobile">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">邮箱</label>
+								<div class="controls">
+									<input type="text" id="inputEmail">
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">生日</label>
+								<div class="controls">
+									<select class="inline span3">
+										<option>年</option>
+
+										<option>1933年</option>
+
+										<option>1934年</option>
+
+										<option>1935年</option>
+
+										<option>1936年</option>
+
+										<option>1937年</option>
+
+										<option>1938年</option>
+
+										<option>1939年</option>
+
+										<option>1940年</option>
+
+										<option>1941年</option>
+
+										<option>1942年</option>
+
+										<option>1943年</option>
+
+										<option>1944年</option>
+
+										<option>1945年</option>
+
+										<option>1946年</option>
+
+										<option>1947年</option>
+
+										<option>1948年</option>
+
+										<option>1949年</option>
+
+										<option>1950年</option>
+
+										<option>1951年</option>
+
+										<option>1952年</option>
+
+										<option>1953年</option>
+
+										<option>1954年</option>
+
+										<option>1955年</option>
+
+										<option>1956年</option>
+
+										<option>1957年</option>
+
+										<option>1958年</option>
+
+										<option>1959年</option>
+
+										<option>1960年</option>
+
+										<option>1961年</option>
+
+										<option>1962年</option>
+
+										<option>1963年</option>
+
+										<option>1964年</option>
+
+										<option>1965年</option>
+
+										<option>1966年</option>
+
+										<option>1967年</option>
+
+										<option>1968年</option>
+
+										<option>1969年</option>
+
+										<option>1970年</option>
+
+										<option>1971年</option>
+
+										<option>1972年</option>
+
+										<option>1973年</option>
+
+										<option>1974年</option>
+
+										<option>1975年</option>
+
+										<option>1976年</option>
+
+										<option>1977年</option>
+
+										<option>1978年</option>
+
+										<option>1979年</option>
+
+										<option>1980年</option>
+
+										<option>1981年</option>
+
+										<option>1982年</option>
+
+										<option>1983年</option>
+
+										<option>1984年</option>
+
+										<option>1985年</option>
+
+										<option>1986年</option>
+
+										<option>1987年</option>
+
+										<option>1988年</option>
+
+										<option>1989年</option>
+
+										<option>1990年</option>
+
+										<option>1991年</option>
+
+										<option>1992年</option>
+
+										<option>1993年</option>
+
+										<option>1994年</option>
+
+										<option>1995年</option>
+
+										<option>1996年</option>
+
+										<option>1997年</option>
+
+										<option>1998年</option>
+
+										<option>1999年</option>
+
+										<option>2000年</option>
+
+										<option>2001年</option>
+
+										<option>2002年</option>
+
+										<option>2003年</option>
+
+										<option>2004年</option>
+
+										<option>2005年</option>
+
+										<option>2006年</option>
+
+										<option>2007年</option>
+
+										<option>2008年</option>
+
+										<option>2009年</option>
+
+										<option>2010年</option>
+
+										<option>2011年</option>
+
+										<option>2012年</option>
+
+										<option>2013年</option>
+
+									</select>
+									<select class="inline span3">
+										<option>月</option>
+
+										<option>01月</option>
+
+										<option>02月</option>
+
+										<option>03月</option>
+
+										<option>04月</option>
+
+										<option>05月</option>
+
+										<option>06月</option>
+
+										<option>07月</option>
+
+										<option>08月</option>
+
+										<option>09月</option>
+
+										<option>10月</option>
+
+										<option>11月</option>
+
+										<option>12月</option>
+
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="checkbox inline">
+									<input type="checkbox" class="student" name="option" value="option">
+									我是在校学生，若最终获奖，将选择“学子特别奖”，
+									<br>
+									赢得实习机会，同时放弃“2013年度聪明达人”奖。 </label>
+							</div>
+							<div class="control-group">
+								<label class="span5 text_middle">你计划在多长时间内购车？</label>
+								<div class="span7">
+									<select class="span5">
+										<option value="">请选择</option>
+										<option>1-3个月</option>
+										<option>4-6个月</option>
+										<option>7-12个月</option>
+										<option>一年以上</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<p>
+									你最关注斯柯达品牌的哪个车型？
+								</p>
+								<div class="cars">
+									<ul>
+
+										<li><img src="assets/images/cars/01.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/02.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/03.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/04.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/05.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/06.jpg" alt=""/>
+										</li>
+
+										<li><img src="assets/images/cars/07.jpg" alt=""/>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<p>
+									1.你突然得知有人会送你一辆车，你认为它会是？
+								</p>
+								<div class="span12">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios1" value="option">
+										华丽的跑车 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios1" value="option">
+										家用高级轿车 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios1" value="option">
+										儿童三轮车 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios1" value="option">
+										智能房车 </label>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<p>
+									2.你通常什么情况下最会胡思乱想？
+								</p>
+								<div class="span12">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios2" value="option">
+										半夜三更 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios2" value="option">
+										上厕所 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios2" value="option">
+										吵架时 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios2" value="option">
+										不定时 </label>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<p>
+									3.你自认为脸上最满意的部分是？
+								</p>
+								<div class="span12">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios3" value="option">
+										鼻子 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios3" value="option">
+										嘴 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios3" value="option">
+										眼睛 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios3" value="option">
+										耳朵 </label>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<p>
+									4.探险途中大家被挡住去路，只有你有办法，你觉得障碍物会是？
+								</p>
+								<div class="span12">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios4" value="option">
+										荆棘丛 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios4" value="option">
+										湍急的河流 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios4" value="option">
+										大石块 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios4" value="option">
+										漆黑的山洞 </label>
+								</div>
+							</div>
+
+							<div class="control-group">
+								<p>
+									5.现在你面临一项重大挑战，你觉得尝试几次才会成功？
+								</p>
+								<div class="span12">
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios5" value="option">
+										一次就成功 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios5" value="option">
+										两次 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios5" value="option">
+										三次 </label>
+									<label class="radio inline">
+										<input type="radio" name="optionsRadios5" value="option">
+										N多次 </label>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="pop-bg-ft">
+					<div class="row-fluid">
+						<div class="span4"></div>
+						<div class="span8">
+							<div class="row-fluid">
+								<div class="span4">
+									请分享你的灵感来源？
+								</div>
+								<div class="span8">
+									<a class="btn-upload-file jsPopUploadBox" href="javascript:void(0);" style=""></a>
+									<p class="help-inline "></p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<textarea name="" class="input-block-level" maxlength="140">在此输入文字</textarea>
+								</div>
+							</div>
+							<div class="control-group">
+								<p class="">
+									通过以下方式接收通知
+								</p>
+								<label class="checkbox">
+									<input type="checkbox" checked>
+									邮箱通知 </label>
+							</div>
+							<div class="row-fluid">
+								<div class="span12">
+									<p class="color">
+										我已阅读并同意 <a href="#" target="_blank">相关条款</a>
+									</p>
+								</div>
+							</div>
+							<div class="row-fluid">
+								<div class="span2">
+									<button type="submit" class="btn-save"></button>
+								</div>
+								<div class="span2">
+									<a class="btn-cancel b-close" href="javascript:void(0);"></a>
+								</div>
+							</div>
+							<input type="reset" class="hide"/>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--jsPopBox-->
+		<div class="pop-box">
+			<a class="b-close pop-close" href="#"><span></span></a>
+			<div class="pop-content">
+				<p class="title">
+					该评论含有敏感字词，请重新编写。
+				</p>
+				<div class="err">
+					上网文凭
+					<br>
+					替考
+					<br>
+					赌博机
+					<br>
+					顺利过
+					<br>
+					考后付款
+					<br>
+					香港彩
+					<br>
+					传送答案
+				</div>
+			</div>
+		</div>
+		<!--jsPopUploadBox-->
+		<div class="pop-upload-box">
+			<a class="b-close pop-close" href="#"><span></span></a>
+			<div class="pop-content">
+				<div class="row-fluid">
+					<div class="span8">
+						<div class="file-input">
+							...
+						</div>
+					</div>
+					<div class="span4">
+						<a href="javascript:void(0);" class="btn-select-file"></a>
+					</div>
+				</div>
+				<p class="help-block">
+					图片不得大于2M <span class="err">图片大小超过2M</span>
+				</p>
+				<form id="upload" action="src.php">
+					<input type="file" class="hide" accept="image/gif, image/jpeg,image/png"/>
+					<button type="submit" value="" class="btn-submit-upload"></button>
+				</form>
+			</div>
+		</div>
+		<!--video pop1 -->
+		<div class="pop-video-box01">
+			<a class="pop-close b-close" href="javascript:void(0)"><span></span></a>
+			<div class="content">
+				<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video"></div>
+				<div class="share">
+
+					<a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
+					<div class="share-bar">
+						<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-tsina"></span></a>
+						<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-kaixin001"></span></a>
+						<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-douban"></span></a>
+						<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-renren"></span></a>
+						<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-vote-video-pp'])" ><span class="icon-tqq"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--video pop2 -->
+		<div class="pop-video-box02">
+			<div class="content">
+				<div class="step1">
+					<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video" ></div>
+					<div class="share">
+
+						<a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
+						<div class="share-bar">
+							<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-tsina"></span></a>
+							<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-kaixin001"></span></a>
+							<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-douban"></span></a>
+							<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-renren"></span></a>
+							<a href="#" target="_blank" onclick="_gaq.push(['_trackEvent', 'Click', 'share-sub-video-pp'])" ><span class="icon-tqq"></span></a>
+						</div>
+					</div>
+					<a href="javascript:void(0)" class="btn-skip skip1"></a>
+				</div>
+				<div class="step2">
+					<p class="message">
+						恭喜，聪明的你已成功提交主意！主意正在审核中，
+						<br>
+						趁现在完善你的个人页面，让更多人了解你吧！
+					</p>
+					<a href="javascript:void(0)" class="b-close btn-myhomepage2"></a>
+					<a href="idea.html" class="btn-skip skip2"></a>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<div class="footer-corner"></div>
+			<div class="wrap">
+				<div class="clearfix">
+					<div class="follow">
+						<wb:follow-button uid="2954472480" type="red_2" width="136" height="24" ></wb:follow-button>
+					</div>
+					<div class="douban">
+						<a onclick="_gaq.push(['_trackEvent', 'Click', 'douban-ctp-logo-fo'])" href="http://site.douban.com/191862/" target="_blank"><img src="assets/images/douban.jpg" alt="推荐到豆瓣" /></a>
+					</div>
+					<div class="share">
+						<a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
+						<div class="share-bar">
+							<a href="#" target="_blank"  ><span class="icon-tsina"></span></a>
+							<a href="#" target="_blank"  ><span class="icon-kaixin001"></span></a>
+							<a href="#" target="_blank"  ><span class="icon-douban"></span></a>
+							<a href="#" target="_blank"  ><span class="icon-renren"></span></a>
+							<a href="#" target="_blank"  ><span class="icon-tqq"></span></a>
+						</div>
+					</div>
+				</div>
+				<div class="copyright">
+					<span>2013 版权 | 沪ICP备08000392号-2</span> | <a onclick="_gaq.push(['_trackEvent', 'Click', 'tnc-fo'])" href="./tnc.html" target="_blank">服务条款</a> | <a onclick="_gaq.push(['_trackEvent', 'Click', 'faq-fo'])" href="./faq.html" target="_blank">常见问题</a> | <a href="Mailto:info@congmingzhuyi.com">info@congmingzhuyi.com</a>
+				</div>
+				<div class="logo2">
+					<a href="#" onclick="_gaq.push(['_trackEvent', 'Click', 'skoda-logo-fo'])"></a>
+				</div>
+			</div>
+		</footer>
+		<script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
+		<script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="assets/js/lib/jquery.jscrollpane.js"></script>
+		<script type="text/javascript" src="assets/js/lib/jquery.bpopup.js"></script>
+		<script type="text/javascript">
+			_gaq.push(['_trackPageview', '/personal-profile']);
+		</script>
+		<script type="text/javascript" src="assets/js/lib/jquery.form.min.js"></script>
+		<script type="text/javascript" src="assets/js/skoda.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			window.getVoteData = function() {
+				var user = {};
+				user.username = "rick";
+				user.headpic = "********.jpg";
+				var data = JSON.stringify(user);
+				GetSWF("ctp-video").setVoteData(data);
+			}
+			//-- bak function --//
+			function call(data) {
+				try {
+					GetSWF("ctp-video").setVoteData(data);
+				} catch(e) {
+					setTimeout(function() {
+						call(data);
+					}, 500);
+				}
+			}
+
+			function GetSWF(strName) {
+				if (window.document[strName] != null)
+					if (window.document[strName].length == null)
+						return window.document[strName];
+					else
+						return window.document[strName][1];
+				else if (document[strName].length == null)
+					return document[strName];
+				else
+					return document[strName][1];
+			};
+		</script>
+	</body>
 </html>
