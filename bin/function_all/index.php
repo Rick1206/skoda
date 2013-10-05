@@ -32,7 +32,7 @@ switch ($ftype) {
 		break;
 	
 	case 'User_submission':
-		$state = "1";
+		$state	 = "1";
 		$message = "Upload User profile Success";
 		
 		$state = is_base64_encoded($_POST['Draw_pic']);
@@ -42,7 +42,7 @@ switch ($ftype) {
 		break;
 		
 	case 'User_Profile':
-		//$_SESSION["status"]= TRUE;
+		$_SESSION["status"]= TRUE;
 		if($_SESSION["status"]){
 			
 		$state = "1";		
@@ -57,14 +57,14 @@ switch ($ftype) {
 		$q4 = "3";
 		$q5 = "4";
 			
-		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":[{\"username\":\"".$username 
+		echo "{"."\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":[{\"username\":\"".$username 
 			  ."\",\"headpic\":\"".$headpic
-			  ."\"}],\"questions\":[{\"questionId\":\"1\",\"title\":\"\",
+			  ."\"}],\"questions\":[{\"questionId\":\"15\",\"title\":\"tt\",
 			  \"options\":[
-           			{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"true\"},
-           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
-           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
-           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+           			{\"optionId\": \"122\",\"title\":\"a\",\"selected\": \"true\"},
+           			{\"optionId\": \"22\",\"title\":\"b\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\":\"c\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\":\"d\",\"selected\": \"false\"}
        		  ]},{
 			  	\"questionId\":\"2\",\"title\":\"\",
 			  	\"options\":[

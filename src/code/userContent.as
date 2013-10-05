@@ -50,8 +50,8 @@
 		private var _urlreq:URLRequest;
 		private var _urlvar:URLVariables;
 		private var _urlloa:URLLoader;
-		private var queArr:Array;
-		
+		public var queArr:Array;
+		private var picState:String = "default";
 		public function userContent()
 		{
 			if (stage)
@@ -64,7 +64,7 @@
 			}
 			
 			this.loaderInfo.addEventListener(Event.COMPLETE, loadComplete);
-			
+		
 		}
 		
 		private function getUserInfo():void
@@ -87,50 +87,37 @@
 			_urlreq.method = "POST";
 			//_urlloa.dataFormat = URLLoaderDataFormat.BINARY;
 			_urlloa.load(_urlreq);
-			
-			
+		
 		}
 		
 		private function onCompInfoHandle(e:Event):void
 		{
-
 			var myData:Object = JSON.decode(e.target.data);
-			if (myData.state == "1"){
+			if (myData.state == "1")
+			{
 				this.userName = myData.profile[0].username;
 				loadPic(myData.profile[0].headpic);
-				for (var i:int = 0; i < queArr.length ; i++) {
-					for (var t:int = 0; t < myData.questions[i].options.length; t++ ) {
-						if (myData.questions[i].options[t].selected == "true") {
+				for (var i:int = 0; i < queArr.length; i++)
+				{
+					queArr[i].qTitle.text = myData.questions[i].title;
+					queArr[i].qid = myData.questions[i].questionId;
+					
+					for (var t:int = 0; t < myData.questions[i].options.length; t++)
+					{
+						queArr[i].queArr[t].oTitle.text = myData.questions[i].options[t].title;
+						queArr[i].queArr[t].num = myData.questions[i].options[t].optionId;
+						
+						if (myData.questions[i].options[t].selected == "true")
+						{
 							queArr[i].ans = t + 1;
-							setGlobal(i,String(t+1));
-							break;
+							//setGlobal(i, String(t + 1));
 						}
 					}
 				}
 			}
+		
 		}
 		
-		private function setGlobal(num:int,ans:String) {
-			switch (num) 
-			{
-				case 0:
-					GlobalVars.setQ1(ans);
-				break;
-				case 1:
-					GlobalVars.setQ2(ans);
-				break;
-				case 2:
-					GlobalVars.setQ3(ans);
-				break;
-				case 3:
-					GlobalVars.setQ4(ans);
-				break;
-				case 4:
-					GlobalVars.setQ5(ans);
-				break;
-				default:
-			}
-		}
 		private function loadPic(str:String)
 		{
 			var loader:Loader = new Loader;
@@ -146,9 +133,10 @@
 			pic.smoothing = true;
 			
 			var bmd:BitmapData = new BitmapData(145, 145);
-				bmd.draw(pic);
+			bmd.draw(pic);
 			
-			if (_scaledBmp != null) {
+			if (_scaledBmp != null)
+			{
 				headPic.picFrame.removeChild(_scaledBmp);
 			}
 			
@@ -173,10 +161,8 @@
 			tracker = new GATracker(this, "UA-34374356-3", "AS3", false);
 			
 			btnInspire.addEventListener(MouseEvent.CLICK, onUploadHeadPicHandler);
-			
-			//scrollbarMovie.init(contentMovie, maskMovie, "vertical", true, false, false, 12);
-			
-			var myScroll:ScrollBar2 = new ScrollBar2(contentMovie,maskMovie,sliderMovie, trackMovie);
+
+			var myScroll:ScrollBar2 = new ScrollBar2(contentMovie, maskMovie, sliderMovie, trackMovie);
 			
 			myScroll.direction = "L";
 			
@@ -194,19 +180,11 @@
 			
 			myScroll.stepNumber = 15;
 			
-			
-			
 			RollTool.setRoll(upMovie);
 			RollTool.setRoll(downMovie);
 			
 			queArr = [contentMovie.q1, contentMovie.q2, contentMovie.q3, contentMovie.q4, contentMovie.q5];
 			
-			
-			contentMovie.q1.initData("q1");
-			contentMovie.q2.initData("q2");
-			contentMovie.q3.initData("q3");
-			contentMovie.q4.initData("q4");
-			contentMovie.q5.initData("q5");
 			
 			txtUserName.addEventListener(MouseEvent.ROLL_OUT, onRollHandler);
 			txtUserName.addEventListener(MouseEvent.ROLL_OVER, onRollHandler);
@@ -221,24 +199,34 @@
 			//getUserInfo();
 		}
 		
-		private function loadComplete(e:Event):void 
+		private function loadComplete(e:Event):void
 		{
 			ExternalInterface.call("getUserProfile");
 			JSBridge.addCallback("setUserProfile", setUserProfile);
 		}
 		
-		public function setUserProfile(str:String):void 
+		public function setUserProfile(str:String):void
 		{
 			var myData:Object = JSON.decode(str);
-			if (myData.state == "1"){
+			if (myData.state == "1")
+			{
 				this.userName = myData.profile[0].username;
 				loadPic(myData.profile[0].headpic);
-				for (var i:int = 0; i < queArr.length ; i++) {
-					for (var t:int = 0; t < myData.questions[i].options.length; t++ ) {
-						if (myData.questions[i].options[t].selected == "true") {
+						
+				for (var i:int = 0; i < queArr.length; i++)
+				{
+					queArr[i].qTitle.text = myData.questions[i].title;
+					queArr[i].qid = myData.questions[i].questionId;
+					
+					for (var t:int = 0; t < myData.questions[i].options.length; t++)
+					{
+						queArr[i].queArr[t].oTitle.text = myData.questions[i].options[t].title;
+						queArr[i].queArr[t].num = myData.questions[i].options[t].optionId;
+						
+						if (myData.questions[i].options[t].selected == "true")
+						{
 							queArr[i].ans = t + 1;
-							setGlobal(i,String(t+1));
-							break;
+							queArr[i].oid = myData.questions[i].options[t].optionId;
 						}
 					}
 				}
@@ -320,8 +308,8 @@
 				_matrix.scale(newRatio, newRatio);
 				_bmpdata.draw(bm, _matrix);
 				
-				
-				if (_scaledBmp != null) {
+				if (_scaledBmp != null)
+				{
 					headPic.picFrame.removeChild(_scaledBmp);
 				}
 				
@@ -334,16 +322,16 @@
 				
 				_scaledBmp.x = -_scaledBmp.width / 2;
 				_scaledBmp.y = -_scaledBmp.height / 2;
-								
-
+				
 				headPic.picFrame.addChild(_scaledBmp);
 				
 				TweenMax.to(headPic.defaultpic, .2, {autoAlpha: 0});
 				
-				TweenMax.to(UploadPhotoPopup.instance, .2, { autoAlpha: 0 } );
+				TweenMax.to(UploadPhotoPopup.instance, .2, {autoAlpha: 0});
 				
 				TweenMax.to(headPic.picFrame, .2, {autoAlpha: 1});
 				
+				picState = "upload";
 			}
 		
 		}
@@ -363,7 +351,8 @@
 		
 		public function get userHead():String
 		{
-			if (_scaledBmp != null) {
+			if (picState != "default")
+			{
 				_userHead = this.getImg();
 			}
 			return _userHead;
@@ -373,6 +362,7 @@
 		{
 			_userHead = value;
 		}
+		
 		
 		private function getImg():String
 		{

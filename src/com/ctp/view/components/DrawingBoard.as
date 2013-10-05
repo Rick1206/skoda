@@ -268,25 +268,17 @@ package com.ctp.view.components {
 			profileObj.UserHead = userProfileMc.userHead;
 			obj.profile = profileObj;
 			
+
 			
-			//obj.profile[0].UserHead =  userProfileMc.userHead;
-			//obj.UserName = userProfileMc.userName;
-			//obj.UserHead = userProfileMc.userHead;
-			
-			var quesObj:Array = new Array();
-			for (var i:int = 0; i < 5;	 i++) {
+			var quesObj:Array = new Array;
+			for (var i:int = 0; i < 5;	i++) {
 					var opObj:Object = new Object();
-					opObj.questionId = i + 1;
-					opObj.optionId = getQueByNum(i);
+					opObj.questionId = userProfileMc.userQues[i].qid;
+					opObj.optionId = userProfileMc.userQues[i].oid;
 					quesObj.push(opObj);
 			}
 			obj.questions = quesObj;
-			
-			//obj.q1 = GlobalVars.getQ1();
-			//obj.q2 = GlobalVars.getQ2();
-			//obj.q3 = GlobalVars.getQ3();
-			//obj.q4 = GlobalVars.getQ4();
-			//obj.q5 = GlobalVars.getQ5();
+		
 			
 			
 			dataArr.push(obj);

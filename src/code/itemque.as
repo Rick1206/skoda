@@ -1,4 +1,5 @@
-﻿package code {
+﻿package code
+{
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -6,103 +7,96 @@
 	import code.tool.RollTool;
 	import code.GlobalVars;
 	
-	public class itemque extends MovieClip {
+	public class itemque extends MovieClip
+	{
 		
 		private var _ans:String;
 		
-		private var queArr:Array;
-		private var qname:String;
+		public var queArr:Array;
+		private var _qid:String;
+		private var _oid:String;
 		
-		public function itemque() {
+		public function itemque()
+		{
 			// constructor code
-			if (stage) {
+			if (stage)
+			{
 				init();
-			}else {
+			}
+			else
+			{
 				addEventListener(Event.ADDED_TO_STAGE, init);
 			}
 		}
 		
-		private function init(e:Event=null):void 
+		private function init(e:Event = null):void
 		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);	
-		}
-		public function initData(str:String) {
-			trace("init: "+str);
-			
-			qname = str;
+			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			queArr = [q1, q2, q3, q4];
-	
-			for (var key:String in queArr) {
+			
+			
+			for (var key:String in queArr)
+			{
 				RollTool.setRoll(queArr[key]);
 				queArr[key].addEventListener(MouseEvent.CLICK, onClickHandler);
 			}
 		}
-		private function onClickHandler(e:MouseEvent):void 
+		
+		
+		private function onClickHandler(e:MouseEvent):void
 		{
-			
 			var mc:MovieClip = e.currentTarget as MovieClip;
 			
-			switch(e.currentTarget.name) {
-				case "q1":
-					_ans = "1";
-					break;
-				case "q2":
-					_ans = "2";
-					break;
-				case "q3":
-					_ans = "3";
-					break;
-				case "q4":
-					_ans = "4";
-					break;
-			}
-			
-			
-			
-			switch(qname) {
-				case "q1":
-					GlobalVars.setQ1(_ans);
-					break;
-				case "q2":
-					GlobalVars.setQ2(_ans);
-					break;
-				case "q3":
-					GlobalVars.setQ3(_ans);
-					break;
-				case "q4":
-					GlobalVars.setQ4(_ans);
-					break;
-				case "q5":
-					GlobalVars.setQ5(_ans);
-					break;
-			}
-			
-			
-				for (var key:String in queArr) {
+			_oid = mc.num;
 					
-					if (queArr[key].name == mc.name) {
-						queArr[key].gotoAndStop(2);
-					}else {
-						queArr[key].gotoAndStop(1);
-					}
+			for (var key:String in queArr)
+			{
 				
+				if (queArr[key].name == mc.name)
+				{
+					queArr[key].gotoAndStop(2);
 				}
-			
+				else
+				{
+					queArr[key].gotoAndStop(1);
+				}
+				
+			}
+		
 		}
 		
-		public function get ans():String 
+		public function get ans():String
 		{
 			return _ans;
 		}
 		
-		public function set ans(value:String):void 
+		public function set ans(value:String):void
 		{
-			
 			_ans = value;
 			queArr[int(_ans) - 1].gotoAndStop(2);
 		}
+		
+		public function get qid():String 
+		{
+			return _qid;
+		}
+		
+		public function set qid(value:String):void 
+		{
+			_qid = value;
+		}
+		
+		public function get oid():String 
+		{
+			return _oid;
+		}
+		
+		public function set oid(value:String):void 
+		{
+			_oid = value;
+		}
 	
 	}
-	
+
 }

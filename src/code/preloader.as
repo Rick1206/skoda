@@ -45,6 +45,11 @@
 			
 			mcLoading.x = stage.stageWidth / 2;
 			
+			bgMc.x = stage.stageWidth / 2;
+			
+			bgMc.width =  stage.stageWidth;
+			
+			
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
 			var strSwfName:String = loaderInfo.parameters.url ? loaderInfo.parameters.url : "draw.swf";
@@ -61,6 +66,10 @@
 		private function updateStage(e:Event):void 
 		{
 			mcLoading.x = stage.stageWidth / 2;
+			
+			bgMc.x = stage.stageWidth / 2;
+			
+			bgMc.width =  stage.stageWidth;
 		}
 		
 		private function completeHandler(e:Event):void 
@@ -75,7 +84,8 @@
 		private function progressHandler(e:ProgressEvent):void 
 		{
 			percent = Math.round((e.bytesLoaded * 100) / e.bytesTotal);
-			mcLoading.percentText.text = percent + "%";
+			//trace(percent);
+			mcLoading.percentText.text = String(percent) + "%";
 			mcLoading.percentMovie.gotoAndStop(percent);
 		}
 		

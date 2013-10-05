@@ -11,6 +11,7 @@
 		private var strStatus:String = "close";
 		private var _userName:String = "";
 		private var _userHead:String = "";
+		private var _userQues:Array;
 		public function userProfile()
 		{
 			if (stage)
@@ -71,13 +72,25 @@
 		
 		public function get userHead():String 
 		{
-			_userHead = content.userMc.userHead
+			_userHead = content.userMc.userHead;
 			return _userHead;
 		}
 		
 		public function set userHead(value:String):void 
 		{
 			_userHead = value;
+		}
+		
+		public function get userQues():Array 
+		{
+			_userQues = content.userMc.queArr;
+			return _userQues;
+		}
+		
+		public function set userQues(value:Array):void 
+		{
+			
+			_userQues = value;
 		}
 	}
 

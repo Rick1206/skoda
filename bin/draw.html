@@ -153,7 +153,7 @@
 			$(function() {
 
 				//--- get user profile --//
-				window.getUserUserProfile = function() {
+				window.getUserProfile = function() {
 					$.ajax({
 						url : './function_all/',
 						data : {
@@ -218,7 +218,7 @@
 							myObject = JSON.parse(data);
 							$("#ctp-flash-loading-mask").hide();
 							if (myObject.state == "1") {
-								location.href = "profile.html";
+								//location.href = "profile.html";
 							}
 						},
 						error : function(e) {
@@ -241,34 +241,7 @@
 				else
 					return document[strName][1];
 			};
-	var xxx = "{  'state':'1','message':'  message','profile':[{'username':'username','headpic':'/ctp-theme/images/pic_02.jpg'}],"+
-       "'questions':[{'questionId':'1','title':'qustion1','options':["+
-             "{'optionId': '1','title': '11','selected': 'true'},"+
-             "{'optionId': '2','title': '12','selected': 'false'},"+
-             "{'optionId': '3','title': '13','selected': 'false'},"+
-             "{'optionId': '5','title': '14','selected': 'false'}"+
-             "]},{'questionId':'2','title':'qustion2','options':["+
-             "{'optionId': '1','title': '21','selected': 'true'},"+
-             "{'optionId': '2','title': '22','selected': 'false'},"+
-             "{'optionId': '3','title': '23','selected': 'false'},"+
-             "{'optionId': '5','title': '24','selected': 'false'}"+
-             "]},{'questionId':'3','title':'qustion3','options':["+
-             "{'optionId': '1','title': '31','selected': 'false'},"+
-             "{'optionId': '2','title': '32','selected': 'false'},"+
-             "{'optionId': '3','title': '33','selected': 'true'},"+
-             "{'optionId': '5','title': '34','selected': 'false'}"+
-             "]},{'questionId':'4','title':'qustion4','options':["+
-             "{'optionId': '1','title': '41','selected': 'false'},"+
-             "{'optionId': '2','title': '42','selected': 'false'},"+
-             "{'optionId': '3','title': '43','selected': 'false'},"+
-             "{'optionId': '5','title': '44','selected': 'true'}"+
-             " ]},{'questionId':'5','title':'qustion5','options':["+
-             "{'optionId': '1','title': '51','selected': 'true'},"+
-             "{'optionId': '2','title': '52','selected': 'false'},"+
-             "{'optionId': '3','title': '53','selected': 'false'},"+
-             "{'optionId': '5','title': '54','selected': 'false'}]}]}";
 
-		console.log(xxx);
 		</script>
 		<script type="text/javascript" src="assets/js/lib/dropdown.min.js"></script>
 		<script type="text/javascript" src="assets/js/lib/jquery.mousewheel.min.js"></script>
