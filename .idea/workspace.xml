@@ -4,7 +4,7 @@
     <list default="true" id="a39242e0-9615-4765-a6ea-d4d8874e1b80" name="Default" comment="" />
     <ignored path="skoda.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380274073065" ignored="false" />
+    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1381215997944" ignored="false" />
     <file path="/profile.ejs" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380272898801" ignored="false" />
     <file path="/dummy.xml" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380266240508" ignored="false" />
     <file path="/skoda.less" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380268822199" ignored="false" />
@@ -39,71 +39,7 @@
     <favorites_list name="skoda" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="btns.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/less/btns.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="433" column="21" selection-start="8108" selection-end="8108" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="skoda.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page/assets/js/skoda.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="469" column="0" selection-start="17200" selection-end="17200" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1380273021993" expanded="false" signature="8932:8961" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="howToPlay.ejs" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/howToPlay.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="47" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.48074535">
-              <folding>
-                <element signature="n#style#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#section#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="faq.ejs" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/faq.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="59" selection-start="8924" selection-end="8924" vertical-scroll-proportion="-0.7096774">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.ejs" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/profile.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="481" column="38" selection-start="19094" selection-end="19094" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.json" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/list.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="19" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -193,86 +129,8 @@
               <option name="myItemId" value="skoda" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -285,8 +143,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -306,7 +164,7 @@
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -324,12 +182,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -410,108 +268,10 @@
         <state line="876" column="27" selection-start="35093" selection-end="35093" vertical-scroll-proportion="0.044720497" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.3886926" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/less/variables.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="12" selection-start="7543" selection-end="7554" vertical-scroll-proportion="0.3434466" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/activate.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="1" selection-end="353" vertical-scroll-proportion="0.026894866" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/password_reset.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="56" selection-start="295" selection-end="295" vertical-scroll-proportion="0.18826406" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/less/skoda.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1429" column="24" selection-start="28338" selection-end="28338" vertical-scroll-proportion="-18.12">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/less/forms.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="388" column="20" selection-start="8981" selection-end="8981" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/myLayout.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="14" selection-start="404" selection-end="404" vertical-scroll-proportion="-4.2580647" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/list.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="19" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/profile.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="481" column="38" selection-start="19094" selection-end="19094" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/account.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.40342298">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/less/btns.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="433" column="21" selection-start="8108" selection-end="8108" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page/assets/js/skoda.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="469" column="0" selection-start="17200" selection-end="17200" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1380273021993" expanded="false" signature="8932:8961" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/faq.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="59" selection-start="8924" selection-end="8924" vertical-scroll-proportion="-0.7096774">
+        <state line="551" column="0" selection-start="19485" selection-end="19485" vertical-scroll-proportion="0.02631579">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/idea.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="3967" selection-end="4084" vertical-scroll-proportion="0.7310513">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/howToPlay.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="47" selection-start="2573" selection-end="2573" vertical-scroll-proportion="0.48074535">
-          <folding>
-            <element signature="n#style#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#1;n#section#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#2;n#section#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
