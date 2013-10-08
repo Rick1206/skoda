@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a39242e0-9615-4765-a6ea-d4d8874e1b80" name="Default" comment="" />
+    <list default="true" id="a39242e0-9615-4765-a6ea-d4d8874e1b80" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/assets/images/how_to_play_01.jpg" afterPath="$PROJECT_DIR$/page/assets/images/how_to_play_01.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="skoda.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1381215997944" ignored="false" />
+    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1381216622977" ignored="false" />
     <file path="/profile.ejs" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380272898801" ignored="false" />
     <file path="/dummy.xml" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380266240508" ignored="false" />
     <file path="/skoda.less" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380268822199" ignored="false" />
@@ -111,13 +114,22 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="skoda" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skoda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skoda" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -136,6 +148,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,8 +156,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -270,9 +283,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/page/assets/js/skoda.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="551" column="0" selection-start="19485" selection-end="19485" vertical-scroll-proportion="0.02631579">
-          <folding />
-        </state>
+        <state line="551" column="0" selection-start="19485" selection-end="19485" vertical-scroll-proportion="0.02631579" />
       </provider>
     </entry>
   </component>
