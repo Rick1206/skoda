@@ -2,25 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a39242e0-9615-4765-a6ea-d4d8874e1b80" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\.name" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\dictionaries\u.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\inspectionProfiles\profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\jsLinters\jshint.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\jsLinters\jslint.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\scopes\scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\skoda.iml" afterPath="" />
-      <change type="DELETED" beforePath="D:\www\skoda\skoda\.idea\vcs.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/activate.html" afterPath="$PROJECT_DIR$/page/activate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/assets/css/style.css" afterPath="$PROJECT_DIR$/page/assets/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skoda.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1381216622977" ignored="false" />
+    <file path="/Dummy.txt" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1381225428460" ignored="false" />
     <file path="/profile.ejs" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380272898801" ignored="false" />
     <file path="/dummy.xml" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380266240508" ignored="false" />
     <file path="/skoda.less" changelist="a39242e0-9615-4765-a6ea-d4d8874e1b80" time="1380268822199" ignored="false" />
@@ -56,10 +43,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="activate.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/page/activate.html">
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/page/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="139" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.4099379">
+            <state line="352" column="61" selection-start="38793" selection-end="38793" vertical-scroll-proportion="0.19497608">
               <folding />
             </state>
           </provider>
@@ -86,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/page/profile.html" />
         <option value="$PROJECT_DIR$/src/views/share.ejs" />
         <option value="$PROJECT_DIR$/src/views/share_disable.ejs" />
         <option value="$PROJECT_DIR$/src/assets/less/forms.less" />
@@ -102,6 +88,7 @@
         <option value="$PROJECT_DIR$/src/views/faq.ejs" />
         <option value="$PROJECT_DIR$/src/views/howToPlay.ejs" />
         <option value="$PROJECT_DIR$/page/activate.html" />
+        <option value="$PROJECT_DIR$/page/assets/css/style.css" />
       </list>
     </option>
   </component>
@@ -155,20 +142,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skoda" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -179,8 +152,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.sourceCode" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -218,12 +191,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24984913" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -299,6 +272,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/page/activate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/page/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="876" column="27" selection-start="35093" selection-end="35093" vertical-scroll-proportion="0.044720497" />
@@ -311,7 +291,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/page/activate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="139" selection-start="2143" selection-end="2143" vertical-scroll-proportion="0.4099379">
+        <state line="35" column="21" selection-start="1296" selection-end="1296" vertical-scroll-proportion="0.027329193">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="352" column="61" selection-start="38793" selection-end="38793" vertical-scroll-proportion="0.19497608">
           <folding />
         </state>
       </provider>

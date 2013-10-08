@@ -7,7 +7,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
 audio:not([controls]){display:none}
 html{font-size:100%;-webkit-text-size-adjust:none;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
-body{font-family:'黑体';font-size:12px;line-height:1.5;background:#fff;color:#646464}body.body-color{background:#262626}
+body{font-family:SimHei;font-size:12px;line-height:1.5;background:#fff;color:#646464}body.body-color{background:#262626}
 body,html{height:100%}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}
 a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}
@@ -356,7 +356,7 @@ form{margin:0 0 18px}
 fieldset{padding:0;margin:0;border:0}
 legend{display:block;width:100%;padding:0;margin-bottom:18px;font-size:18px;line-height:36px;color:#333;border:0;border-bottom:1px solid #e5e5e5}legend small{font-size:13.5px;color:#999}
 label,input,button,select,textarea{font-size:14;font-weight:normal;line-height:18px}
-input,button,select,textarea{font-family:'黑体'}
+input,button,select,textarea{font-family:SimHei}
 label{display:block;padding-bottom:5px}
 select,textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="mobile"],input[type="color"],.uneditable-input{display:inline-block;height:18px;padding:4px 6px;margin-bottom:9px;font-size:12px;line-height:18px;color:#555;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;vertical-align:middle}
 input,textarea,.uneditable-input{width:206px}
