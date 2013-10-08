@@ -4,10 +4,6 @@
 .hide{display:none!important}
 .input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .jspContainer{overflow:hidden;position:relative}
-.jspCap{background-image:url(../images/angle.png);width:10px;height:10px;display:block;background-repeat:no-repeat}
-.jspVerticalBar .jspCap{height:7px}
-.jspCapTop{background-position:2px 0}
-.jspCapBottom{background-position:2px -5px}
 .jspCapLeft{background-position:-8px -6px}
 .jspCapRight{background-position:-7px 2px}
 .jspPane{position:absolute}
@@ -20,10 +16,14 @@
 .jspHorizontalBar .jspTrack{background:url(../images/pan2.png) repeat-x 0 1px}
 .jspDrag{background:#d9d8d8;-webkit-box-shadow:inset 2px 2px 1px #fff;-moz-box-shadow:inset 2px 2px 1px #fff;box-shadow:inset 2px 2px 1px #fff;position:relative;top:0;left:0;border:1px solid #bbbbbb;cursor:pointer}
 .jspHorizontalBar .jspTrack,.jspHorizontalBar .jspDrag{float:left;height:7px}
-.jspArrow{background:#aaa;text-indent:-20000px;display:block;cursor:pointer}
-.jspArrow.jspDisabled{cursor:default;background:#aaa}
-.jspVerticalBar .jspArrow{height:0px;font-size:0px}
+.jspArrow{text-indent:-20000px;display:block;cursor:pointer}
+.jspArrow.jspDisabled{cursor:default;}
 .jspHorizontalBar .jspArrow{width:0px;float:left;height:100%}
 .jspVerticalBar .jspArrow:focus{outline:none}
 .jspCorner{background:#aaa;float:left;height:100%}
 * html .jspCorner{margin:0 -3px 0 0}
+
+.jspArrow{background-image:url(../images/angle.png);width:10px;height:10px;display:block;background-repeat:no-repeat;text-indent: -20000px;display: block;cursor: pointer;}
+.jspArrowUp{background-position:2px 0;height:7px;}
+.jspArrowDown{background-position:2px -5px;height:7px;}
+.jspArrow.jspDisabled{cursor: default;}

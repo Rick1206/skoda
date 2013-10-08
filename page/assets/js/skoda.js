@@ -1,15 +1,17 @@
 (function($){
 
     //notification
-    $('.logined').click(function(){
-        var target = $(this).parent('.usr');
-        target.toggleClass('open');
-        $(document).on('click',function(e){
-            if($(e.target).parents('.usr').length ==0){
-                target.removeClass('open');
-            }
-        });
-    });
+       
+      $('.usr').mouseover(function(){
+      	$(this).addClass('open');
+      });
+      
+      $('.usr-popup').mouseout(function(){
+      	var target = $(this).parent('.usr');
+      	target.removeClass('open');
+      });
+     
+    
     // Index top carousel;
     $('.expert-carousel').length==1&&
         (function(){
@@ -177,13 +179,15 @@
             }).resize();
             $(window).scroll(function(e){
                 var x = $('footer').position().top-$(window).scrollTop()-$(window).height();
-                if($(window).scrollTop()+$(window).height()>$('document,body').height()-_foot_h){
+                if($(window).scrollTop()+$(window).height()>$(document).height()-_foot_h){
                     gotop.css('top',_h+x);
+                    //console.log("yes");
                 }else if($(window).scrollTop()==0){
                     gotop.css('top',$('document,body').height());
                 }else{
                     gotop.css('top',_h);
                 }
+               // console.log( _h,x);
             });
 
 
@@ -197,7 +201,7 @@
         })();
 
         $('.text-wrap').length >=1 && (function(){
-            $('.text-wrap').jScrollPane({autoReinitialise: true,contentWidth: '0px'});
+            $('.text-wrap').jScrollPane({showArrows: true,autoReinitialise: true,contentWidth: '0px'});
         })();
 
         $('.jsPopIdeaDetail').click(function(){
@@ -206,16 +210,33 @@
                 position:['auto',100]
             });
         });
-
-        var test_notification_ele = $('.notification .text-wrap').find('ul').clone();
-
+        
+        $('.default-update-info').click(function(){
+        	 $('.pop-idea-detail').bPopup().close();
+			 location.hash = 'bpop-profile-form';
+                if(br_ver.indexOf('msie 7')||br_ver.indexOf('msie 6')){
+                    $(window).trigger('hashchange');
+                }
+        });
+     
+		var trig = true;
+		var test_notification_ele = $('.notification .text-wrap').find('ul').html();
+		
         $('.notification .text-wrap').on('jsp-scroll-y',function(event, scrollPositionY, isAtTop, isAtBottom){
-            if(isAtBottom){
-                $(this).find('.jspPane').append(test_notification_ele);
+            if(isAtBottom && trig){
+            	trig = false;
+            	loadContent($(this));  
             }
         });
-
-
+		
+		function loadContent(scroll){
+			var api = scroll.data('jsp');
+			api.getContentPane().append(test_notification_ele);
+			api.reinitialise();
+			//-- ajax callback set trig true --// 
+			setTimeout(function(){trig=true;},800);
+		}
+		
         //get more data'  for example
         $('.suggestions').length>0&&(function(){
             var $suggestions =  $('.suggestions');
@@ -236,6 +257,7 @@
                     }
                 }
             });
+            
             $(document).on('click','.suggestions .against',function(){
                 var $this = $(this);
                 if($(this).data('reported')!=1){
@@ -244,6 +266,7 @@
                 }
                 return false;
             });
+            
             $(document).on('click','.suggestions .delete',function(){
                 var $this = $(this);
                 $.confirm('确认删除吗?',function(result){
@@ -254,7 +277,9 @@
                 });
                 return false;
             });
+            
             bgfix();
+            
             function bgfix(){
                 var $page = $('#page');
                 var fixMask = $('.body-background-profile-fixed');
@@ -267,7 +292,17 @@
 
             var suggestionsInput = $('#suggestions-input');
             $('#suggestions-submit').click(function(){
-                if(suggestionsInput.val() =="") return false;
+            	var textLen = parseInt(suggestionsInput.val().length);
+            	var limitWords = parseInt(suggestionsInput.attr("maxlength"));
+            	var errorMsg = $(".suggestions-error");
+                if(textLen == 0) return false;
+                if(textLen > limitWords){
+                	var overNum = textLen - limitWords;
+                	errorMsg.html("已超出"+overNum+"字");
+                	return false;
+                }else{
+                	errorMsg.html("");
+                }
                 var ele = element_example.eq(1).clone(true);
                 ele.find('.type-middle').html(suggestionsInput.val());
                 ele.find('.time').html('刚刚');
@@ -276,7 +311,7 @@
                 return false;
             });
 
-
+			
         })();
 
         $.confirm = function(title,callback){
@@ -324,30 +359,69 @@
                 }
             });
         }
+        
         //  upload
-
         $('.pop-upload-box').length>0&&(function(){
-            var $box = $('.pop-upload-box');
-            var $form = $('#upload');
-            var $form_file = $form.find('input[type=file]');
+
+           var $box = $('.pop-upload-box');
+           
+            window.closePanel = function() {
+				$('.pop-upload-box').bPopup().close();
+			}
+            
+            window.uploadPhotoComplete1 = function(receivedData) {
+				alert("Received Data is " + receivedData);
+				closePanel();
+			}
+            
+            var flashvars = {
+					uploadURL:"/function_all/index.php",
+					callbackCompleteFunction:"uploadPhotoComplete1"
+				};
+				
+			var params = {
+					menu: "false",
+					scale: "noScale",
+					allowFullscreen: "true",
+					allowScriptAccess: "always",
+					bgcolor: "",
+					wmode: "transparent"
+				};
+            
             $('.jsPopUploadBox').click(function(){
                 $box.bPopup({
-                    onClose:function(){
-                        $box.find('.file-input').html('...');
-                    }
-                });
+                	onOpen:function(){	
+                	setTimeout(
+	                    function(){
+			                swfobject.embedSWF(
+								"assets/swf/upload.swf", 
+								"altContent", "340", "159", "10.3.0", 
+								"assets/swf/expressInstall.swf", 
+								flashvars, params
+							);
+	                    },300);
+                	},
+                	onClose:function(){
+                		$box.html("<div id='altContent'></div>");
+                }});
             });
-            $form.ajaxForm(function(){
-                alert('Upload succeed!');
-            });
-            $box.find('.btn-select-file').click(function(){
-                $form_file.click();
-            });
-            $form_file.change(function(){
-                $box.find('.file-input').html($(this).val());
-            });
-
+			
         })();
+        
+        
+        // ctp-user-intro
+        $(".ctp-user-intro").length>0&&(function(){
+        	var ctpIntro =  $(".ctp-user-intro p");
+        	var ctpContent=  $(".ctp-user-intro p").html();
+        	var introLen =  $(".ctp-user-intro p").attr("maxlength");
+        	if(ctpContent.length>introLen){
+        		var subContent = ctpContent.substr(0,introLen)+"...";
+        		ctpIntro.html(subContent);
+        	}
+        })();
+        
+        
+        
         $('.pop-profile-form').length>0&&(function(){
 
             var $form = $('.pop-profile-form');
@@ -398,9 +472,17 @@
             $('.student',$form).change(function(){
                 var $this = $(this);
                 if($this.is(':checked')){
-                    $.alert('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="http://www.congmingzhuyi.com/how-to-play" target="_blank">查看这里</a>。');
+                    $.alert('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="./tnc.html#student" target="_blank">查看这里</a>。<a class="b-close pop-close close-student" href="#"><span></span></a>');
+                	$(".close-student").click(function(){
+                		
+                		$this.attr("checked",false);
+                		
+                	});
                 }
             });
+            
+            
+            
 
             //validate
 
@@ -439,16 +521,16 @@
         })();
 
 
-//        video popup
+		//video popup
         $('.pop-video-box01').length>0&&(function(){
             $('.btn-3d-becomeTalent3').click(function(){
                 $('.pop-video-box01').bPopup({
                     onOpen:function(){
+                    	 var video = $(this).find('.video');
                         setTimeout(
-                            function(_this){
-                                var video = $(_this).find('.video');
-                                video.html(swf(video.data('vid'),540,374));
-                            },300,this
+                            function(){
+                                video.html(swf(video.data('vid'),540,374,video.data("fid")));
+                            },300
                         )
                     }
                 });
@@ -473,12 +555,11 @@
                     modalClose: false,
                     onOpen:function(){
                         domCache = $popbox.clone(true);
+                        var video = $(this).find('.video');
                         setTimeout(
-                            function(_this){
-                                var video = $(_this).find('.video');
-                                video.html(swf(video.data('vid'),540,374));
-
-                            },300,this
+                            function(){                              
+                                video.html(swf(video.data('vid'),540,374,video.data("fid")));
+                            },300
                         )
                     },
                     onClose:function(){
@@ -490,7 +571,7 @@
             }
         })();
 
-//    $('.pop-box').bPopup();
+	//$('.pop-box').bPopup();
 
     function swf(d,a,b,eid){
         if (navigator.appName.indexOf("Microsoft") != -1) {
@@ -499,5 +580,25 @@
             return '<embed src="'+d+'" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" id="'+eid+'" name="'+eid+'" bgcolor="#000000" width="'+a+'" height="'+b+'" allowscriptaccess="always" quality="High" wmode="transparent" allowFullScreen="true"></object>';
         }
     };
-
+    
+   
+	$(".message-box").length>0&&(function() {
+		$(".btn-submit").click(function() {
+			var textArea = $(this).parent().children("textarea");
+			var textAreaLen = parseInt(textArea.val().length);
+			var errorMsg = $(this).parent().children(".message-error");
+			var limitWords = parseInt(textArea.attr("maxlength"));
+			
+			if(textAreaLen>limitWords){
+				var overNum = textAreaLen - limitWords;
+				errorMsg.html("已超出"+overNum+"字");
+				return;
+			}else{
+				errorMsg.html("");
+			}
+			//-- ajax and so on--//
+		});
+	})();
+	
+   
 })(window.jQuery);

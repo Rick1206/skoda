@@ -5,7 +5,23 @@ $ftype = isset($_POST["Fun_type"]) ? $_POST["Fun_type"] : "" ;
 //$ftype = isset($_GET["Fun_type"]) ? $_GET["Fun_type"] : "" ;
 
 if($ftype == ""){
-	return;
+	if ($_FILES["Filedata"]["error"] > 0) {
+		exit("Error: " . $_FILES["Filedata"]["error"]);
+	}
+
+	$fileName = iconv("utf-8", "gb2312", $_FILES["Filedata"]["name"]);
+	$reallyName = "image/" . $fileName;
+
+	if (file_exists($reallyName)) {
+		unlink($reallyName);
+	}
+
+	if (!is_dir("image")) {
+		mkdir("image");
+	}
+
+	move_uploaded_file($_FILES["Filedata"]["tmp_name"], $reallyName);
+	echo "Stored in: " . "image/" . $fileName;
 }
 
 if(isset($_SESSION["fir"])){
@@ -42,7 +58,7 @@ switch ($ftype) {
 		break;
 		
 	case 'User_Profile':
-		//$_SESSION["status"]= TRUE;
+		$_SESSION["status"]= TRUE;
 		if($_SESSION["status"]){
 			
 		$state = "1";		
@@ -59,12 +75,12 @@ switch ($ftype) {
 			
 		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":[{\"username\":\"".$username 
 			  ."\",\"headpic\":\"".$headpic
-			  ."\"}],\"questions\":[{\"questionId\":\"1\",\"title\":\"\",
+			  ."\"}],\"questions\":[{\"questionId\":\"12\",\"title\":\"a\",
 			  \"options\":[
-           			{\"optionId\": \"1\",\"title\": \"\",\"selected\": \"true\"},
-           			{\"optionId\": \"2\",\"title\": \"\",\"selected\": \"false\"},
-           			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
-           			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
+           			{\"optionId\": \"12\",\"title\": \"b\",\"selected\": \"true\"},
+           			{\"optionId\": \"2\",\"title\": \"c\",\"selected\": \"false\"},
+           			{\"optionId\": \"3\",\"title\": \"d\",\"selected\": \"false\"},
+           			{\"optionId\": \"5\",\"title\": \"e\",\"selected\": \"false\"}
        		  ]},{
 			  	\"questionId\":\"2\",\"title\":\"\",
 			  	\"options\":[

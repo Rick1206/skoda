@@ -62,6 +62,7 @@
 						</li>
 
 					</ul>
+					<div class="ctp-wire"></div>
 				</div>
 			</nav>
 		</header>
@@ -125,6 +126,7 @@
 			var flashvars = {
 				debug : "true",
 				language : "cn",
+				galleryUrl: "./idea.html",
 				categoryUrl : "assets/xml/clipart.xml",
 				bgImage : "assets/images/bg.jpg",
 				url : "assets/swf/draw.swf",
@@ -152,9 +154,9 @@
 			$(function() {
 
 				//--- get user profile --//
-				window.getUserUserProfile = function() {
+				window.getUserProfile = function() {
 					$.ajax({
-						url : './function_all/',
+						url : './function_all/index.php',
 						data : {
 							Fun_type : 'User_Profile',
 						},
@@ -173,7 +175,7 @@
 				//--- login function ---//
 				window.is_login = function() {
 					$.ajax({
-						url : './function_all/',
+						url : './function_all/index.php',
 						data : {
 							Fun_type : 'Is_login',
 						},
@@ -201,7 +203,7 @@
 					$("#ctp-flash-loading-mask").show();
 					//--- ajax to host --- //
 					$.ajax({
-						url : './function_all/',
+						url : './function_all/index.php',
 						data : {
 							Fun_type : 'User_submission',
 							Draw_pic : data.pic,
@@ -217,7 +219,7 @@
 							myObject = JSON.parse(data);
 							$("#ctp-flash-loading-mask").hide();
 							if (myObject.state == "1") {
-								location.href = "profile.html";
+								//location.href = "profile.html";
 							}
 						},
 						error : function(e) {
