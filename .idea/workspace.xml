@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a39242e0-9615-4765-a6ea-d4d8874e1b80" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/faq.html" afterPath="$PROJECT_DIR$/page/faq.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skoda.iws" />
     <ignored path=".idea/workspace.xml" />
