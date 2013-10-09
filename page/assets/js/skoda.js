@@ -198,6 +198,22 @@
                 });
             })();
         })();
+        
+        //ctp-idea-name
+        
+        $(".ctp-idea-item-name").length>0 && (function(){
+           $(".ctp-idea-item-name").each(function(){
+        		var ctpIntro  =  $(this);
+	        	var ctpContent = $.trim(ctpIntro.html());
+	        	var introLen = ctpIntro.attr("maxlength");
+	        	if(ctpContent.length>introLen){
+	        		var subContent = ctpContent.substr(0,introLen)+"...";
+	        		ctpIntro.html(subContent);
+	        	}
+        	});
+        })();
+        
+        
 
         $('.text-wrap').length >=1 && (function(){
             $('.text-wrap').jScrollPane({showArrows: true,autoReinitialise: true,contentWidth: '0px'});
