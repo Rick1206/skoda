@@ -1,81 +1,67 @@
-<?php 
+<?php
 session_start();
-$ftype = isset($_POST["Fun_type"]) ? $_POST["Fun_type"] : "" ;
+$ftype = isset($_POST["Fun_type"]) ? $_POST["Fun_type"] : "";
 
 //$ftype = isset($_GET["Fun_type"]) ? $_GET["Fun_type"] : "" ;
 
-if($ftype == ""){
-	if ($_FILES["Filedata"]["error"] > 0) {
-		exit("Error: " . $_FILES["Filedata"]["error"]);
-	}
-
-	$fileName = iconv("utf-8", "gb2312", $_FILES["Filedata"]["name"]);
-	$reallyName = "image/" . $fileName;
-
-	if (file_exists($reallyName)) {
-		unlink($reallyName);
-	}
-
-	if (!is_dir("image")) {
-		mkdir("image");
-	}
-
-	move_uploaded_file($_FILES["Filedata"]["tmp_name"], $reallyName);
-	echo "Stored in: " . "image/" . $fileName;
+if ($ftype == "") {
+	$tempFile = $_FILES['image']['tmp_name']['0'];//获取FILES的缓存文件
+	//echo $tempFile;
+     $targetPath = "./";//要保存到的新目录
+    $targetFile = "1.jpg";//要生成的文件名
+    move_uploaded_file($tempFile,$targetPath.$targetFile);
+	//print_r($tempFile);
 }
 
-if(isset($_SESSION["fir"])){
+if (isset($_SESSION["fir"])) {
 	$_SESSION["status"] = TRUE;
-}else{
+} else {
 	$_SESSION["status"] = FALSE;
 }
 
 switch ($ftype) {
-	case 'Is_login':
-		
-		$_SESSION["fir"] = "fir"; 
-		
-		if($_SESSION["status"]){
+	case 'Is_login' :
+		$_SESSION["fir"] = "fir";
+
+		if ($_SESSION["status"]) {
 			$state = "1";
 			$message = "Login Success";
-		}else{
+		} else {
 			$state = "0";
 			$message = "Login Failure";
 		}
-		
-		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";	
-		
+
+		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" " . $message . "\"" . "}";
+
 		break;
-	
-	case 'User_submission':
+
+	case 'User_submission' :
 		$state = "1";
 		$message = "Upload User profile Success";
-		
+
 		$state = is_base64_encoded($_POST['Draw_pic']);
-		
-		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";
-		
+
+		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" " . $message . "\"" . "}";
+
 		break;
-		
-	case 'User_Profile':
-		$_SESSION["status"]= TRUE;
-		if($_SESSION["status"]){
-			
-		$state = "1";		
-		$message = "Get User profile Success";
-		
-		$username = "rick";
-		$headpic = "./function_all/rick.jpg";
-		
-		$q1 = "3";
-		$q2 = "2";
-		$q3 = "1";
-		$q4 = "3";
-		$q5 = "4";
-			
-		echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message."\",\"profile\":[{\"username\":\"".$username 
-			  ."\",\"headpic\":\"".$headpic
-			  ."\"}],\"questions\":[{\"questionId\":\"12\",\"title\":\"a\",
+
+	case 'User_Profile' :
+		$_SESSION["status"] = TRUE;
+		if ($_SESSION["status"]) {
+
+			$state = "1";
+			$message = "Get User profile Success";
+
+			$username = "rick";
+			$headpic = "./function_all/rick.jpg";
+
+			$q1 = "3";
+			$q2 = "2";
+			$q3 = "1";
+			$q4 = "3";
+			$q5 = "4";
+
+			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" " . $message . "\",\"profile\":[{\"username\":\"" . $username . "\",\"headpic\":\"" . $headpic . "\"}],\"questions\":[{\"questionId\":\"12\",\"title\":\"a\",
 			  \"options\":[
            			{\"optionId\": \"12\",\"title\": \"b\",\"selected\": \"true\"},
            			{\"optionId\": \"2\",\"title\": \"c\",\"selected\": \"false\"},
@@ -110,33 +96,28 @@ switch ($ftype) {
            			{\"optionId\": \"3\",\"title\": \"\",\"selected\": \"false\"},
            			{\"optionId\": \"5\",\"title\": \"\",\"selected\": \"false\"}
 			  ]}]}";
-			  	
-		}else{
-			$state = "0";		
+
+		} else {
+			$state = "0";
 			$message = "Get User profile Faliure";
-			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" ". $message.  "\"" . "}";		
+			echo "{" . "\"state\":\"" . $state . "\",\"message\":\" " . $message . "\"" . "}";
 		}
 		break;
-	
-
 }
 
+function base64_decode_fix($data, $strict = false) {
+	if ($strict)
+		if (preg_match('![^a-zA-Z0-9/+=]!', $data))
+			return (false);
 
-function  base64_decode_fix( $data, $strict = false ) 
-{ 
-    if( $strict ) 
-        if( preg_match( '![^a-zA-Z0-9/+=]!', $data ) ) 
-            return( false ); 
-    
-    return( base64_decode( $data ) ); 
-} 
+	return ( base64_decode($data));
+}
 
-function is_base64_encoded($data)
-    {
-        if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
-    };
+function is_base64_encoded($data) {
+	if (preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) {
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+};
 ?>
