@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<flvs>
+		<flv>
+			<source>../video/dog/Dog.flv</source>
+		</flv>
+		<flv>
+			<source>../video/Reporter/Repoter.flv</source>
+		</flv>
+		<flv>
+			<source>../video/kiss/Kiss.flv</source>
+			<trackingData>./assets/video/data/data.txt</trackingData>
+			<asset>./assets/video/kiss/kiss.swf</asset>
+		</flv>
+		<flv>
+			<source>../video/thank/Thank.flv</source>
+		</flv>
+		<flv>
+			<source>../video/fei/Fei_gezi.flv</source>
+			<trackingData>./assets/video/data/data-fei.txt</trackingData>
+		</flv>
+	</flvs>
+</data>

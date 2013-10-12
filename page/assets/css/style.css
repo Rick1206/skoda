@@ -305,7 +305,7 @@ footer .logo2{width:142px;height:43px;background:url(../images/logo2.png) no-rep
 .confirm .btn-yes,.alert .btn-yes{margin-right:40px} 
 .alert .close-student{top:-20px;right:-20px;}
 div[class*=pop-video-box]{border:5px solid #4ea736;width:604px;height:483px;display:none;background-image:url(../images/grain_bg.jpg)}div[class*=pop-video-box] .pop-close{top:-20px;right:-20px}
-div[class*=pop-video-box] .content{padding:32px;position:relative}div[class*=pop-video-box] .content .video{width:540px;height:374px}
+div[class*=pop-video-box] .content{padding:32px;position:relative}div[class*=pop-video-box] .content .video{width:540px;height:366px}
 div[class*=pop-video-box] .share{position:absolute;left:516px;top:425px}div[class*=pop-video-box] .share .share-bar{background-position:0 -167px;height:54px;width:236px;top:-13px;left:-236px}div[class*=pop-video-box] .share .share-bar .icon-tsina{margin-left:18px}
 .pop-video-box02 .btn-skip{position:absolute;left:516px;top:425px}
 .pop-video-box02 .step1 .share{left:450px}

@@ -591,11 +591,22 @@
                     }
                 });
             }
-
-
         })();
 
 
+		var vparams = {
+			quality: "high",
+			scale: "noscale",
+			wmode: "window",
+			allowscriptaccess: "always",
+			bgcolor: "#FFFFFF",
+			allowFullScreen:true
+		};
+		var vflashvars = {
+		};
+		var vattributes = {
+		};
+	
 		//video popup
         $('.pop-video-box01').length>0&&(function(){
             $('.btn-3d-becomeTalent3').click(function(){
@@ -604,7 +615,13 @@
                     	 var video = $(this).find('.video');
                         setTimeout(
                             function(){
-                                video.html(swf(video.data('vid'),540,374,video.data("fid")));
+                            	vflashvars={
+                            		maxlength:5,
+									xmlPath:"assets/xml/data.xml"
+                            	}
+							    swfobject.embedSWF(video.data('vid'), 
+							    video.data('id'), "100%", "100%", "10.3.0",
+							     "expressInstall.swf", vflashvars, vparams, vattributes);
                             },300
                         )
                     }
@@ -632,8 +649,15 @@
                         domCache = $popbox.clone(true);
                         var video = $(this).find('.video');
                         setTimeout(
-                            function(){                              
-                                video.html(swf(video.data('vid'),540,374,video.data("fid")));
+                            function(){   
+                            	vflashvars={
+                            		index:3,
+                            		maxlength:5,
+									xmlPath:"assets/xml/data.xml"
+                            	}                           
+                                swfobject.embedSWF(video.data('vid'), 
+							    video.data('id'), "100%", "100%", "10.3.0",
+							     "expressInstall.swf", vflashvars, vparams, vattributes);
                             },300
                         )
                     },

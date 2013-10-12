@@ -1055,7 +1055,9 @@
 		<div class="pop-video-box01">
 			<a class="pop-close b-close" href="javascript:void(0)"><span></span></a>
 			<div class="content">
-				<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video"></div>
+				<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video" data-id="pop1">
+					<div id="pop1"></div>
+				</div>
 				<div class="share">
 
 					<a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
@@ -1073,7 +1075,9 @@
 		<div class="pop-video-box02">
 			<div class="content">
 				<div class="step1">
-					<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video" ></div>
+					<div class="video" data-vid="assets/swf/video.swf" data-fid="ctp-video" data-id="pop2">
+						<div id="pop2"></div>
+					</div>
 					<div class="share">
 	
 						<a class="btn-share" href="javascript:void(0);"><span class="font-share"></span></a>
@@ -1139,34 +1143,16 @@
 		<script type="text/javascript" src="assets/js/skoda.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			window.getVoteData = function() {
-				var user = {};
-				user.username = "rick";
-				user.headpic = "********.jpg";
-				var data = JSON.stringify(user);
-				GetSWF("ctp-video").setVoteData(data);
+				//username
+				//user pic
+				//video index
+				//0 dog video
+				//1 reporter video
+				//2 kiss video
+				//3 thank video
+				//4 fei video
+				return  '["SKODA","assets/headpic/1.jpg","4"]';
 			}
-			//-- bak function --//
-			function call(data) {
-				try {
-					GetSWF("ctp-video").setVoteData(data);
-				} catch(e) {
-					setTimeout(function() {
-						call(data);
-					}, 500);
-				}
-			}
-
-			function GetSWF(strName) {
-				if (window.document[strName] != null)
-					if (window.document[strName].length == null)
-						return window.document[strName];
-					else
-						return window.document[strName][1];
-				else if (document[strName].length == null)
-					return document[strName];
-				else
-					return document[strName][1];
-			};
 		</script>
 	</body>
 </html>
