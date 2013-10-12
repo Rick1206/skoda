@@ -5,11 +5,9 @@
       	$(this).addClass('open');
       });
       
-      $('.usr-popup').mouseout(function(){
-      	var target = $(this).parent('.usr');
-      	target.removeClass('open');
+       $('.usr').mouseout(function(){
+      	$(this).removeClass('open');
       });
-     
     
     // Index top carousel;
     $('.expert-carousel').length==1&&
@@ -164,7 +162,7 @@
 
         })();
 
-//        goback document top
+		//goback document top
         $('#gotop').length==1&&(function(){
             var gotop = $('#gotop');
             var _h ,_foot_h;
@@ -203,16 +201,31 @@
         
         $(".ctp-idea-item-name").length>0 && (function(){
            $(".ctp-idea-item-name").each(function(){
-        		var ctpIntro  =  $(this);
-	        	var ctpContent = $.trim(ctpIntro.html());
-	        	var introLen = ctpIntro.attr("maxlength");
+        		var ctpItemName  =  $(this);
+	        	var ctpContent = $.trim(ctpItemName.html());
+	        	var introLen = ctpItemName.attr("maxlength");
 	        	if(ctpContent.length>introLen){
 	        		var subContent = ctpContent.substr(0,introLen)+"...";
-	        		ctpIntro.html(subContent);
+	        		ctpItemName.html(subContent);
 	        	}
         	});
         })();
         
+        
+        //ctp-message-content
+         $(".ctp-message-content").length>0 && (function(){
+         	$('.ctp-message-content').focusin(function(){
+	    		 if($(this).val() == "写下您的评论..."){
+	    		 		$(this).val("");
+	    		 	}
+	    		 });
+	    		  
+	    		 $('.ctp-message-content').focusout(function(){
+	    		 	if($(this).val() == ""){
+	    		 		$(this).val("写下您的评论...");
+	    		 	}
+	    		 });
+        })();
         
 
         $('.text-wrap').length >=1 && (function(){
@@ -437,23 +450,23 @@
         
         //ctp-user-name
         $(".ctp-user-name").length>0&&(function(){
-        	var ctpIntro  =  $(".ctp-user-name");
-        	var ctpContent = $.trim(ctpIntro.html());
-        	var introLen = ctpIntro.attr("maxlength");
+        	var ctpUname  =  $(".ctp-user-name");
+        	var ctpContent = $.trim(ctpUname.html());
+        	var introLen = ctpUname.attr("maxlength");
         	if(ctpContent.length>introLen){
         		var subContent = ctpContent.substr(0,introLen)+"...";
-        		ctpIntro.html(subContent);
+        		ctpUname.html(subContent);
         	}
         })();
         
         $(".ctp-comment-name").length>0&&(function(){
         	$(".ctp-comment-name").each(function(){
-        		var ctpIntro  =  $(this);
-	        	var ctpContent = $.trim(ctpIntro.html());
-	        	var introLen = ctpIntro.attr("maxlength");
+        		var ctpCname  =  $(this);
+	        	var ctpContent = $.trim(ctpCname.html());
+	        	var introLen = ctpCname.attr("maxlength");
 	        	if(ctpContent.length>introLen){
-	        		var subContent = ctpContent.substr(0,introLen)+"...";
-	        		ctpIntro.html(subContent);
+	        		var subContent = ctpContent.substr(0,introLen)+"...:";
+	        		ctpCname.html(subContent);
 	        	}
         	});
         })();
@@ -508,7 +521,7 @@
             $('.student',$form).change(function(){
                 var $this = $(this);
                 if($this.is(':checked')){
-                    $.alert('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="./tnc.html#student" target="_blank">查看这里</a>。<a class="b-close pop-close close-student" href="#"><span></span></a>');
+ 	                   $.alert('在此确认,本人若最终获奖,将选择获得"学子特别奖",同时放弃“2013年度聪明达人”奖。具体内容,<a href="./tnc.html#student" target="_blank">查看这里</a>。<a class="b-close pop-close close-student" href="#"><span></span></a>');
                 	$(".close-student").click(function(){
                 		
                 		$this.attr("checked",false);
@@ -518,22 +531,48 @@
             });
             
             
+            //input-block-level 
+            $(".input-block-level").length>0&&(function(){
+        		 $('.input-block-level').focusin(function(){
+        		 	if($(this).val() == "在此输入文字"){
+        		 		$(this).val("");
+        		 	}
+        		 });
+        		  
+        		 $('.input-block-level').focusout(function(){
+        		 	if($(this).val() == ""){
+        		 		$(this).val("在此输入文字");
+        		 	}
+        		 });
+        		 
+        	})();
             
-
             //validate
-
             validate('#inputMobile','mobile');
             validate('#inputEmail','email');
             var validate_error = false;
 
             $form.find('.btn-save').click(function(){
-
+			
                 $('form',$form).find('.control-group').each(function(){
                     if($(this).hasClass('error')){
                         validate_error =  true;
                         return false;
                     }
                 });
+                
+                var textArea =  $('form',$form).find('.input-block-level');
+				var textAreaLen = parseInt(textArea.val().length);
+				var errorMsg = $(".ctp-error-msg");
+				var limitWords = parseInt(textArea.attr("maxlength"));
+				
+				if(textAreaLen>limitWords){
+					var overNum = textAreaLen - limitWords;
+					errorMsg.html("已超出"+overNum+"字");
+					return false;
+				}else{
+					errorMsg.html("");
+				}
 
                 if(validate_error) return false;
             })
