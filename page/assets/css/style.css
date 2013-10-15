@@ -526,3 +526,5 @@ legend+.control-group{margin-top:18px;-webkit-margin-top-collapse:separate}
 .btn-howtoplay03{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -537px}.btn-howtoplay03:hover{background-position:-506px -597px}
 .btn-howtoplay04{width:144px;height:48px;display:inline-block;border:none;position:absolute;z-index:5;background-position:-506px -656px}.btn-howtoplay04:hover{background-position:-506px -722px}
 .ctp-error-msg{text-align: right;color:red;}
+
+select.error{border:1px solid #ee5f5b;}

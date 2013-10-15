@@ -552,8 +552,29 @@
             validate('#inputEmail','email');
             var validate_error = false;
 
+            $('.J_user_bir_year,.J_user_bir_day').change(function(event) {
+                _checkYearAndDay(false);
+            });
+
+            function _checkYearAndDay(isfocus){                
+                var $year = $('.J_user_bir_year'),$day = $('.J_user_bir_day');
+                var _vy = $year.val(),_vd = $day.val(),_regD = /\d{1,}/;
+
+                if((_regD.test(_vy) && _regD.test(_vd)) || (!_regD.test(_vy) && !_regD.test(_vd))){
+
+                }else{
+                    if(!_regD.test(_vy)){ $year.addClass('error'); if(isfocus){$year.focus();} return false; }
+                    if(!_regD.test(_vd)){ $day.addClass('error');if(isfocus){$day.focus();} return false; }
+                }
+                $('.J_user_bir_year,.J_user_bir_day').removeClass('error');
+                return true;
+            }
+
+
             $form.find('.btn-save').click(function(){
-			
+
+                if(_checkYearAndDay(true)){}else{ return false; }
+
                 $('form',$form).find('.control-group').each(function(){
                     if($(this).hasClass('error')){
                         validate_error =  true;
