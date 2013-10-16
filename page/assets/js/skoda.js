@@ -1,11 +1,11 @@
 (function($){
 
     //notification
-      $('.usr').mouseover(function(){
+      $('.usr').mouseenter(function(){
       	$(this).addClass('open');
       });
       
-       $('.usr').mouseout(function(){
+       $('.usr').mouseleave(function(){
       	$(this).removeClass('open');
       });
     
@@ -632,6 +632,8 @@
         $('.pop-video-box01').length>0&&(function(){
             $('.btn-3d-becomeTalent3').click(function(){
                 $('.pop-video-box01').bPopup({
+                    follow:[true,false],
+                    position:['auto',String($(window).scrollTop()+50)+'px'],
                     onOpen:function(){
                     	 var video = $(this).find('.video');
                         setTimeout(
@@ -645,6 +647,9 @@
 							     "expressInstall.swf", vflashvars, vparams, vattributes);
                             },300
                         )
+                    },
+                    onClose:function(){
+                        $('.pop-video-box01').remove();
                     }
                 });
                 $(this).addClass('disable');
