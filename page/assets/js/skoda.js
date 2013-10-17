@@ -231,11 +231,12 @@
         $('.text-wrap').length >=1 && (function(){
             $('.text-wrap').jScrollPane({showArrows: true,autoReinitialise: true,contentWidth: '0px'});
         })();
-
+        
+		//-- profile popup box --//
         $('.jsPopIdeaDetail').click(function(){
             $('.pop-idea-detail').bPopup({
                 follow: [true,false],
-                position:['auto',100]
+                position:['auto',String($(window).scrollTop()+100)+'px']
             });
         });
         
